@@ -4,6 +4,7 @@ import { z } from 'zod'
 export const env = createEnv({
   server: {
     SERVER_URL: z.string().url().optional(),
+    API_URL: z.string().url().optional(),
   },
 
   /**
@@ -14,23 +15,29 @@ export const env = createEnv({
 
   client: {
     VITE_APP_TITLE: z.string().min(1).optional(),
+    VITE_API_URL: z.string().url().optional(),
+    VITE_SENTRY_DSN: z.string().optional(),
   },
 
   /**
    * What object holds the environment variables at runtime. This is usually
    * `process.env` or `import.meta.env`.
    */
-  runtimeEnv: import.meta.env,
+  runtimeEnv: {
+    ...import.meta.env,
+    SERVER_URL: process.env.SERVER_URL,
+    API_URL: process.env.API_URL,
+  },
 
   /**
-   * By default, this library will feed the environment variables directly to
-   * the Zod validator.
+   * By default, this library will feed the environment variables directly to the
+   * Zod validator.
    *
-   * This means that if you have an empty string for a value that is supposed
-   * to be a number (e.g. `PORT=` in a ".env" file), Zod will incorrectly flag
-   * it as a type mismatch violation. Additionally, if you have an empty string
-   * for a value that is supposed to be a string with a default value (e.g.
-   * `DOMAIN=` in an ".env" file), the default value will never be applied.
+   * This means that if you have an empty string for a value that is supposed to
+   * be a number (e.g. `PORT=` in a ".env" file), Zod will incorrectly flag it as
+   * a type mismatch violation. Additionally, if you have an empty string for a
+   * value that is supposed to be a string with a default value (e.g.
+   * `DOMAIN=` in a ".env" file), the default value will never be applied.
    *
    * In order to solve these issues, we recommend that all new projects
    * explicitly specify this option as true.

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Pokespace">
+  <circle cx="32" cy="32" r="30" fill="#f4f7fb"/>
+  <path d="M2 32a30 30 0 0 1 60 0H2Z" fill="#c1121f"/>
+  <rect x="2" y="30" width="60" height="4" fill="#16343c"/>
+  <circle cx="32" cy="32" r="8" fill="#f4f7fb" stroke="#16343c" stroke-width="3"/>
+  <circle cx="32" cy="32" r="3.5" fill="#f0c14d"/>
+</svg>
