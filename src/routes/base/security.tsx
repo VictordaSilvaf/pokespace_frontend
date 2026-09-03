@@ -143,7 +143,7 @@ function SecurityPage() {
         <passwordForm.Subscribe selector={(state) => state.isSubmitting}>
           {(isSubmitting) => (
             <button
-              className="btn btn-signal"
+              className="btn btn-gold"
               type="submit"
               disabled={isSubmitting}
             >
@@ -239,7 +239,7 @@ function SecurityPage() {
                 <confirmForm.Subscribe selector={(state) => state.isSubmitting}>
                   {(isSubmitting) => (
                     <button
-                      className="btn btn-signal"
+                      className="btn btn-gold"
                       type="submit"
                       disabled={isSubmitting}
                     >
@@ -296,7 +296,7 @@ function SecurityPage() {
         <deleteForm.Subscribe selector={(state) => state.isSubmitting}>
           {(isSubmitting) => (
             <button
-              className="btn btn-signal"
+              className="btn btn-gold"
               type="submit"
               disabled={isSubmitting}
             >

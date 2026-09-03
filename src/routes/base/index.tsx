@@ -2,7 +2,7 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { authApi } from '#/lib/api/auth'
 import { authKeys } from '#/lib/auth/keys'
-import { getApiHealth } from '#/lib/server/health'
+import { isAuthMockEnabled } from '#/lib/auth/mock'
 import { m } from '#/paraglide/messages'
 
 export const Route = createFileRoute('/base/')({ component: BaseHome })
@@ -15,7 +15,7 @@ function BaseHome() {
 
   const health = useQuery({
     queryKey: authKeys.health,
-    queryFn: () => getApiHealth(),
+    queryFn: () => authApi.health(),
   })
 
   const username = me.data?.username ?? 'treinador'
@@ -25,11 +25,10 @@ function BaseHome() {
       <p className="status-line">
         {m.base_title()}
         {health.data?.status === 'ok' ? ' · online' : ''}
+        {isAuthMockEnabled() ? ` · ${m.mock_badge()}` : ''}
       </p>
-      <h1 className="display-title text-4xl sm:text-6xl">
-        {m.base_hello({ username })}
-      </h1>
-      <p className="text-lg text-[var(--ink-soft)]">{m.base_support()}</p>
+      <h1>{m.base_hello({ username })}</h1>
+      <p style={{ color: 'var(--ink-soft)', fontSize: '1.05rem' }}>{m.base_support()}</p>
       <p>{m.base_energy()}</p>
       {me.data && !me.data.emailVerified ? (
         <p className="warn">

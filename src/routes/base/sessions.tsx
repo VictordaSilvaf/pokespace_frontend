@@ -82,7 +82,7 @@ function SessionsPage() {
       </div>
 
       <button
-        className="btn btn-signal"
+        className="btn btn-gold"
         type="button"
         disabled={logoutAll.isPending}
         onClick={() => logoutAll.mutate()}

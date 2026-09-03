@@ -47,7 +47,7 @@ function ResetPasswordPage() {
       {done ? (
         <div className="form-stack">
           <FormMessage>{m.reset_done()}</FormMessage>
-          <Link to="/login" className="btn btn-signal">
+          <Link to="/login" className="btn btn-gold">
             {m.cta_enter()}
           </Link>
         </div>
@@ -90,7 +90,7 @@ function ResetPasswordPage() {
           <form.Subscribe selector={(state) => state.isSubmitting}>
             {(isSubmitting) => (
               <button
-                className="btn btn-signal"
+                className="btn btn-gold"
                 type="submit"
                 disabled={isSubmitting}
               >

@@ -101,7 +101,7 @@ function LoginForm() {
           <form.Subscribe selector={(state) => state.isSubmitting}>
             {(isSubmitting) => (
               <button
-                className="btn btn-signal"
+                className="btn btn-gold btn-block"
                 type="submit"
                 disabled={isSubmitting}
               >

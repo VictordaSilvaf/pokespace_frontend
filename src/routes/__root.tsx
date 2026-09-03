@@ -13,6 +13,7 @@ import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 import { getLocale } from '#/paraglide/runtime'
 import { AuthProvider } from '#/lib/auth/auth-provider'
 import { CosmicScene } from '#/components/space/CosmicScene'
+import { AppShell } from '#/components/layout/AppShell'
 import { m } from '#/paraglide/messages'
 
 import appCss from '../styles.css?url'
@@ -36,7 +37,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         name: 'viewport',
         content: 'width=device-width, initial-scale=1',
       },
-      { title: m.brand() },
+      { title: 'PokeSpace' },
       {
         name: 'description',
         content: m.hero_support(),
@@ -54,7 +55,9 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 function RootComponent() {
   return (
     <AuthProvider>
-      <Outlet />
+      <AppShell>
+        <Outlet />
+      </AppShell>
     </AuthProvider>
   )
 }

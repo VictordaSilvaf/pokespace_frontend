@@ -21,6 +21,7 @@ export default [
       'src/routeTree.gen.ts',
       'src/paraglide/**',
       '.output/**',
+      '.vercel/**',
       'node_modules/**',
     ],
   },

@@ -1,8 +1,8 @@
 import { Link } from '@tanstack/react-router'
 import type { ReactNode } from 'react'
-import { m } from '#/paraglide/messages'
 import { BrandMark } from '#/components/brand/BrandMark'
-import LocaleSwitcher from '#/components/LocaleSwitcher'
+import { isAuthMockEnabled } from '#/lib/auth/mock'
+import { m } from '#/paraglide/messages'
 
 export function AuthFrame({
   title,
@@ -14,17 +14,13 @@ export function AuthFrame({
   children: ReactNode
 }) {
   return (
-    <main className="auth-shell">
-      <div className="site-top">
+    <main className="auth-center">
+      <section className="auth-card rise-in">
         <BrandMark compact />
-        <LocaleSwitcher />
-      </div>
-      <section className="auth-panel rise-in">
+        {isAuthMockEnabled() ? <span className="demo-chip">{m.mock_badge()}</span> : null}
         <div>
-          <h1 className="display-title text-4xl sm:text-5xl">{title}</h1>
-          <p className="mt-3 max-w-sm text-lg text-[var(--ink-soft)]">
-            {support}
-          </p>
+          <h1>{title}</h1>
+          <p className="support">{support}</p>
         </div>
         {children}
         <p>

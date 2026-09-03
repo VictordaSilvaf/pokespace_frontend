@@ -14,7 +14,9 @@ The app runs on `http://localhost:3001` so it does not clash with the Nest API o
 
 The frontend talks to `pokespace_backend` under `/api/v1`.
 
-Locally, Vite proxies `/api/v1` to `API_URL` (default `http://localhost:3000`). On Vercel, a server route does the same proxy.
+While the backend is offline, set `VITE_AUTH_MOCK=true` (default in `.env.example`) to use a local mock login. Any trainer/password works in demo mode.
+
+Locally, Vite proxies `/api/v1` to `API_URL` (default `http://localhost:3000`). On Vercel, a server route does the same proxy. Set `VITE_AUTH_MOCK=false` when the real API is available.
 
 # Environment
 

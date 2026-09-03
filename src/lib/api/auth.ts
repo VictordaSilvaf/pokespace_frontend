@@ -14,8 +14,9 @@ import type {
   UserProfile,
   VerifyEmailResult,
 } from '#/lib/api/types'
+import { isAuthMockEnabled, mockAuthApi } from '#/lib/auth/mock'
 
-export const authApi = {
+const liveAuthApi = {
   health: () => apiRequest<HealthResult>('/health'),
 
   register: (input: RegisterInput) =>
@@ -96,8 +97,7 @@ export const authApi = {
       auth: true,
     }),
 
-  sessions: () =>
-    apiRequest<SessionListResult>('/auth/sessions', { auth: true }),
+  sessions: () => apiRequest<SessionListResult>('/auth/sessions', { auth: true }),
 
   revokeSession: (sessionId: string) =>
     apiRequest<null>(`/auth/sessions/${sessionId}`, {
@@ -150,4 +150,12 @@ export const authApi = {
     }),
 }
 
-export { persistAuthResult }
+export const authApi = new Proxy(liveAuthApi, {
+  get(target, prop, receiver) {
+    const source = isAuthMockEnabled() ? mockAuthApi : target
+    const value = Reflect.get(source, prop, receiver)
+    return typeof value === 'function' ? value.bind(source) : value
+  },
+})
+
+export { persistAuthResult, isAuthMockEnabled }

@@ -148,7 +148,7 @@ function AccountPage() {
         <phoneForm.Subscribe selector={(state) => state.isSubmitting}>
           {(isSubmitting) => (
             <button
-              className="btn btn-signal"
+              className="btn btn-gold"
               type="submit"
               disabled={isSubmitting}
             >
@@ -234,7 +234,7 @@ function ContactForm({
       <form.Subscribe selector={(state) => state.isSubmitting}>
         {(isSubmitting) => (
           <button
-            className="btn btn-signal"
+            className="btn btn-gold"
             type="submit"
             disabled={isSubmitting}
           >

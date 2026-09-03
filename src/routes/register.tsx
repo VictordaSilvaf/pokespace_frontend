@@ -126,7 +126,7 @@ function RegisterForm() {
         <form.Subscribe selector={(state) => state.isSubmitting}>
           {(isSubmitting) => (
             <button
-              className="btn btn-signal"
+              className="btn btn-gold"
               type="submit"
               disabled={isSubmitting}
             >

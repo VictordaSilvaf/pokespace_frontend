@@ -1,5 +1,4 @@
 import { Link } from '@tanstack/react-router'
-import { m } from '#/paraglide/messages'
 import { cn } from '#/lib/utils'
 
 export function BrandMark({
@@ -11,14 +10,9 @@ export function BrandMark({
 }) {
   return (
     <Link to="/" className={cn('brand-mark', className)}>
-      <span className="brand-orb" />
-      <span
-        className={cn(
-          'display-title',
-          compact ? 'text-xl' : 'text-[clamp(2.8rem,12vw,8.5rem)]',
-        )}
-      >
-        {m.brand()}
+      <span className="brand-p">P</span>
+      <span className={cn('brand-word', compact ? 'text-base' : 'text-lg')}>
+        Poke<span className="space">Space</span>
       </span>
     </Link>
   )
