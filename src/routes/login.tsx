@@ -1,11 +1,16 @@
-import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
-import { useState } from 'react'
-
+import { Link, createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
+import { useForm } from '@tanstack/react-form'
+import { startTransition, useState } from 'react'
 import { AuthFrame } from '#/components/auth/AuthFrame'
-import {
-  establishDevSessionFn,
-  getSessionFn,
-} from '#/features/auth/session'
+import { FormMessage, TextField } from '#/components/auth/TextField'
+import { authApi } from '#/lib/api/auth'
+import { isTwoFactorChallenge } from '#/lib/api/types'
+import { getErrorMessage } from '#/lib/api/errors'
+import { useAuth } from '#/lib/auth/auth-provider'
+import { RequireGuest } from '#/lib/auth/gates'
+import { loginSchema } from '#/lib/auth/schemas'
+import { establishDevSessionFn, getSessionFn } from '#/features/auth/session'
+import { fieldError } from '#/lib/form/field-error'
 import { m } from '#/paraglide/messages'
 
 export const Route = createFileRoute('/login')({
@@ -19,50 +24,109 @@ export const Route = createFileRoute('/login')({
 })
 
 function LoginPage() {
-  const navigate = useNavigate()
-  const [username, setUsername] = useState('trainer')
-  const [pending, setPending] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  return (
+    <RequireGuest>
+      <LoginForm />
+    </RequireGuest>
+  )
+}
 
-  async function onSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setPending(true)
-    setError(null)
-    try {
-      await establishDevSessionFn({
-        data: { username: username.trim() || 'trainer' },
-      })
-      await navigate({ to: '/characters' })
-    } catch {
-      setError(m.character_error_generic())
-      setPending(false)
-    }
-  }
+function LoginForm() {
+  const auth = useAuth()
+  const navigate = useNavigate()
+  const [error, setError] = useState('')
+
+  const form = useForm({
+    defaultValues: {
+      identifier: '',
+      password: '',
+    },
+    validators: {
+      onSubmit: loginSchema,
+    },
+    onSubmit: async ({ value }) => {
+      setError('')
+      try {
+        const result = await authApi.login({
+          identifier: value.identifier.trim().toLowerCase(),
+          password: value.password,
+        })
+        if (isTwoFactorChallenge(result)) {
+          auth.beginTwoFactor(result.tempToken)
+          startTransition(() => {
+            void navigate({ to: '/two-factor' })
+          })
+          return
+        }
+        auth.signIn(result)
+        await establishDevSessionFn({
+          data: { id: result.userId, username: result.username },
+        })
+        startTransition(() => {
+          void navigate({ to: '/characters' })
+        })
+      } catch (cause) {
+        setError(getErrorMessage(cause))
+      }
+    },
+  })
 
   return (
-    <AuthFrame title={m.login_title()} support={m.login_subtitle()}>
-      <p className="field-hint">{m.login_dev_hint()}</p>
-      <form className="form-stack" onSubmit={onSubmit}>
-        <div className="field">
-          <label htmlFor="username">{m.login_username_label()}</label>
-          <input
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            autoComplete="username"
-          />
-        </div>
-        {error ? (
-          <p className="field-error" role="alert">
-            {error}
-          </p>
-        ) : null}
+    <AuthFrame title={m.login_title()} support={m.login_support()}>
+      <form
+        className="form-stack"
+        onSubmit={(event) => {
+          event.preventDefault()
+          event.stopPropagation()
+          void form.handleSubmit()
+        }}
+      >
+        <form.Field name="identifier">
+          {(field) => (
+            <TextField
+              name={field.name}
+              label={m.login_identifier()}
+              value={field.state.value}
+              autoComplete="username"
+              onBlur={field.handleBlur}
+              onChange={(event) => field.handleChange(event.target.value)}
+              error={fieldError(field.state.meta.errors)}
+            />
+          )}
+        </form.Field>
+        <form.Field name="password">
+          {(field) => (
+            <TextField
+              name={field.name}
+              type="password"
+              label={m.login_password()}
+              value={field.state.value}
+              autoComplete="current-password"
+              onBlur={field.handleBlur}
+              onChange={(event) => field.handleChange(event.target.value)}
+              error={fieldError(field.state.meta.errors)}
+            />
+          )}
+        </form.Field>
+        <FormMessage tone="warn">{error}</FormMessage>
         <div className="form-actions">
-          <button className="btn btn-gold btn-block" type="submit" disabled={pending}>
-            {m.login_submit()}
-          </button>
+          <form.Subscribe selector={(state) => state.isSubmitting}>
+            {(isSubmitting) => (
+              <button
+                className="btn btn-gold btn-block"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {m.login_submit()}
+              </button>
+            )}
+          </form.Subscribe>
+          <Link to="/forgot-password">{m.login_forgot()}</Link>
         </div>
       </form>
+      <p>
+        {m.login_to_register()} <Link to="/register">{m.cta_register()}</Link>
+      </p>
     </AuthFrame>
   )
 }

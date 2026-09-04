@@ -10,19 +10,80 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BaseRouteImport } from './routes/base'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as TwoFactorRouteImport } from './routes/two-factor'
+import { Route as VerifyEmailRouteImport } from './routes/verify-email'
+import { Route as BaseIndexRouteImport } from './routes/base/index'
+import { Route as BaseAccountRouteImport } from './routes/base/account'
+import { Route as BaseSecurityRouteImport } from './routes/base/security'
+import { Route as BaseSessionsRouteImport } from './routes/base/sessions'
 import { Route as CharactersIndexRouteImport } from './routes/characters/index'
 import { Route as CharactersCreateRouteImport } from './routes/characters/create'
+import { Route as ApiV1SplatRouteImport } from './routes/api/v1/$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BaseRoute = BaseRouteImport.update({
+  id: '/base',
+  path: '/base',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
   getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TwoFactorRoute = TwoFactorRouteImport.update({
+  id: '/two-factor',
+  path: '/two-factor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyEmailRoute = VerifyEmailRouteImport.update({
+  id: '/verify-email',
+  path: '/verify-email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BaseIndexRoute = BaseIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BaseRoute,
+} as any)
+const BaseAccountRoute = BaseAccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => BaseRoute,
+} as any)
+const BaseSecurityRoute = BaseSecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => BaseRoute,
+} as any)
+const BaseSessionsRoute = BaseSessionsRouteImport.update({
+  id: '/sessions',
+  path: '/sessions',
+  getParentRoute: () => BaseRoute,
 } as any)
 const CharactersIndexRoute = CharactersIndexRouteImport.update({
   id: '/characters/',
@@ -34,39 +95,128 @@ const CharactersCreateRoute = CharactersCreateRouteImport.update({
   path: '/characters/create',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiV1SplatRoute = ApiV1SplatRouteImport.update({
+  id: '/api/v1/$',
+  path: '/api/v1/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/base': typeof BaseRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/two-factor': typeof TwoFactorRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/base/account': typeof BaseAccountRoute
+  '/base/security': typeof BaseSecurityRoute
+  '/base/sessions': typeof BaseSessionsRoute
   '/characters/create': typeof CharactersCreateRoute
+  '/base/': typeof BaseIndexRoute
   '/characters/': typeof CharactersIndexRoute
+  '/api/v1/$': typeof ApiV1SplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/two-factor': typeof TwoFactorRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/base/account': typeof BaseAccountRoute
+  '/base/security': typeof BaseSecurityRoute
+  '/base/sessions': typeof BaseSessionsRoute
   '/characters/create': typeof CharactersCreateRoute
+  '/base': typeof BaseIndexRoute
   '/characters': typeof CharactersIndexRoute
+  '/api/v1/$': typeof ApiV1SplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/base': typeof BaseRouteWithChildren
+  '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
+  '/register': typeof RegisterRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/two-factor': typeof TwoFactorRoute
+  '/verify-email': typeof VerifyEmailRoute
+  '/base/account': typeof BaseAccountRoute
+  '/base/security': typeof BaseSecurityRoute
+  '/base/sessions': typeof BaseSessionsRoute
   '/characters/create': typeof CharactersCreateRoute
+  '/base/': typeof BaseIndexRoute
   '/characters/': typeof CharactersIndexRoute
+  '/api/v1/$': typeof ApiV1SplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/characters/create' | '/characters/'
+  fullPaths:
+    | '/'
+    | '/base'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/reset-password'
+    | '/two-factor'
+    | '/verify-email'
+    | '/base/account'
+    | '/base/security'
+    | '/base/sessions'
+    | '/characters/create'
+    | '/base/'
+    | '/characters/'
+    | '/api/v1/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/characters/create' | '/characters'
-  id: '__root__' | '/' | '/login' | '/characters/create' | '/characters/'
+  to:
+    | '/'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/reset-password'
+    | '/two-factor'
+    | '/verify-email'
+    | '/base/account'
+    | '/base/security'
+    | '/base/sessions'
+    | '/characters/create'
+    | '/base'
+    | '/characters'
+    | '/api/v1/$'
+  id:
+    | '__root__'
+    | '/'
+    | '/base'
+    | '/forgot-password'
+    | '/login'
+    | '/register'
+    | '/reset-password'
+    | '/two-factor'
+    | '/verify-email'
+    | '/base/account'
+    | '/base/security'
+    | '/base/sessions'
+    | '/characters/create'
+    | '/base/'
+    | '/characters/'
+    | '/api/v1/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BaseRoute: typeof BaseRouteWithChildren
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
+  RegisterRoute: typeof RegisterRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  TwoFactorRoute: typeof TwoFactorRoute
+  VerifyEmailRoute: typeof VerifyEmailRoute
   CharactersCreateRoute: typeof CharactersCreateRoute
   CharactersIndexRoute: typeof CharactersIndexRoute
+  ApiV1SplatRoute: typeof ApiV1SplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -78,12 +228,82 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/base': {
+      id: '/base'
+      path: '/base'
+      fullPath: '/base'
+      preLoaderRoute: typeof BaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/two-factor': {
+      id: '/two-factor'
+      path: '/two-factor'
+      fullPath: '/two-factor'
+      preLoaderRoute: typeof TwoFactorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify-email': {
+      id: '/verify-email'
+      path: '/verify-email'
+      fullPath: '/verify-email'
+      preLoaderRoute: typeof VerifyEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/base/': {
+      id: '/base/'
+      path: '/'
+      fullPath: '/base/'
+      preLoaderRoute: typeof BaseIndexRouteImport
+      parentRoute: typeof BaseRoute
+    }
+    '/base/account': {
+      id: '/base/account'
+      path: '/account'
+      fullPath: '/base/account'
+      preLoaderRoute: typeof BaseAccountRouteImport
+      parentRoute: typeof BaseRoute
+    }
+    '/base/security': {
+      id: '/base/security'
+      path: '/security'
+      fullPath: '/base/security'
+      preLoaderRoute: typeof BaseSecurityRouteImport
+      parentRoute: typeof BaseRoute
+    }
+    '/base/sessions': {
+      id: '/base/sessions'
+      path: '/sessions'
+      fullPath: '/base/sessions'
+      preLoaderRoute: typeof BaseSessionsRouteImport
+      parentRoute: typeof BaseRoute
     }
     '/characters/': {
       id: '/characters/'
@@ -99,14 +319,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CharactersCreateRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/v1/$': {
+      id: '/api/v1/$'
+      path: '/api/v1/$'
+      fullPath: '/api/v1/$'
+      preLoaderRoute: typeof ApiV1SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface BaseRouteChildren {
+  BaseAccountRoute: typeof BaseAccountRoute
+  BaseSecurityRoute: typeof BaseSecurityRoute
+  BaseSessionsRoute: typeof BaseSessionsRoute
+  BaseIndexRoute: typeof BaseIndexRoute
+}
+
+const BaseRouteChildren: BaseRouteChildren = {
+  BaseAccountRoute: BaseAccountRoute,
+  BaseSecurityRoute: BaseSecurityRoute,
+  BaseSessionsRoute: BaseSessionsRoute,
+  BaseIndexRoute: BaseIndexRoute,
+}
+
+const BaseRouteWithChildren = BaseRoute._addFileChildren(BaseRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BaseRoute: BaseRouteWithChildren,
+  ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
+  RegisterRoute: RegisterRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  TwoFactorRoute: TwoFactorRoute,
+  VerifyEmailRoute: VerifyEmailRoute,
   CharactersCreateRoute: CharactersCreateRoute,
   CharactersIndexRoute: CharactersIndexRoute,
+  ApiV1SplatRoute: ApiV1SplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

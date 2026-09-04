@@ -1,4 +1,4 @@
-import { getCookie, setCookie } from '@tanstack/react-start/server'
+import { deleteCookie, getCookie, setCookie } from '@tanstack/react-start/server'
 
 const SESSION_COOKIE = 'pokespace_session'
 
@@ -27,4 +27,8 @@ export function writeSession(user: SessionUser): void {
     sameSite: 'lax',
     maxAge: 60 * 60 * 24 * 30,
   })
+}
+
+export function clearSessionCookie(): void {
+  deleteCookie(SESSION_COOKIE)
 }
