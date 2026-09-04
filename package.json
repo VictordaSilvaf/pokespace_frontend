@@ -8,11 +8,16 @@
   "scripts": {
     "dev": "dotenv -e .env.local -- sh -c \"NODE_OPTIONS='--import ./instrument.server.mjs' vite dev --port 3000\"",
     "generate-routes": "tsr generate",
+<<<<<<< HEAD
     "build": "vite build && mkdir -p .output/server && cp instrument.server.mjs .output/server",
+=======
+    "build": "vite build && cp instrument.server.mjs .output/server",
+>>>>>>> origin/master
     "preview": "vite preview",
     "lint": "eslint",
     "format": "prettier --write . && eslint --fix",
     "check": "prettier --check .",
+    "check:i18n": "node ./scripts/check-i18n.mjs",
     "start": "node --import ./.output/server/instrument.server.mjs .output/server/index.mjs"
   },
   "dependencies": {
@@ -34,6 +39,7 @@
     "clsx": "^2.1.1",
     "dotenv-cli": "^11.0.0",
     "lucide-react": "^0.577.0",
+    "radix-ui": "^1.6.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwind-merge": "^3.0.2",
