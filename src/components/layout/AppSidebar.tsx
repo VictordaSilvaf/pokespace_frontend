@@ -48,6 +48,7 @@ export function AppSidebar() {
             to: '/characters/create' as const,
             label: m.nav_create_character(),
           },
+          { to: '/game' as const, label: m.nav_game() },
           { to: '/base' as const, label: m.nav_base() },
           { to: '/base/account' as const, label: m.nav_account() },
           { to: '/base/security' as const, label: m.nav_security() },

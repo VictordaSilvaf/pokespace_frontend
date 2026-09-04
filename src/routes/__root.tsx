@@ -4,6 +4,7 @@ import {
   Outlet,
   Scripts,
   createRootRouteWithContext,
+  useRouterState,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
@@ -22,6 +23,10 @@ import type { QueryClient } from '@tanstack/react-query'
 
 interface MyRouterContext {
   queryClient: QueryClient
+}
+
+function isGameHudPath(pathname: string) {
+  return pathname === '/game' || pathname.startsWith('/game/')
 }
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
@@ -60,11 +65,20 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 })
 
 function RootComponent() {
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  })
+  const gameHud = isGameHudPath(pathname)
+
   return (
     <AuthProvider>
-      <AppShell>
+      {gameHud ? (
         <Outlet />
-      </AppShell>
+      ) : (
+        <AppShell>
+          <Outlet />
+        </AppShell>
+      )}
     </AuthProvider>
   )
 }
