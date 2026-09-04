@@ -1,5 +1,3 @@
-import { Input } from '#/components/ui/input'
-import { Label } from '#/components/ui/label'
 import { m } from '#/paraglide/messages'
 import { DISPLAY_NAME_MAX, DISPLAY_NAME_MIN } from '../config'
 
@@ -15,11 +13,13 @@ export function WizardNameStep({
   onChange,
 }: WizardNameStepProps) {
   return (
-    <div className="rise-in max-w-md">
-      <p className="text-[var(--sea-ink-soft)]">{m.character_name_prompt()}</p>
-      <div className="mt-4 space-y-2">
-        <Label htmlFor="displayName">{m.character_name_label()}</Label>
-        <Input
+    <div className="rise-in" style={{ display: 'grid', gap: '0.85rem', maxWidth: '26rem' }}>
+      <p style={{ margin: 0, color: 'var(--ink-soft)' }}>
+        {m.character_name_prompt()}
+      </p>
+      <div className="field">
+        <label htmlFor="displayName">{m.character_name_label()}</label>
+        <input
           id="displayName"
           name="displayName"
           value={value}
@@ -29,14 +29,12 @@ export function WizardNameStep({
           aria-invalid={Boolean(error)}
           autoComplete="off"
         />
-        <p className="text-sm text-[var(--sea-ink-soft)]">
-          {m.character_name_hint()}
-        </p>
-        <p className="text-xs text-[var(--sea-ink-soft)]">
+        <p className="field-hint">{m.character_name_hint()}</p>
+        <p className="field-hint">
           {DISPLAY_NAME_MIN}–{DISPLAY_NAME_MAX}
         </p>
         {error ? (
-          <p className="text-sm font-medium text-red-700" role="alert">
+          <p className="field-error" role="alert">
             {error}
           </p>
         ) : null}

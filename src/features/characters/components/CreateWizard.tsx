@@ -3,13 +3,11 @@ import { Link, useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
 import type { ReactNode } from 'react'
 
-import LocaleSwitcher from '#/components/LocaleSwitcher'
-import { Button } from '#/components/ui/button'
 import { Skeleton } from '#/components/ui/skeleton'
 import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
 
-import { DISPLAY_NAME_MAX, DISPLAY_NAME_MIN } from '../config'
+import { DISPLAY_NAME_MIN } from '../config'
 import { characterCreateErrorMessage } from '../errors'
 import {
   characterKeys,
@@ -39,7 +37,7 @@ function stepLabel(step: Step): string {
 
 function validateDisplayName(value: string): string | null {
   const trimmed = value.trim()
-  if (trimmed.length < DISPLAY_NAME_MIN || trimmed.length > DISPLAY_NAME_MAX) {
+  if (trimmed.length < DISPLAY_NAME_MIN || trimmed.length > 16) {
     return m.character_error_validation()
   }
   return null
@@ -68,8 +66,6 @@ export function CreateWizard() {
         if (result.code === 'limit_reached') {
           await navigate({ to: '/characters' })
         }
-        // New key only when the previous attempt was not a transient rate limit
-        // reuse — keep same key for true retries of the same submit.
         if (result.code !== 'rate_limit') {
           setIdempotencyKey(crypto.randomUUID())
         }
@@ -88,7 +84,7 @@ export function CreateWizard() {
   if (isPending) {
     return (
       <WizardShell>
-        <Skeleton className="mt-8 h-40 rounded-2xl" />
+        <Skeleton className="mt-4 h-40 rounded-2xl" />
       </WizardShell>
     )
   }
@@ -155,17 +151,14 @@ export function CreateWizard() {
 
   return (
     <WizardShell>
-      <ol className="mt-6 flex flex-wrap gap-2">
+      <ol className="step-pills">
         {steps.map((s, i) => (
           <li
             key={s}
             className={cn(
-              'rounded-full border px-3 py-1 text-xs font-semibold tracking-wide uppercase',
-              i === stepIndex
-                ? 'border-[var(--lagoon-deep)] bg-[var(--lagoon)]/20 text-[var(--sea-ink)]'
-                : i < stepIndex
-                  ? 'border-[var(--line)] text-[var(--sea-ink)]'
-                  : 'border-transparent text-[var(--sea-ink-soft)]',
+              'step-pill',
+              i === stepIndex && 'is-active',
+              i < stepIndex && 'is-done',
             )}
           >
             {stepLabel(s)}
@@ -173,7 +166,7 @@ export function CreateWizard() {
         ))}
       </ol>
 
-      <div className="mt-8">
+      <div>
         {step === 'world' ? (
           <WizardWorldStep
             worlds={data.worlds}
@@ -199,41 +192,27 @@ export function CreateWizard() {
           />
         ) : null}
         {step === 'confirm' ? (
-          <div className="rise-in max-w-lg">
-            <p className="text-[var(--sea-ink-soft)]">
+          <div className="rise-in" style={{ display: 'grid', gap: '0.85rem' }}>
+            <p style={{ margin: 0, color: 'var(--ink-soft)' }}>
               {m.character_confirm_prompt()}
             </p>
-            <dl className="mt-4 space-y-3 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
-              <div className="flex justify-between gap-4">
-                <dt className="text-sm text-[var(--sea-ink-soft)]">
-                  {m.character_confirm_world()}
-                </dt>
-                <dd className="font-semibold text-[var(--sea-ink)]">
-                  {world?.name}
-                </dd>
+            <dl className="confirm-panel">
+              <div>
+                <dt>{m.character_confirm_world()}</dt>
+                <dd>{world?.name}</dd>
               </div>
-              <div className="flex items-center justify-between gap-4">
-                <dt className="text-sm text-[var(--sea-ink-soft)]">
-                  {m.character_confirm_skin()}
-                </dt>
-                <dd className="flex items-center gap-2 font-semibold text-[var(--sea-ink)]">
+              <div>
+                <dt>{m.character_confirm_skin()}</dt>
+                <dd>
                   {skin ? (
-                    <img
-                      src={skin.imageUrl}
-                      alt={skin.name}
-                      className="size-8 rounded-md object-cover"
-                    />
+                    <img src={skin.imageUrl} alt={skin.name} />
                   ) : null}
                   {skin?.name}
                 </dd>
               </div>
-              <div className="flex justify-between gap-4">
-                <dt className="text-sm text-[var(--sea-ink-soft)]">
-                  {m.character_confirm_name()}
-                </dt>
-                <dd className="font-semibold text-[var(--sea-ink)]">
-                  {displayName.trim()}
-                </dd>
+              <div>
+                <dt>{m.character_confirm_name()}</dt>
+                <dd>{displayName.trim()}</dd>
               </div>
             </dl>
           </div>
@@ -241,36 +220,42 @@ export function CreateWizard() {
       </div>
 
       {submitError ? (
-        <p className="mt-4 text-sm font-medium text-red-700" role="alert">
+        <p className="field-error" role="alert">
           {submitError}
         </p>
       ) : null}
 
-      <div className="mt-8 flex flex-wrap items-center gap-3">
+      <div className="form-actions">
         {step === 'world' ? (
-          <Button asChild variant="outline">
-            <Link to="/characters">{m.character_cancel()}</Link>
-          </Button>
+          <Link to="/characters" className="btn btn-ghost">
+            {m.character_cancel()}
+          </Link>
         ) : (
-          <Button type="button" variant="outline" onClick={goBack}>
+          <button type="button" className="btn btn-ghost" onClick={goBack}>
             {m.character_back()}
-          </Button>
+          </button>
         )}
 
         {step !== 'confirm' ? (
-          <Button type="button" disabled={!canContinue()} onClick={goNext}>
-            {m.character_next()}
-          </Button>
-        ) : (
-          <Button
+          <button
             type="button"
+            className="btn btn-gold"
+            disabled={!canContinue()}
+            onClick={goNext}
+          >
+            {m.character_next()}
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="btn btn-gold"
             disabled={createMutation.isPending || !canContinue()}
             onClick={onSubmit}
           >
             {createMutation.isPending
               ? m.character_submitting()
               : m.character_submit()}
-          </Button>
+          </button>
         )}
       </div>
     </WizardShell>
@@ -279,36 +264,26 @@ export function CreateWizard() {
 
 function Unavailable() {
   return (
-    <div className="rise-in mt-8">
-      <h2 className="display-title text-2xl text-[var(--sea-ink)]">
+    <div className="rise-in" style={{ display: 'grid', gap: '0.85rem' }}>
+      <h2 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 800 }}>
         {m.character_create_unavailable_title()}
       </h2>
-      <p className="mt-2 max-w-md text-[var(--sea-ink-soft)]">
+      <p style={{ margin: 0, color: 'var(--ink-soft)', maxWidth: '28rem' }}>
         {m.character_create_unavailable_body()}
       </p>
-      <Button asChild variant="outline" className="mt-6">
-        <Link to="/characters">{m.character_back()}</Link>
-      </Button>
+      <Link to="/characters" className="btn btn-ghost" style={{ width: 'fit-content' }}>
+        {m.character_back()}
+      </Link>
     </div>
   )
 }
 
 function WizardShell({ children }: { children: ReactNode }) {
   return (
-    <main className="page-wrap py-10 sm:py-14">
-      <div className="mb-6 flex justify-end">
-        <LocaleSwitcher />
-      </div>
-      <section className="island-shell rise-in rounded-3xl px-6 py-8 sm:px-10 sm:py-10">
-        <p className="island-kicker">{m.character_create_kicker()}</p>
-        <h1 className="display-title mt-3 text-4xl text-[var(--sea-ink)] sm:text-5xl">
-          <span className="block text-[var(--lagoon-deep)]">{m.app_brand()}</span>
-          <span className="mt-1 block text-[clamp(1.75rem,4vw,2.5rem)] font-medium">
-            {m.character_create_title()}
-          </span>
-        </h1>
-        {children}
-      </section>
-    </main>
+    <section className="section-block section-wide rise-in">
+      <p className="status-line">{m.character_create_kicker()}</p>
+      <h1>{m.character_create_title()}</h1>
+      {children}
+    </section>
   )
 }
