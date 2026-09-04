@@ -4,6 +4,7 @@ import {
   CHARACTER_MAX_PER_ACCOUNT,
   DISPLAY_NAME_MAX,
   DISPLAY_NAME_MIN,
+  DISPLAY_NAME_PATTERN,
 } from './config'
 
 export const characterLimitsSchema = z.object({
@@ -51,7 +52,8 @@ export const createCharacterBodySchema = z.object({
     .string()
     .trim()
     .min(DISPLAY_NAME_MIN)
-    .max(DISPLAY_NAME_MAX),
+    .max(DISPLAY_NAME_MAX)
+    .regex(DISPLAY_NAME_PATTERN),
   worldId: z.string().min(1),
   skinId: z.string().min(1),
 })

@@ -3,7 +3,6 @@ import { z } from 'zod'
 
 export const env = createEnv({
   server: {
-    SERVER_URL: z.string().url().optional(),
     API_URL: z.string().url().optional(),
   },
 
@@ -26,7 +25,6 @@ export const env = createEnv({
    */
   runtimeEnv: {
     ...import.meta.env,
-    SERVER_URL: process.env.SERVER_URL,
     API_URL: process.env.API_URL,
   },
 

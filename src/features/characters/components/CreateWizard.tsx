@@ -1,13 +1,17 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Link, useNavigate } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 
 import { Skeleton } from '#/components/ui/skeleton'
 import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
 
-import { DISPLAY_NAME_MIN } from '../config'
+import {
+  DISPLAY_NAME_MAX,
+  DISPLAY_NAME_MIN,
+  DISPLAY_NAME_PATTERN,
+} from '../config'
 import { characterCreateErrorMessage } from '../errors'
 import {
   characterKeys,
@@ -37,7 +41,11 @@ function stepLabel(step: Step): string {
 
 function validateDisplayName(value: string): string | null {
   const trimmed = value.trim()
-  if (trimmed.length < DISPLAY_NAME_MIN || trimmed.length > 16) {
+  if (
+    trimmed.length < DISPLAY_NAME_MIN ||
+    trimmed.length > DISPLAY_NAME_MAX ||
+    !DISPLAY_NAME_PATTERN.test(trimmed)
+  ) {
     return m.character_error_validation()
   }
   return null
@@ -95,6 +103,10 @@ export function CreateWizard() {
         <Unavailable />
       </WizardShell>
     )
+  }
+
+  if (!data.limits.canCreate) {
+    return <RedirectToSelect />
   }
 
   if (data.worlds.length === 0 || data.skins.length === 0) {
@@ -258,6 +270,20 @@ export function CreateWizard() {
           </button>
         )}
       </div>
+    </WizardShell>
+  )
+}
+
+function RedirectToSelect() {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    void navigate({ to: '/characters' })
+  }, [navigate])
+
+  return (
+    <WizardShell>
+      <p style={{ color: 'var(--ink-soft)' }}>{m.character_loading()}</p>
     </WizardShell>
   )
 }

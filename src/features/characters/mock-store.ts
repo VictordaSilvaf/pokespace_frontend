@@ -8,14 +8,15 @@ import type {
 } from './schemas'
 
 /**
- * In-memory mock used when SERVER_URL is unset so the character UI
- * can be exercised without the backend. Not used in production.
+ * In-memory mock used when VITE_AUTH_MOCK is enabled so the character UI
+ * can be exercised without the backend.
  */
 const starterWorlds = [
   { id: 'world-kanto', name: 'Kanto', status: 'open' as const },
 ]
 
-const starterSkins = [
+/** UI-only skins — the Nest API does not persist appearance yet. */
+export const starterSkins = [
   {
     id: 'skin-red',
     name: 'Red',
