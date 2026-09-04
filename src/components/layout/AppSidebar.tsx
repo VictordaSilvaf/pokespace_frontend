@@ -34,18 +34,26 @@ export function AppSidebar() {
     (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
   )
 
+  const guestLinks = [
+    { to: '/login' as const, label: m.nav_login() },
+    { to: '/register' as const, label: m.nav_register() },
+  ] as const
+
   const links = onAuthScreen
-    ? ([{ to: '/login' as const, label: m.nav_login() }] as const)
+    ? guestLinks
     : loggedIn
       ? ([
           { to: '/characters' as const, label: m.nav_characters() },
-          { to: '/characters/create' as const, label: m.nav_create_character() },
+          {
+            to: '/characters/create' as const,
+            label: m.nav_create_character(),
+          },
           { to: '/base' as const, label: m.nav_base() },
           { to: '/base/account' as const, label: m.nav_account() },
           { to: '/base/security' as const, label: m.nav_security() },
           { to: '/base/sessions' as const, label: m.nav_sessions() },
         ] as const)
-      : ([{ to: '/login' as const, label: m.nav_login() }] as const)
+      : guestLinks
 
   return (
     <aside className="sidebar">
@@ -87,9 +95,14 @@ export function AppSidebar() {
             {m.nav_logout()}
           </button>
         ) : onAuthScreen ? null : (
-          <Link to="/login" className="btn btn-gold">
-            {m.cta_enter_short()}
-          </Link>
+          <>
+            <Link to="/register" className="btn btn-ghost">
+              {m.nav_register()}
+            </Link>
+            <Link to="/login" className="btn btn-gold">
+              {m.cta_enter_short()}
+            </Link>
+          </>
         )}
       </div>
     </aside>

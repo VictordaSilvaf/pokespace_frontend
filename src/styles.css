@@ -96,8 +96,16 @@ a:hover {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(900px 500px at 85% 10%, rgba(249, 188, 1, 0.08), transparent 55%),
-    radial-gradient(700px 420px at 10% 90%, rgba(70, 110, 255, 0.08), transparent 60%),
+    radial-gradient(
+      900px 500px at 85% 10%,
+      rgba(249, 188, 1, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(
+      700px 420px at 10% 90%,
+      rgba(70, 110, 255, 0.08),
+      transparent 60%
+    ),
     linear-gradient(160deg, #07070b 0%, #0d0d14 48%, #120e0a 100%);
 }
 
@@ -120,8 +128,16 @@ a:hover {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 70% 20%, rgba(249, 188, 1, 0.05), transparent 35%),
-    radial-gradient(circle at 20% 70%, rgba(80, 120, 255, 0.05), transparent 40%);
+    radial-gradient(
+      circle at 70% 20%,
+      rgba(249, 188, 1, 0.05),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 20% 70%,
+      rgba(80, 120, 255, 0.05),
+      transparent 40%
+    );
 }
 
 .app-shell {
@@ -274,7 +290,10 @@ a:hover {
   text-decoration: none;
   padding: 0.8rem 1.25rem;
   border-radius: 999px;
-  transition: transform 160ms ease, background-color 160ms ease, color 160ms ease,
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease,
     border-color 160ms ease;
 }
 
@@ -587,7 +606,9 @@ a:hover {
 
   .sidebar-footer {
     display: flex;
+    gap: 0.35rem;
     margin-left: auto;
+    flex-shrink: 0;
   }
 
   .main-stage {
@@ -621,7 +642,10 @@ a:hover {
   border-radius: 14px;
   background: rgba(16, 16, 24, 0.88);
   border: 1px solid var(--line);
-  transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease;
 }
 
 .character-slot:hover {
@@ -671,7 +695,10 @@ a:hover {
   color: var(--ink);
   cursor: pointer;
   font: inherit;
-  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .choice-card:hover {
