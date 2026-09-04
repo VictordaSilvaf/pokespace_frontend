@@ -11,6 +11,7 @@ import { RequireGuest } from '#/lib/auth/gates'
 import { loginSchema } from '#/lib/auth/schemas'
 import { establishDevSessionFn, getSessionFn } from '#/features/auth/session'
 import { fieldError } from '#/lib/form/field-error'
+import { pillButton } from '#/lib/pill-button'
 import { m } from '#/paraglide/messages'
 
 export const Route = createFileRoute('/login')({
@@ -74,7 +75,7 @@ function LoginForm() {
   return (
     <AuthFrame title={m.login_title()} support={m.login_support()}>
       <form
-        className="form-stack"
+        className="grid gap-3.5"
         onSubmit={(event) => {
           event.preventDefault()
           event.stopPropagation()
@@ -109,11 +110,11 @@ function LoginForm() {
           )}
         </form.Field>
         <FormMessage tone="warn">{error}</FormMessage>
-        <div className="form-actions">
+        <div className="flex flex-wrap items-center gap-2.5">
           <form.Subscribe selector={(state) => state.isSubmitting}>
             {(isSubmitting) => (
               <button
-                className="btn btn-gold btn-block"
+                className={pillButton({ variant: 'gold', block: true })}
                 type="submit"
                 disabled={isSubmitting}
               >

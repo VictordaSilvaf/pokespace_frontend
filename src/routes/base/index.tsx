@@ -21,17 +21,19 @@ function BaseHome() {
   const username = me.data?.username ?? 'treinador'
 
   return (
-    <section className="section-block rise-in">
-      <p className="status-line">
+    <section className="animate-rise-in grid max-w-[44rem] gap-3.5 px-6 pt-8 pb-14">
+      <p className="text-[0.78rem] font-bold tracking-[0.12em] text-mute uppercase">
         {m.base_title()}
         {health.data?.status === 'ok' ? ' · online' : ''}
         {isAuthMockEnabled() ? ` · ${m.mock_badge()}` : ''}
       </p>
-      <h1>{m.base_hello({ username })}</h1>
-      <p style={{ color: 'var(--ink-soft)', fontSize: '1.05rem' }}>{m.base_support()}</p>
+      <h1 className="m-0 text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold tracking-[-0.03em]">
+        {m.base_hello({ username })}
+      </h1>
+      <p className="text-[1.05rem] text-ink-soft">{m.base_support()}</p>
       <p>{m.base_energy()}</p>
       {me.data && !me.data.emailVerified ? (
-        <p className="warn">
+        <p className="font-semibold text-[#ff8d8d]">
           {m.base_verify_email()}{' '}
           <Link to="/verify-email">{m.base_verify_email_cta()}</Link>
         </p>

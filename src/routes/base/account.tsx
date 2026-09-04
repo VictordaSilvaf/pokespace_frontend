@@ -8,6 +8,7 @@ import { getErrorMessage } from '#/lib/api/errors'
 import { authKeys } from '#/lib/auth/keys'
 import { updateProfileSchema, verifyPhoneSchema } from '#/lib/auth/schemas'
 import { fieldError } from '#/lib/form/field-error'
+import { pillButton } from '#/lib/pill-button'
 import { m } from '#/paraglide/messages'
 
 export const Route = createFileRoute('/base/account')({
@@ -62,12 +63,14 @@ function AccountPage() {
   })
 
   return (
-    <section className="section-block rise-in">
-      <p className="status-line">{m.account_title()}</p>
-      <h1 className="display-title text-4xl sm:text-5xl">
+    <section className="animate-rise-in grid max-w-[44rem] gap-3.5 px-6 pt-8 pb-14">
+      <p className="text-[0.78rem] font-bold tracking-[0.12em] text-mute uppercase">
+        {m.account_title()}
+      </p>
+      <h1 className="m-0 text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">
         {m.account_title()}
       </h1>
-      <p className="text-lg text-[var(--ink-soft)]">{m.account_support()}</p>
+      <p className="text-lg text-ink-soft">{m.account_support()}</p>
       {me.data ? (
         <p>
           {m.account_username()}: {me.data.username}
@@ -98,9 +101,9 @@ function AccountPage() {
         />
       ) : null}
 
-      <div className="form-actions">
+      <div className="flex flex-wrap items-center gap-2.5">
         <button
-          className="btn btn-ghost"
+          className={pillButton({ variant: 'ghost' })}
           type="button"
           onClick={() => resend.mutate()}
           disabled={resend.isPending}
@@ -108,7 +111,7 @@ function AccountPage() {
           {m.account_resend()}
         </button>
         <button
-          className="btn btn-ghost"
+          className={pillButton({ variant: 'ghost' })}
           type="button"
           onClick={() => sendOtp.mutate()}
           disabled={sendOtp.isPending}
@@ -118,13 +121,13 @@ function AccountPage() {
       </div>
 
       {otpDev ? (
-        <p className="secret-key">
+        <p className="font-mono text-[0.85rem] text-ink-soft break-all">
           {m.phone_otp_dev()}: {otpDev}
         </p>
       ) : null}
 
       <form
-        className="form-stack"
+        className="grid gap-3.5"
         onSubmit={(event) => {
           event.preventDefault()
           void phoneForm.handleSubmit()
@@ -148,7 +151,7 @@ function AccountPage() {
         <phoneForm.Subscribe selector={(state) => state.isSubmitting}>
           {(isSubmitting) => (
             <button
-              className="btn btn-gold"
+              className={pillButton({ variant: 'gold' })}
               type="submit"
               disabled={isSubmitting}
             >
@@ -199,7 +202,7 @@ function ContactForm({
 
   return (
     <form
-      className="form-stack"
+      className="grid gap-3.5"
       onSubmit={(event) => {
         event.preventDefault()
         void form.handleSubmit()
@@ -234,7 +237,7 @@ function ContactForm({
       <form.Subscribe selector={(state) => state.isSubmitting}>
         {(isSubmitting) => (
           <button
-            className="btn btn-gold"
+            className={pillButton({ variant: 'gold' })}
             type="submit"
             disabled={isSubmitting}
           >

@@ -8,6 +8,7 @@ import { getErrorMessage } from '#/lib/api/errors'
 import { RequireGuest } from '#/lib/auth/gates'
 import { forgotPasswordSchema } from '#/lib/auth/schemas'
 import { fieldError } from '#/lib/form/field-error'
+import { pillButton } from '#/lib/pill-button'
 import { m } from '#/paraglide/messages'
 
 export const Route = createFileRoute('/forgot-password')({
@@ -51,7 +52,7 @@ function ForgotPasswordForm() {
   return (
     <AuthFrame title={m.forgot_title()} support={m.forgot_support()}>
       <form
-        className="form-stack"
+        className="grid gap-3.5"
         onSubmit={(event) => {
           event.preventDefault()
           event.stopPropagation()
@@ -74,14 +75,14 @@ function ForgotPasswordForm() {
         <FormMessage tone="warn">{error}</FormMessage>
         <FormMessage>{done}</FormMessage>
         {devToken ? (
-          <p className="secret-key">
+          <p className="font-mono text-[0.85rem] text-ink-soft break-all">
             {m.forgot_token_dev()}: {devToken}
           </p>
         ) : null}
         <form.Subscribe selector={(state) => state.isSubmitting}>
           {(isSubmitting) => (
             <button
-              className="btn btn-gold"
+              className={pillButton({ variant: 'gold' })}
               type="submit"
               disabled={isSubmitting}
             >

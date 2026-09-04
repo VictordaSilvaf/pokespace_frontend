@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 
 import { Skeleton } from '#/components/ui/skeleton'
+import { pillButton } from '#/lib/pill-button'
 import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
 
@@ -163,14 +164,15 @@ export function CreateWizard() {
 
   return (
     <WizardShell>
-      <ol className="step-pills">
+      <ol className="flex flex-wrap gap-1.5">
         {steps.map((s, i) => (
           <li
             key={s}
             className={cn(
-              'step-pill',
-              i === stepIndex && 'is-active',
-              i < stepIndex && 'is-done',
+              'rounded-full border border-transparent px-2.5 py-1.5 text-[0.72rem] font-bold tracking-[0.1em] text-mute uppercase',
+              i === stepIndex &&
+                'border-gold/45 bg-gold/12 text-gold',
+              i < stepIndex && 'border-line text-ink',
             )}
           >
             {stepLabel(s)}
@@ -204,27 +206,39 @@ export function CreateWizard() {
           />
         ) : null}
         {step === 'confirm' ? (
-          <div className="rise-in" style={{ display: 'grid', gap: '0.85rem' }}>
-            <p style={{ margin: 0, color: 'var(--ink-soft)' }}>
-              {m.character_confirm_prompt()}
-            </p>
-            <dl className="confirm-panel">
-              <div>
-                <dt>{m.character_confirm_world()}</dt>
-                <dd>{world?.name}</dd>
+          <div className="animate-rise-in grid gap-3.5">
+            <p className="m-0 text-ink-soft">{m.character_confirm_prompt()}</p>
+            <dl className="grid gap-3 rounded-[14px] border border-line bg-[rgba(16,16,24,0.88)] p-4">
+              <div className="flex items-center justify-between gap-4">
+                <dt className="text-[0.88rem] text-ink-soft">
+                  {m.character_confirm_world()}
+                </dt>
+                <dd className="m-0 inline-flex items-center gap-2 font-bold">
+                  {world?.name}
+                </dd>
               </div>
-              <div>
-                <dt>{m.character_confirm_skin()}</dt>
-                <dd>
+              <div className="flex items-center justify-between gap-4">
+                <dt className="text-[0.88rem] text-ink-soft">
+                  {m.character_confirm_skin()}
+                </dt>
+                <dd className="m-0 inline-flex items-center gap-2 font-bold">
                   {skin ? (
-                    <img src={skin.imageUrl} alt={skin.name} />
+                    <img
+                      src={skin.imageUrl}
+                      alt={skin.name}
+                      className="size-7 rounded-lg object-cover"
+                    />
                   ) : null}
                   {skin?.name}
                 </dd>
               </div>
-              <div>
-                <dt>{m.character_confirm_name()}</dt>
-                <dd>{displayName.trim()}</dd>
+              <div className="flex items-center justify-between gap-4">
+                <dt className="text-[0.88rem] text-ink-soft">
+                  {m.character_confirm_name()}
+                </dt>
+                <dd className="m-0 inline-flex items-center gap-2 font-bold">
+                  {displayName.trim()}
+                </dd>
               </div>
             </dl>
           </div>
@@ -232,18 +246,22 @@ export function CreateWizard() {
       </div>
 
       {submitError ? (
-        <p className="field-error" role="alert">
+        <p className="text-[0.8rem] text-[#ff8d8d]" role="alert">
           {submitError}
         </p>
       ) : null}
 
-      <div className="form-actions">
+      <div className="flex flex-wrap items-center gap-2.5">
         {step === 'world' ? (
-          <Link to="/characters" className="btn btn-ghost">
+          <Link to="/characters" className={pillButton({ variant: 'ghost' })}>
             {m.character_cancel()}
           </Link>
         ) : (
-          <button type="button" className="btn btn-ghost" onClick={goBack}>
+          <button
+            type="button"
+            className={pillButton({ variant: 'ghost' })}
+            onClick={goBack}
+          >
             {m.character_back()}
           </button>
         )}
@@ -251,7 +269,7 @@ export function CreateWizard() {
         {step !== 'confirm' ? (
           <button
             type="button"
-            className="btn btn-gold"
+            className={pillButton({ variant: 'gold' })}
             disabled={!canContinue()}
             onClick={goNext}
           >
@@ -260,7 +278,7 @@ export function CreateWizard() {
         ) : (
           <button
             type="button"
-            className="btn btn-gold"
+            className={pillButton({ variant: 'gold' })}
             disabled={createMutation.isPending || !canContinue()}
             onClick={onSubmit}
           >
@@ -283,21 +301,24 @@ function RedirectToSelect() {
 
   return (
     <WizardShell>
-      <p style={{ color: 'var(--ink-soft)' }}>{m.character_loading()}</p>
+      <p className="text-ink-soft">{m.character_loading()}</p>
     </WizardShell>
   )
 }
 
 function Unavailable() {
   return (
-    <div className="rise-in" style={{ display: 'grid', gap: '0.85rem' }}>
-      <h2 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 800 }}>
+    <div className="animate-rise-in grid gap-3.5">
+      <h2 className="m-0 text-2xl font-extrabold">
         {m.character_create_unavailable_title()}
       </h2>
-      <p style={{ margin: 0, color: 'var(--ink-soft)', maxWidth: '28rem' }}>
+      <p className="m-0 max-w-[28rem] text-ink-soft">
         {m.character_create_unavailable_body()}
       </p>
-      <Link to="/characters" className="btn btn-ghost" style={{ width: 'fit-content' }}>
+      <Link
+        to="/characters"
+        className={cn(pillButton({ variant: 'ghost' }), 'w-fit')}
+      >
         {m.character_back()}
       </Link>
     </div>
@@ -306,9 +327,13 @@ function Unavailable() {
 
 function WizardShell({ children }: { children: ReactNode }) {
   return (
-    <section className="section-block section-wide rise-in">
-      <p className="status-line">{m.character_create_kicker()}</p>
-      <h1>{m.character_create_title()}</h1>
+    <section className="animate-rise-in grid max-w-[52rem] gap-3.5 px-6 pt-8 pb-14">
+      <p className="text-[0.78rem] font-bold tracking-[0.12em] text-mute uppercase">
+        {m.character_create_kicker()}
+      </p>
+      <h1 className="m-0 text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold tracking-[-0.03em]">
+        {m.character_create_title()}
+      </h1>
       {children}
     </section>
   )

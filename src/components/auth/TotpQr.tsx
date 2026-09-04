@@ -26,8 +26,8 @@ export function TotpQr({ value }: { value: string }) {
   }
 
   return (
-    <div className="qr-frame">
-      <img src={src} alt={m.twofa_scan()} />
+    <div className="size-[180px] rounded-xl bg-white p-2">
+      <img src={src} alt={m.twofa_scan()} className="block size-full" />
     </div>
   )
 }

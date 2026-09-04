@@ -5,7 +5,7 @@ import { useAuth } from '#/lib/auth/auth-provider'
 
 export function BootScreen() {
   return (
-    <div className="boot-screen">
+    <div className="grid min-h-svh place-items-center text-ink-soft">
       <p>{m.boot()}</p>
     </div>
   )

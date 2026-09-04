@@ -10,6 +10,7 @@ import { BootScreen } from '#/lib/auth/gates'
 import { twoFactorSchema } from '#/lib/auth/schemas'
 import { establishDevSessionFn } from '#/features/auth/session'
 import { fieldError } from '#/lib/form/field-error'
+import { pillButton } from '#/lib/pill-button'
 import { m } from '#/paraglide/messages'
 
 export const Route = createFileRoute('/two-factor')({
@@ -65,7 +66,7 @@ function TwoFactorForm({ tempToken }: { tempToken: string }) {
   return (
     <AuthFrame title={m.two_factor_title()} support={m.two_factor_support()}>
       <form
-        className="form-stack"
+        className="grid gap-3.5"
         onSubmit={(event) => {
           event.preventDefault()
           event.stopPropagation()
@@ -93,7 +94,7 @@ function TwoFactorForm({ tempToken }: { tempToken: string }) {
         <form.Subscribe selector={(state) => state.isSubmitting}>
           {(isSubmitting) => (
             <button
-              className="btn btn-gold"
+              className={pillButton({ variant: 'gold' })}
               type="submit"
               disabled={isSubmitting}
             >

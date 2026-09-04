@@ -10,6 +10,7 @@ import { RequireGuest } from '#/lib/auth/gates'
 import { registerSchema } from '#/lib/auth/schemas'
 import { establishDevSessionFn } from '#/features/auth/session'
 import { fieldError } from '#/lib/form/field-error'
+import { pillButton } from '#/lib/pill-button'
 import { m } from '#/paraglide/messages'
 
 export const Route = createFileRoute('/register')({ component: RegisterPage })
@@ -62,7 +63,7 @@ function RegisterForm() {
   return (
     <AuthFrame title={m.register_title()} support={m.register_support()}>
       <form
-        className="form-stack"
+        className="grid gap-3.5"
         onSubmit={(event) => {
           event.preventDefault()
           event.stopPropagation()
@@ -130,7 +131,7 @@ function RegisterForm() {
         <form.Subscribe selector={(state) => state.isSubmitting}>
           {(isSubmitting) => (
             <button
-              className="btn btn-gold"
+              className={pillButton({ variant: 'gold' })}
               type="submit"
               disabled={isSubmitting}
             >

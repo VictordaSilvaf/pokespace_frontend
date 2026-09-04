@@ -7,6 +7,7 @@ import { authApi } from '#/lib/api/auth'
 import { getErrorMessage } from '#/lib/api/errors'
 import { verifyEmailSchema } from '#/lib/auth/schemas'
 import { fieldError } from '#/lib/form/field-error'
+import { pillButton } from '#/lib/pill-button'
 import { m } from '#/paraglide/messages'
 
 type VerifySearch = {
@@ -42,7 +43,7 @@ function VerifyEmailPage() {
   return (
     <AuthFrame title={m.verify_title()} support={m.verify_support()}>
       <form
-        className="form-stack"
+        className="grid gap-3.5"
         onSubmit={(event) => {
           event.preventDefault()
           event.stopPropagation()
@@ -66,7 +67,7 @@ function VerifyEmailPage() {
         <form.Subscribe selector={(state) => state.isSubmitting}>
           {(isSubmitting) => (
             <button
-              className="btn btn-gold"
+              className={pillButton({ variant: 'gold' })}
               type="submit"
               disabled={isSubmitting}
             >

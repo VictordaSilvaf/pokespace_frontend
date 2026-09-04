@@ -7,6 +7,7 @@ import { authApi } from '#/lib/api/auth'
 import { getErrorMessage } from '#/lib/api/errors'
 import { resetPasswordSchema } from '#/lib/auth/schemas'
 import { fieldError } from '#/lib/form/field-error'
+import { pillButton } from '#/lib/pill-button'
 import { m } from '#/paraglide/messages'
 
 type ResetSearch = {
@@ -45,15 +46,15 @@ function ResetPasswordPage() {
   return (
     <AuthFrame title={m.reset_title()} support={m.reset_support()}>
       {done ? (
-        <div className="form-stack">
+        <div className="grid gap-3.5">
           <FormMessage>{m.reset_done()}</FormMessage>
-          <Link to="/login" className="btn btn-gold">
+          <Link to="/login" className={pillButton({ variant: 'gold' })}>
             {m.cta_enter()}
           </Link>
         </div>
       ) : (
         <form
-          className="form-stack"
+          className="grid gap-3.5"
           onSubmit={(event) => {
             event.preventDefault()
             event.stopPropagation()
@@ -90,7 +91,7 @@ function ResetPasswordPage() {
           <form.Subscribe selector={(state) => state.isSubmitting}>
             {(isSubmitting) => (
               <button
-                className="btn btn-gold"
+                className={pillButton({ variant: 'gold' })}
                 type="submit"
                 disabled={isSubmitting}
               >
