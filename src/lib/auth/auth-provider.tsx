@@ -11,6 +11,7 @@ import {
   loadTempToken,
   saveTempToken,
 } from '#/lib/auth/storage'
+import { clearSessionFn } from '#/features/auth/session'
 
 type AuthContextValue = {
   ready: boolean
@@ -61,6 +62,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
       } catch {
         // Local sign-out still proceeds if the API is unreachable.
+      }
+      try {
+        await clearSessionFn()
+      } catch {
+        // Cookie clear is best-effort during sign-out.
       }
       clearSession()
       clearTempToken()

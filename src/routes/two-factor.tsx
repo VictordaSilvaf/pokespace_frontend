@@ -8,6 +8,7 @@ import { getErrorMessage } from '#/lib/api/errors'
 import { useAuth } from '#/lib/auth/auth-provider'
 import { BootScreen } from '#/lib/auth/gates'
 import { twoFactorSchema } from '#/lib/auth/schemas'
+import { establishDevSessionFn } from '#/features/auth/session'
 import { fieldError } from '#/lib/form/field-error'
 import { m } from '#/paraglide/messages'
 
@@ -49,8 +50,11 @@ function TwoFactorForm({ tempToken }: { tempToken: string }) {
           value.code.trim(),
         )
         auth.signIn(result)
+        await establishDevSessionFn({
+          data: { id: result.userId, username: result.username },
+        })
         startTransition(() => {
-          void navigate({ to: '/base' })
+          void navigate({ to: '/characters' })
         })
       } catch (cause) {
         setError(getErrorMessage(cause))

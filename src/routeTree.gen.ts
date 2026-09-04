@@ -21,6 +21,8 @@ import { Route as BaseIndexRouteImport } from './routes/base/index'
 import { Route as BaseAccountRouteImport } from './routes/base/account'
 import { Route as BaseSecurityRouteImport } from './routes/base/security'
 import { Route as BaseSessionsRouteImport } from './routes/base/sessions'
+import { Route as CharactersIndexRouteImport } from './routes/characters/index'
+import { Route as CharactersCreateRouteImport } from './routes/characters/create'
 import { Route as ApiV1SplatRouteImport } from './routes/api/v1/$'
 
 const IndexRoute = IndexRouteImport.update({
@@ -83,6 +85,16 @@ const BaseSessionsRoute = BaseSessionsRouteImport.update({
   path: '/sessions',
   getParentRoute: () => BaseRoute,
 } as any)
+const CharactersIndexRoute = CharactersIndexRouteImport.update({
+  id: '/characters/',
+  path: '/characters/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CharactersCreateRoute = CharactersCreateRouteImport.update({
+  id: '/characters/create',
+  path: '/characters/create',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiV1SplatRoute = ApiV1SplatRouteImport.update({
   id: '/api/v1/$',
   path: '/api/v1/$',
@@ -101,7 +113,9 @@ export interface FileRoutesByFullPath {
   '/base/account': typeof BaseAccountRoute
   '/base/security': typeof BaseSecurityRoute
   '/base/sessions': typeof BaseSessionsRoute
+  '/characters/create': typeof CharactersCreateRoute
   '/base/': typeof BaseIndexRoute
+  '/characters/': typeof CharactersIndexRoute
   '/api/v1/$': typeof ApiV1SplatRoute
 }
 export interface FileRoutesByTo {
@@ -115,7 +129,9 @@ export interface FileRoutesByTo {
   '/base/account': typeof BaseAccountRoute
   '/base/security': typeof BaseSecurityRoute
   '/base/sessions': typeof BaseSessionsRoute
+  '/characters/create': typeof CharactersCreateRoute
   '/base': typeof BaseIndexRoute
+  '/characters': typeof CharactersIndexRoute
   '/api/v1/$': typeof ApiV1SplatRoute
 }
 export interface FileRoutesById {
@@ -131,7 +147,9 @@ export interface FileRoutesById {
   '/base/account': typeof BaseAccountRoute
   '/base/security': typeof BaseSecurityRoute
   '/base/sessions': typeof BaseSessionsRoute
+  '/characters/create': typeof CharactersCreateRoute
   '/base/': typeof BaseIndexRoute
+  '/characters/': typeof CharactersIndexRoute
   '/api/v1/$': typeof ApiV1SplatRoute
 }
 export interface FileRouteTypes {
@@ -148,7 +166,9 @@ export interface FileRouteTypes {
     | '/base/account'
     | '/base/security'
     | '/base/sessions'
+    | '/characters/create'
     | '/base/'
+    | '/characters/'
     | '/api/v1/$'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -162,7 +182,9 @@ export interface FileRouteTypes {
     | '/base/account'
     | '/base/security'
     | '/base/sessions'
+    | '/characters/create'
     | '/base'
+    | '/characters'
     | '/api/v1/$'
   id:
     | '__root__'
@@ -177,7 +199,9 @@ export interface FileRouteTypes {
     | '/base/account'
     | '/base/security'
     | '/base/sessions'
+    | '/characters/create'
     | '/base/'
+    | '/characters/'
     | '/api/v1/$'
   fileRoutesById: FileRoutesById
 }
@@ -190,6 +214,8 @@ export interface RootRouteChildren {
   ResetPasswordRoute: typeof ResetPasswordRoute
   TwoFactorRoute: typeof TwoFactorRoute
   VerifyEmailRoute: typeof VerifyEmailRoute
+  CharactersCreateRoute: typeof CharactersCreateRoute
+  CharactersIndexRoute: typeof CharactersIndexRoute
   ApiV1SplatRoute: typeof ApiV1SplatRoute
 }
 
@@ -279,6 +305,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BaseSessionsRouteImport
       parentRoute: typeof BaseRoute
     }
+    '/characters/': {
+      id: '/characters/'
+      path: '/characters'
+      fullPath: '/characters/'
+      preLoaderRoute: typeof CharactersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/characters/create': {
+      id: '/characters/create'
+      path: '/characters/create'
+      fullPath: '/characters/create'
+      preLoaderRoute: typeof CharactersCreateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/v1/$': {
       id: '/api/v1/$'
       path: '/api/v1/$'
@@ -314,6 +354,8 @@ const rootRouteChildren: RootRouteChildren = {
   ResetPasswordRoute: ResetPasswordRoute,
   TwoFactorRoute: TwoFactorRoute,
   VerifyEmailRoute: VerifyEmailRoute,
+  CharactersCreateRoute: CharactersCreateRoute,
+  CharactersIndexRoute: CharactersIndexRoute,
   ApiV1SplatRoute: ApiV1SplatRoute,
 }
 export const routeTree = rootRouteImport

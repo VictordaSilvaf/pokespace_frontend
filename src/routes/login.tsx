@@ -1,4 +1,4 @@
-import { Link, createFileRoute, useNavigate } from '@tanstack/react-router'
+import { Link, createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
 import { useForm } from '@tanstack/react-form'
 import { startTransition, useState } from 'react'
 import { AuthFrame } from '#/components/auth/AuthFrame'
@@ -9,10 +9,19 @@ import { getErrorMessage } from '#/lib/api/errors'
 import { useAuth } from '#/lib/auth/auth-provider'
 import { RequireGuest } from '#/lib/auth/gates'
 import { loginSchema } from '#/lib/auth/schemas'
+import { establishDevSessionFn, getSessionFn } from '#/features/auth/session'
 import { fieldError } from '#/lib/form/field-error'
 import { m } from '#/paraglide/messages'
 
-export const Route = createFileRoute('/login')({ component: LoginPage })
+export const Route = createFileRoute('/login')({
+  beforeLoad: async () => {
+    const session = await getSessionFn()
+    if (session) {
+      throw redirect({ to: '/characters' })
+    }
+  },
+  component: LoginPage,
+})
 
 function LoginPage() {
   return (
@@ -50,8 +59,11 @@ function LoginForm() {
           return
         }
         auth.signIn(result)
+        await establishDevSessionFn({
+          data: { id: result.userId, username: result.username },
+        })
         startTransition(() => {
-          void navigate({ to: '/base' })
+          void navigate({ to: '/characters' })
         })
       } catch (cause) {
         setError(getErrorMessage(cause))

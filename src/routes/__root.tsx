@@ -10,10 +10,10 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 
-import { getLocale } from '#/paraglide/runtime'
-import { AuthProvider } from '#/lib/auth/auth-provider'
-import { CosmicScene } from '#/components/space/CosmicScene'
 import { AppShell } from '#/components/layout/AppShell'
+import { CosmicScene } from '#/components/space/CosmicScene'
+import { AuthProvider } from '#/lib/auth/auth-provider'
+import { getLocale } from '#/paraglide/runtime'
 import { m } from '#/paraglide/messages'
 
 import appCss from '../styles.css?url'
@@ -30,22 +30,29 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       document.documentElement.setAttribute('lang', getLocale())
     }
   },
+
   head: () => ({
     meta: [
-      { charSet: 'utf-8' },
+      {
+        charSet: 'utf-8',
+      },
       {
         name: 'viewport',
         content: 'width=device-width, initial-scale=1',
       },
-      { title: 'PokeSpace' },
+      {
+        title: 'PokeSpace',
+      },
       {
         name: 'description',
         content: m.hero_support(),
       },
     ],
     links: [
-      { rel: 'stylesheet', href: appCss },
-      { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+      {
+        rel: 'stylesheet',
+        href: appCss,
+      },
     ],
   }),
   component: RootComponent,
@@ -71,20 +78,18 @@ function RootDocument({ children }: { children: ReactNode }) {
       <body>
         <CosmicScene />
         {children}
-        {import.meta.env.DEV ? (
-          <TanStackDevtools
-            config={{
-              position: 'bottom-right',
-            }}
-            plugins={[
-              {
-                name: 'Tanstack Router',
-                render: <TanStackRouterDevtoolsPanel />,
-              },
-              TanStackQueryDevtools,
-            ]}
-          />
-        ) : null}
+        <TanStackDevtools
+          config={{
+            position: 'bottom-right',
+          }}
+          plugins={[
+            {
+              name: 'Tanstack Router',
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+            TanStackQueryDevtools,
+          ]}
+        />
         <Scripts />
       </body>
     </html>

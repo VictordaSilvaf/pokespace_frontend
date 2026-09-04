@@ -604,3 +604,170 @@ a:hover {
     @apply border-border outline-ring/50;
   }
 }
+
+/* Characters MVP surfaces on the orbital theme */
+.character-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  margin-top: 0.5rem;
+}
+
+.character-slot {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem;
+  border-radius: 14px;
+  background: rgba(16, 16, 24, 0.88);
+  border: 1px solid var(--line);
+  transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.character-slot:hover {
+  transform: translateY(-2px);
+  border-color: rgba(249, 188, 1, 0.35);
+  background: rgba(22, 22, 31, 0.95);
+}
+
+.character-slot img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #0c0c13;
+  border: 1px solid var(--line);
+  flex: none;
+}
+
+.character-slot h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.character-slot p {
+  margin: 0.2rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+
+.choice-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+}
+
+.choice-card {
+  display: grid;
+  gap: 0.55rem;
+  justify-items: center;
+  text-align: center;
+  padding: 1rem 0.75rem;
+  border-radius: 14px;
+  background: rgba(16, 16, 24, 0.88);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.choice-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(249, 188, 1, 0.35);
+}
+
+.choice-card.is-selected {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(249, 188, 1, 0.2);
+}
+
+.choice-card img {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #0c0c13;
+}
+
+.choice-card span {
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.step-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.step-pill {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.step-pill.is-active {
+  border-color: rgba(249, 188, 1, 0.45);
+  background: rgba(249, 188, 1, 0.12);
+  color: var(--gold);
+}
+
+.step-pill.is-done {
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.confirm-panel {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 14px;
+  background: rgba(16, 16, 24, 0.88);
+  border: 1px solid var(--line);
+}
+
+.confirm-panel div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.confirm-panel dt {
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+}
+
+.confirm-panel dd {
+  margin: 0;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.confirm-panel img {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.section-wide {
+  max-width: 52rem;
+}
+
+.empty-cta {
+  display: grid;
+  gap: 0.85rem;
+  justify-items: start;
+  margin-top: 0.6rem;
+}

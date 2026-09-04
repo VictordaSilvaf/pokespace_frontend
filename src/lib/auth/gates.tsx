@@ -33,7 +33,7 @@ export function RequireGuest({ children }: { children: ReactNode }) {
   }
 
   if (auth.session) {
-    return <Navigate to="/base" />
+    return <Navigate to="/characters" />
   }
 
   return children
