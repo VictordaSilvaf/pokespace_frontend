@@ -1,5 +1,7 @@
+import type { ReactNode } from 'react'
 import {
   HeadContent,
+  Outlet,
   Scripts,
   createRootRouteWithContext,
 } from '@tanstack/react-router'
@@ -8,6 +10,8 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 
+import { AppShell } from '#/components/layout/AppShell'
+import { CosmicScene } from '#/components/space/CosmicScene'
 import { getLocale } from '#/paraglide/runtime'
 
 import appCss from '../styles.css?url'
@@ -20,8 +24,6 @@ interface MyRouterContext {
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
   beforeLoad: async () => {
-    // Other redirect strategies are possible; see
-    // https://github.com/TanStack/router/tree/main/examples/react/i18n-paraglide#offline-redirect
     if (typeof document !== 'undefined') {
       document.documentElement.setAttribute('lang', getLocale())
     }
@@ -37,7 +39,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'PokeSpace',
       },
     ],
     links: [
@@ -47,16 +49,26 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
     ],
   }),
+  component: RootComponent,
   shellComponent: RootDocument,
 })
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function RootComponent() {
+  return (
+    <AppShell>
+      <Outlet />
+    </AppShell>
+  )
+}
+
+function RootDocument({ children }: { children: ReactNode }) {
   return (
     <html lang={getLocale()}>
       <head>
         <HeadContent />
       </head>
       <body>
+        <CosmicScene />
         {children}
         <TanStackDevtools
           config={{
