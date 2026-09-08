@@ -1,6 +1,7 @@
 import {
+  creatureIdForDex,
+  creatureUrl,
   getPokemonByDexId,
-  pokemonPortraitUrl,
 } from '#/features/game-data'
 
 import type { Peke } from './types'
@@ -14,24 +15,26 @@ type PartySeed = {
   fainted: boolean
 }
 
+/** Party seeds use dex ids that have curated creature sheet mappings. */
 const PARTY_SEEDS: PartySeed[] = [
-  { id: 'peke-1', dexId: 150, hp: 100, maxHp: 100, bonus: 0, fainted: false },
-  { id: 'peke-2', dexId: 9, hp: 100, maxHp: 100, bonus: 0, fainted: false },
-  { id: 'peke-3', dexId: 45, hp: 72, maxHp: 100, bonus: 0, fainted: false },
-  { id: 'peke-4', dexId: 260, hp: 41, maxHp: 100, bonus: 0, fainted: false },
-  { id: 'peke-5', dexId: 94, hp: 0, maxHp: 100, bonus: 0, fainted: true },
-  { id: 'peke-6', dexId: 282, hp: 88, maxHp: 100, bonus: 2, fainted: false },
+  { id: 'peke-1', dexId: 9, hp: 100, maxHp: 100, bonus: 0, fainted: false },
+  { id: 'peke-2', dexId: 7, hp: 100, maxHp: 100, bonus: 0, fainted: false },
+  { id: 'peke-3', dexId: 3, hp: 72, maxHp: 100, bonus: 0, fainted: false },
+  { id: 'peke-4', dexId: 52, hp: 41, maxHp: 100, bonus: 0, fainted: false },
+  { id: 'peke-5', dexId: 107, hp: 0, maxHp: 100, bonus: 0, fainted: true },
+  { id: 'peke-6', dexId: 114, hp: 88, maxHp: 100, bonus: 2, fainted: false },
 ]
 
 function toPeke(seed: PartySeed): Peke {
   const entry = getPokemonByDexId(seed.dexId)
-  const sprite = pokemonPortraitUrl(seed.dexId)
+  const creatureId = creatureIdForDex(seed.dexId)
+  const sprite = creatureId != null ? creatureUrl(creatureId) : ''
   return {
     id: seed.id,
     name: entry?.name ?? `Dex ${seed.dexId}`,
     dexId: seed.dexId,
+    creatureId,
     spriteUrl: sprite,
-    // Walk sheets need lookType→creature mapping; use portrait until then.
     walkSpriteUrl: sprite,
     hp: seed.hp,
     maxHp: seed.maxHp,
@@ -40,5 +43,5 @@ function toPeke(seed: PartySeed): Peke {
   }
 }
 
-/** Preview party for the floating HUD — gen 1–3 only (dex ≤ 386). */
+/** Preview party for the floating HUD — gen 1–3 with local walk sheets. */
 export const mockParty: Peke[] = PARTY_SEEDS.map(toPeke)

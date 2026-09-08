@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'motion/react'
 
+import { CreaturePortrait } from '#/features/game-data'
 import { m } from '#/paraglide/messages'
 import { cn } from '#/lib/utils'
 
@@ -172,10 +173,7 @@ export function PekePartySlot({
             peke.fainted && 'ring-1 ring-red-500/50',
           )}
         >
-          <motion.img
-            src={peke.spriteUrl}
-            alt=""
-            draggable={false}
+          <motion.div
             initial={false}
             animate={{
               scale: selected ? 1.1 : 1,
@@ -184,8 +182,15 @@ export function PekePartySlot({
                 : 'none',
             }}
             transition={softSpring}
-            className="size-full object-contain [image-rendering:pixelated]"
-          />
+            className="size-full"
+          >
+            <CreaturePortrait
+              creatureId={peke.creatureId}
+              alt={peke.name}
+              size={96}
+              className="size-full [image-rendering:pixelated]"
+            />
+          </motion.div>
           {peke.fainted ? (
             <span
               className="pointer-events-none absolute inset-0 rounded-full bg-red-700/35 mix-blend-multiply md:hidden"

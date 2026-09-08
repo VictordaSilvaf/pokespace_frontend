@@ -1,5 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 
+import {
+  CREATURE_GEOMETRY,
+  PLAYER_CREATURE_ID,
+  WORLD_NPC_DEFS,
+  creatureUrl,
+  drawCreatureFrame,
+  facingFromVector,
+  type FacingDir,
+} from '#/features/game-data'
 import type { Peke } from '#/features/game-hud/types'
 
 import { resolveWorldAssets } from '../assets'
@@ -12,21 +21,21 @@ import {
   type TileMap,
 } from '../tmx'
 
-type Player = {
+type Actor = {
   x: number
   y: number
-}
-
-type Follower = {
-  x: number
-  y: number
+  facing: FacingDir
+  phase: number
+  phaseT: number
+  creatureId: number
+  size: number
+  label?: string
 }
 
 type GameWorldViewportProps = {
   followerPeke?: Peke | null
 }
 
-/** Scale so the map always covers the viewport (no letterboxing). */
 function coverScale(
   viewW: number,
   viewH: number,
@@ -36,37 +45,6 @@ function coverScale(
 ) {
   const cover = Math.max(viewW / mapPxW, viewH / mapPxH)
   return Math.max(cover, preferredScale)
-}
-
-function drawPlayer(
-  ctx: CanvasRenderingContext2D,
-  x: number,
-  y: number,
-  size: number,
-  facing: { x: number; y: number },
-) {
-  const cx = x + size / 2
-  const cy = y + size / 2
-  const eyeOffset = Math.max(2, size * 0.3)
-
-  ctx.fillStyle = '#f2d27a'
-  ctx.strokeStyle = '#2a2114'
-  ctx.lineWidth = 1
-  ctx.beginPath()
-  ctx.roundRect(x, y, size, size, Math.max(2, size * 0.2))
-  ctx.fill()
-  ctx.stroke()
-
-  ctx.fillStyle = '#2a2114'
-  ctx.beginPath()
-  ctx.arc(
-    cx + facing.x * eyeOffset,
-    cy + facing.y * eyeOffset,
-    Math.max(1.5, size * 0.15),
-    0,
-    Math.PI * 2,
-  )
-  ctx.fill()
 }
 
 function resizeCanvas(
@@ -87,13 +65,32 @@ function resizeCanvas(
   return ctx
 }
 
+function advanceWalkPhase(
+  actor: Actor,
+  moving: boolean,
+  dt: number,
+  frameRate = 8,
+) {
+  const geometry = CREATURE_GEOMETRY[actor.creatureId]
+  const phases = geometry?.phases ?? 1
+  if (!moving || phases <= 1) {
+    actor.phase = Math.floor(phases / 2)
+    actor.phaseT = 0
+    return
+  }
+  actor.phaseT += dt * frameRate
+  while (actor.phaseT >= 1) {
+    actor.phaseT -= 1
+    actor.phase = (actor.phase + 1) % phases
+  }
+}
+
 export function GameWorldViewport({
   followerPeke = null,
 }: GameWorldViewportProps) {
   const rootRef = useRef<HTMLDivElement>(null)
   const mapCanvasRef = useRef<HTMLCanvasElement>(null)
-  const playerCanvasRef = useRef<HTMLCanvasElement>(null)
-  const followerImgRef = useRef<HTMLImageElement>(null)
+  const actorCanvasRef = useRef<HTMLCanvasElement>(null)
   const followerPekeRef = useRef<Peke | null>(followerPeke)
   const [error, setError] = useState<string | null>(null)
   const [ready, setReady] = useState(false)
@@ -105,13 +102,23 @@ export function GameWorldViewport({
   useEffect(() => {
     const root = rootRef.current
     const mapCanvas = mapCanvasRef.current
-    const playerCanvas = playerCanvasRef.current
-    const followerImg = followerImgRef.current
-    if (!root || !mapCanvas || !playerCanvas || !followerImg) return
+    const actorCanvas = actorCanvasRef.current
+    if (!root || !mapCanvas || !actorCanvas) return
 
     let cancelled = false
     let raf = 0
     const keys = new Set<string>()
+    const imageCache = new Map<number, HTMLImageElement>()
+
+    const ensureImage = (creatureId: number) => {
+      let img = imageCache.get(creatureId)
+      if (img) return img
+      img = new Image()
+      img.decoding = 'async'
+      img.src = creatureUrl(creatureId)
+      imageCache.set(creatureId, img)
+      return img
+    }
 
     const onKeyDown = (event: KeyboardEvent) => {
       const key = event.key.toLowerCase()
@@ -137,12 +144,8 @@ export function GameWorldViewport({
     window.addEventListener('keyup', onKeyUp)
 
     let map: TileMap | null = null
-    let player: Player = { x: 0, y: 0 }
-    let follower: Follower = { x: 0, y: 0 }
-    let followerReady = false
-    let facing = { x: 0, y: 1 }
     let preferredScale = 3
-    let playerSize = 10
+    let playerSize = 16
     let playerSpeed = 72
     let scale = preferredScale
     let viewW = 0
@@ -150,39 +153,43 @@ export function GameWorldViewport({
     let lastTs = performance.now()
     let resizeRaf = 0
     let mapCtx: CanvasRenderingContext2D | null = mapCanvas.getContext('2d')
-    let playerCtx: CanvasRenderingContext2D | null =
-      playerCanvas.getContext('2d')
-    let lastWalkSrc = ''
+    let actorCtx: CanvasRenderingContext2D | null =
+      actorCanvas.getContext('2d')
 
-    const syncFollowerOverlay = (
-      peke: Peke | null,
-      camX: number,
-      camY: number,
-      followerSize: number,
-    ) => {
-      if (!peke || peke.fainted) {
-        followerImg.hidden = true
-        followerImg.removeAttribute('src')
-        lastWalkSrc = ''
-        return
-      }
-
-      if (lastWalkSrc !== peke.walkSpriteUrl) {
-        lastWalkSrc = peke.walkSpriteUrl
-        followerImg.src = peke.walkSpriteUrl
-      }
-
-      const screenX = (follower.x - camX) * scale
-      const screenY = (follower.y - camY) * scale
-      const screenSize = followerSize * scale
-      const flipX = facing.x < 0
-
-      followerImg.hidden = false
-      followerImg.style.width = `${screenSize}px`
-      followerImg.style.height = `${screenSize}px`
-      followerImg.style.transform = `translate(${screenX}px, ${screenY}px) scaleX(${flipX ? -1 : 1})`
-      followerImg.style.transformOrigin = 'center center'
+    const player: Actor = {
+      x: 0,
+      y: 0,
+      facing: 2,
+      phase: 1,
+      phaseT: 0,
+      creatureId: PLAYER_CREATURE_ID,
+      size: playerSize,
     }
+
+    const follower: Actor = {
+      x: 0,
+      y: 0,
+      facing: 2,
+      phase: 1,
+      phaseT: 0,
+      creatureId: 40040,
+      size: playerSize * 1.35,
+    }
+    let followerReady = false
+
+    const npcs: Actor[] = WORLD_NPC_DEFS.map((def) => ({
+      x: 0,
+      y: 0,
+      facing: 2,
+      phase: 1,
+      phaseT: 0,
+      creatureId: def.creatureId,
+      size: playerSize * 1.5,
+      label: def.name,
+    }))
+
+    ensureImage(PLAYER_CREATURE_ID)
+    for (const npc of npcs) ensureImage(npc.creatureId)
 
     const applySize = () => {
       const nextW = Math.max(
@@ -208,7 +215,7 @@ export function GameWorldViewport({
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
       mapCtx = resizeCanvas(mapCanvas, viewW, viewH, dpr)
-      playerCtx = resizeCanvas(playerCanvas, viewW, viewH, dpr)
+      actorCtx = resizeCanvas(actorCanvas, viewW, viewH, dpr)
 
       if (map) {
         scale = coverScale(
@@ -233,25 +240,63 @@ export function GameWorldViewport({
       if (!map) return
       const nextX = player.x + dx
       const nextY = player.y + dy
-      const maxX = map.width * map.tileWidth - playerSize
-      const maxY = map.height * map.tileHeight - playerSize
+      const maxX = map.width * map.tileWidth - player.size
+      const maxY = map.height * map.tileHeight - player.size
 
       const clampedX = Math.max(0, Math.min(maxX, nextX))
       const clampedY = Math.max(0, Math.min(maxY, nextY))
 
-      if (!rectHitsSolid(map, clampedX, player.y, playerSize, playerSize)) {
+      if (!rectHitsSolid(map, clampedX, player.y, player.size, player.size)) {
         player.x = clampedX
       }
-      if (!rectHitsSolid(map, player.x, clampedY, playerSize, playerSize)) {
+      if (!rectHitsSolid(map, player.x, clampedY, player.size, player.size)) {
         player.y = clampedY
       }
+    }
+
+    const drawActor = (ctx: CanvasRenderingContext2D, actor: Actor) => {
+      const geometry = CREATURE_GEOMETRY[actor.creatureId]
+      const img = ensureImage(actor.creatureId)
+      if (!geometry || !img.complete || img.naturalWidth === 0) return
+      drawCreatureFrame(
+        ctx,
+        img,
+        geometry,
+        actor.facing,
+        actor.phase,
+        actor.x,
+        actor.y,
+        actor.size,
+        actor.size,
+      )
+    }
+
+    const drawNpcLabel = (
+      ctx: CanvasRenderingContext2D,
+      actor: Actor,
+      camX: number,
+      camY: number,
+    ) => {
+      if (!actor.label) return
+      const screenX = (actor.x - camX) * scale + (actor.size * scale) / 2
+      const screenY = (actor.y - camY) * scale - 6
+      ctx.save()
+      ctx.setTransform(1, 0, 0, 1, 0, 0)
+      ctx.font = '600 11px ui-sans-serif, system-ui, sans-serif'
+      ctx.textAlign = 'center'
+      ctx.fillStyle = 'rgba(0,0,0,0.55)'
+      const w = ctx.measureText(actor.label).width + 10
+      ctx.fillRect(screenX - w / 2, screenY - 12, w, 16)
+      ctx.fillStyle = '#f6f0e4'
+      ctx.fillText(actor.label, screenX, screenY)
+      ctx.restore()
     }
 
     const frame = (ts: number) => {
       if (cancelled) return
       raf = requestAnimationFrame(frame)
 
-      if (!mapCtx || !playerCtx || !map || viewW <= 0 || viewH <= 0) return
+      if (!mapCtx || !actorCtx || !map || viewW <= 0 || viewH <= 0) return
 
       const dt = Math.min(0.05, (ts - lastTs) / 1000)
       lastTs = ts
@@ -266,26 +311,63 @@ export function GameWorldViewport({
       const moving = vx !== 0 || vy !== 0
       if (moving) {
         const len = Math.hypot(vx, vy) || 1
-        facing = { x: vx / len, y: vy / len }
-        tryMove((vx / len) * playerSpeed * dt, (vy / len) * playerSpeed * dt)
+        const nx = vx / len
+        const ny = vy / len
+        player.facing = facingFromVector(nx, ny)
+        tryMove(nx * playerSpeed * dt, ny * playerSpeed * dt)
       }
+      advanceWalkPhase(player, moving, dt)
 
       const peke = followerPekeRef.current
-      const followerSize = playerSize * 1.6
-      const followDistance = playerSize * 1.5
-      const playerCx = player.x + playerSize / 2
-      const playerCy = player.y + playerSize / 2
-      const targetX = playerCx - facing.x * followDistance - followerSize / 2
-      const targetY = playerCy - facing.y * followDistance - followerSize / 2
+      const followDistance = player.size * 1.6
+      const playerCx = player.x + player.size / 2
+      const playerCy = player.y + player.size / 2
+      const facingVec =
+        player.facing === 0
+          ? { x: 0, y: -1 }
+          : player.facing === 1
+            ? { x: 1, y: 0 }
+            : player.facing === 3
+              ? { x: -1, y: 0 }
+              : { x: 0, y: 1 }
 
-      if (!followerReady) {
-        follower.x = targetX
-        follower.y = targetY
-        followerReady = true
+      if (peke && !peke.fainted && peke.creatureId != null) {
+        follower.creatureId = peke.creatureId
+        follower.size = player.size * 1.35
+        ensureImage(follower.creatureId)
+
+        const targetX =
+          playerCx - facingVec.x * followDistance - follower.size / 2
+        const targetY =
+          playerCy - facingVec.y * followDistance - follower.size / 2
+
+        if (!followerReady) {
+          follower.x = targetX
+          follower.y = targetY
+          followerReady = true
+        } else {
+          const prevX = follower.x
+          const prevY = follower.y
+          const lerp = 1 - Math.exp(-10 * dt)
+          follower.x += (targetX - follower.x) * lerp
+          follower.y += (targetY - follower.y) * lerp
+          const fdx = follower.x - prevX
+          const fdy = follower.y - prevY
+          const followerMoving = Math.hypot(fdx, fdy) > 0.15
+          if (followerMoving) {
+            follower.facing = facingFromVector(fdx, fdy)
+          } else {
+            follower.facing = player.facing
+          }
+          advanceWalkPhase(follower, followerMoving, dt)
+        }
       } else {
-        const lerp = 1 - Math.exp(-10 * dt)
-        follower.x += (targetX - follower.x) * lerp
-        follower.y += (targetY - follower.y) * lerp
+        followerReady = false
+      }
+
+      // Idle bob for NPCs
+      for (const npc of npcs) {
+        advanceWalkPhase(npc, true, dt * 0.35, 3)
       }
 
       const mapPxW = map.width * map.tileWidth
@@ -293,8 +375,8 @@ export function GameWorldViewport({
       const viewWorldW = viewW / scale
       const viewWorldH = viewH / scale
 
-      let camX = player.x + playerSize / 2 - viewWorldW / 2
-      let camY = player.y + playerSize / 2 - viewWorldH / 2
+      let camX = player.x + player.size / 2 - viewWorldW / 2
+      let camY = player.y + player.size / 2 - viewWorldH / 2
       camX = Math.max(0, Math.min(Math.max(0, mapPxW - viewWorldW), camX))
       camY = Math.max(0, Math.min(Math.max(0, mapPxH - viewWorldH), camY))
 
@@ -325,16 +407,27 @@ export function GameWorldViewport({
       }
       mapCtx.restore()
 
-      // GIF between map and player so it walks “behind” the avatar.
-      syncFollowerOverlay(peke, camX, camY, followerSize)
+      actorCtx.clearRect(0, 0, viewW, viewH)
+      actorCtx.save()
+      actorCtx.scale(scale, scale)
+      actorCtx.translate(-camX, -camY)
+      actorCtx.imageSmoothingEnabled = false
 
-      playerCtx.clearRect(0, 0, viewW, viewH)
-      playerCtx.save()
-      playerCtx.scale(scale, scale)
-      playerCtx.translate(-camX, -camY)
-      playerCtx.imageSmoothingEnabled = false
-      drawPlayer(playerCtx, player.x, player.y, playerSize, facing)
-      playerCtx.restore()
+      const drawList: Actor[] = [...npcs]
+      if (peke && !peke.fainted && peke.creatureId != null && followerReady) {
+        drawList.push(follower)
+      }
+      drawList.push(player)
+      drawList.sort((a, b) => a.y + a.size - (b.y + b.size))
+
+      for (const actor of drawList) {
+        drawActor(actorCtx, actor)
+      }
+      actorCtx.restore()
+
+      for (const npc of npcs) {
+        drawNpcLabel(actorCtx, npc, camX, camY)
+      }
     }
 
     void (async () => {
@@ -343,8 +436,11 @@ export function GameWorldViewport({
         if (cancelled) return
 
         preferredScale = assets.preferredScale
-        playerSize = assets.playerSize
+        playerSize = Math.max(16, assets.playerSize * 1.6)
+        player.size = playerSize
         playerSpeed = assets.useOt ? 96 : 72
+        for (const npc of npcs) npc.size = playerSize * 1.45
+        follower.size = playerSize * 1.35
 
         const loadedMap = await loadTmxMap(assets.mapUrl)
         if (cancelled) return
@@ -359,31 +455,47 @@ export function GameWorldViewport({
 
         const spawn = findSpawnPoint(map)
         if (spawn) {
-          player = {
-            x: spawn.x + (map.tileWidth - playerSize) / 2,
-            y: spawn.y + (map.tileHeight - playerSize) / 2,
-          }
+          player.x = spawn.x + (map.tileWidth - player.size) / 2
+          player.y = spawn.y + (map.tileHeight - player.size) / 2
         } else {
-          player = {
-            x: (map.tileWidth - playerSize) / 2,
-            y: (map.tileHeight - playerSize) / 2,
-          }
+          player.x = (map.tileWidth - player.size) / 2
+          player.y = (map.tileHeight - player.size) / 2
         }
 
-        if (rectHitsSolid(map, player.x, player.y, playerSize, playerSize)) {
+        if (rectHitsSolid(map, player.x, player.y, player.size, player.size)) {
           const fallback = findSpawnPoint(map)
           if (fallback) {
-            player = {
-              x: fallback.x + 3,
-              y: fallback.y + 3,
-            }
+            player.x = fallback.x + 3
+            player.y = fallback.y + 3
           }
         }
 
-        follower = {
-          x: player.x - playerSize * 1.5,
-          y: player.y,
-        }
+        // Place NPCs around the spawn on open tiles
+        const offsets = [
+          { x: 3, y: 0 },
+          { x: -3, y: 1 },
+          { x: 2, y: 3 },
+          { x: -2, y: -2 },
+        ]
+        const tw = map.tileWidth
+        const th = map.tileHeight
+        npcs.forEach((npc, i) => {
+          const off = offsets[i] ?? { x: i + 1, y: i }
+          let nx = player.x + off.x * tw
+          let ny = player.y + off.y * th
+          nx = Math.max(0, Math.min(map!.width * tw - npc.size, nx))
+          ny = Math.max(0, Math.min(map!.height * th - npc.size, ny))
+          if (rectHitsSolid(map!, nx, ny, npc.size, npc.size)) {
+            nx = player.x + (i + 1) * 12
+            ny = player.y + 24
+          }
+          npc.x = nx
+          npc.y = ny
+          npc.facing = 2
+        })
+
+        follower.x = player.x - player.size * 1.5
+        follower.y = player.y
         followerReady = true
 
         applySize()
@@ -426,15 +538,8 @@ export function GameWorldViewport({
         className="absolute inset-0 block size-full max-h-none max-w-none [image-rendering:pixelated]"
         aria-label="Mundo inicial de testes"
       />
-      <img
-        ref={followerImgRef}
-        alt=""
-        draggable={false}
-        hidden
-        className="pointer-events-none absolute top-0 left-0 z-1 max-w-none [image-rendering:pixelated] will-change-transform"
-      />
       <canvas
-        ref={playerCanvasRef}
+        ref={actorCanvasRef}
         className="pointer-events-none absolute inset-0 z-2 block size-full max-h-none max-w-none [image-rendering:pixelated]"
         aria-hidden
       />

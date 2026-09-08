@@ -2,7 +2,7 @@ import { resolvePokedexEntry, POKEDEX_TOTAL, type PokedexEntry } from './types'
 
 /** Dex ids marked discovered in the preview Pokédex (gen 1–3). */
 const DISCOVERED_DEX_IDS = new Set([
-  1, 2, 3, 4, 6, 7, 9, 25, 39, 52, 94, 130, 143, 150, 254, 260,
+  1, 2, 3, 4, 6, 7, 9, 25, 39, 52, 94, 107, 114, 130, 143, 150, 254, 260,
 ])
 
 function buildCatalog(): PokedexEntry[] {

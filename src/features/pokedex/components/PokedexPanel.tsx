@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { Search, X } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 
+import { CreaturePortrait, creatureIdForDex } from '#/features/game-data'
 import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
 
@@ -166,12 +167,20 @@ export function PokedexPanel({ open, onClose }: PokedexPanelProps) {
                     >
                       <div className="grid size-9 place-items-center overflow-hidden rounded-md bg-black/40">
                         {entry.discovered ? (
-                          <img
-                            src={pokedexSpriteUrl(entry.dexId)}
-                            alt=""
-                            draggable={false}
-                            className="size-8 object-contain [image-rendering:pixelated]"
-                          />
+                          creatureIdForDex(entry.dexId) != null ? (
+                            <CreaturePortrait
+                              creatureId={creatureIdForDex(entry.dexId)}
+                              size={32}
+                              className="size-8 [image-rendering:pixelated]"
+                            />
+                          ) : (
+                            <img
+                              src={pokedexSpriteUrl(entry.dexId)}
+                              alt=""
+                              draggable={false}
+                              className="size-8 object-contain [image-rendering:pixelated]"
+                            />
+                          )
                         ) : (
                           <span className="text-sm text-ink-soft">?</span>
                         )}
@@ -248,8 +257,19 @@ export function PokedexPanel({ open, onClose }: PokedexPanelProps) {
                         src={pokedexSpriteUrl(selected.dexId, shiny)}
                         alt={selected.name ?? ''}
                         draggable={false}
-                        className="max-h-44 w-auto object-contain [image-rendering:pixelated]"
+                        className={cn(
+                          'max-h-44 w-auto object-contain [image-rendering:pixelated]',
+                          creatureIdForDex(selected.dexId) != null && 'hidden',
+                        )}
                       />
+                      {creatureIdForDex(selected.dexId) != null ? (
+                        <CreaturePortrait
+                          creatureId={creatureIdForDex(selected.dexId)}
+                          size={176}
+                          alt={selected.name ?? ''}
+                          className="max-h-44 w-auto [image-rendering:pixelated]"
+                        />
+                      ) : null}
                     </button>
 
                     <p className="mt-2 mb-2 text-center text-[0.7rem] text-ink-soft">
