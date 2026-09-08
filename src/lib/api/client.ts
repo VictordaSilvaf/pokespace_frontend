@@ -6,7 +6,11 @@ import {
 } from '#/lib/api/errors'
 import type { AuthResult } from '#/lib/api/types'
 import type { StoredSession } from '#/lib/auth/storage'
-import { clearSession, loadSession, saveSession } from '#/lib/auth/storage'
+import {
+  invalidateSession,
+  loadSession,
+  saveSession,
+} from '#/lib/auth/storage'
 
 type RequestOptions = {
   method?: string
@@ -66,7 +70,7 @@ async function refreshSession(): Promise<boolean> {
       })
       const body = await parseBody(response)
       if (!response.ok) {
-        clearSession()
+        invalidateSession()
         return false
       }
 
@@ -137,11 +141,15 @@ export async function apiRequest<T>(
     if (refreshed) {
       return apiRequest<T>(path, { ...options, retryOnUnauthorized: false })
     }
+    invalidateSession()
   }
 
   const payload = await parseBody(response)
 
   if (!response.ok) {
+    if (response.status === 401 && auth) {
+      invalidateSession()
+    }
     throw apiErrorFromResponse(response.status, payload)
   }
 

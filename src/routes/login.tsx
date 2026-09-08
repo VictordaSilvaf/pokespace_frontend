@@ -1,5 +1,6 @@
-import { Link, createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
+import { Link, createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useForm } from '@tanstack/react-form'
+import { useQueryClient } from '@tanstack/react-query'
 import { startTransition, useState } from 'react'
 import { AuthFrame } from '#/components/auth/AuthFrame'
 import { FormMessage, TextField } from '#/components/auth/TextField'
@@ -9,18 +10,13 @@ import { getErrorMessage } from '#/lib/api/errors'
 import { useAuth } from '#/lib/auth/auth-provider'
 import { RequireGuest } from '#/lib/auth/gates'
 import { loginSchema } from '#/lib/auth/schemas'
-import { establishDevSessionFn, getSessionFn } from '#/features/auth/session'
+import { establishDevSessionFn } from '#/features/auth/session'
+import { prefetchCharactersList } from '#/features/characters/prefetch'
 import { fieldError } from '#/lib/form/field-error'
 import { pillButton } from '#/lib/pill-button'
 import { m } from '#/paraglide/messages'
 
 export const Route = createFileRoute('/login')({
-  beforeLoad: async () => {
-    const session = await getSessionFn()
-    if (session) {
-      throw redirect({ to: '/characters' })
-    }
-  },
   component: LoginPage,
 })
 
@@ -35,6 +31,7 @@ function LoginPage() {
 function LoginForm() {
   const auth = useAuth()
   const navigate = useNavigate()
+  const queryClient = useQueryClient()
   const [error, setError] = useState('')
 
   const form = useForm({
@@ -63,6 +60,7 @@ function LoginForm() {
         await establishDevSessionFn({
           data: { id: result.userId, username: result.username },
         })
+        void prefetchCharactersList(queryClient)
         startTransition(() => {
           void navigate({ to: '/characters' })
         })

@@ -1,11 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { requireSession } from '#/features/auth/session'
 import { CharacterSelectScreen } from '#/features/characters/components/CharacterSelectScreen'
+import { RequireSession } from '#/lib/auth/gates'
 
 export const Route = createFileRoute('/characters/')({
-  beforeLoad: async () => {
-    await requireSession()
-  },
-  component: CharacterSelectScreen,
+  component: CharactersPage,
 })
+
+function CharactersPage() {
+  return (
+    <RequireSession>
+      <CharacterSelectScreen />
+    </RequireSession>
+  )
+}

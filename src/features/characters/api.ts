@@ -99,7 +99,12 @@ function toUiCharacter(
 }
 
 async function fetchServers(): Promise<ApiServer[]> {
-  return apiRequest<ApiServer[]>('/servers')
+  try {
+    const servers = await apiRequest<ApiServer[]>('/servers')
+    return Array.isArray(servers) ? servers : []
+  } catch {
+    return []
+  }
 }
 
 function serversMap(servers: ApiServer[]): Map<string, ApiServer> {
@@ -144,8 +149,9 @@ export async function listCharactersFn(): Promise<CharactersList> {
     apiRequest<ApiCharacter[]>('/characters', { auth: true }),
     fetchServers(),
   ])
+  const list = Array.isArray(rawCharacters) ? rawCharacters : []
   const byId = serversMap(servers)
-  const characters = rawCharacters.map((item) => toUiCharacter(item, byId))
+  const characters = list.map((item) => toUiCharacter(item, byId))
 
   return charactersListSchema.parse({
     characters,

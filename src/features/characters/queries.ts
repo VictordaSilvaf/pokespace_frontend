@@ -20,12 +20,14 @@ export const charactersListQueryOptions = () =>
   queryOptions({
     queryKey: characterKeys.list(),
     queryFn: () => listCharactersFn(),
+    staleTime: 60_000,
   })
 
 export const creationOptionsQueryOptions = () =>
   queryOptions({
     queryKey: characterKeys.creationOptions(),
     queryFn: () => getCreationOptionsFn(),
+    staleTime: 60_000,
   })
 
 export const characterDetailQueryOptions = (id: string) =>

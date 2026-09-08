@@ -10,6 +10,7 @@ import {
   loadSession,
   loadTempToken,
   saveTempToken,
+  subscribeSessionInvalidation,
 } from '#/lib/auth/storage'
 import { clearSessionFn } from '#/features/auth/session'
 
@@ -34,6 +35,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setSession(loadSession())
     setTempToken(loadTempToken())
     setReady(true)
+
+    return subscribeSessionInvalidation(() => {
+      setSession(null)
+      setTempToken(null)
+    })
   }, [])
 
   const value: AuthContextValue = {

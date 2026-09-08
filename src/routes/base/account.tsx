@@ -63,16 +63,18 @@ function AccountPage() {
   })
 
   return (
-    <section className="animate-rise-in grid max-w-[44rem] gap-3.5 px-6 pt-8 pb-14">
-      <p className="text-[0.78rem] font-bold tracking-[0.12em] text-mute uppercase">
-        {m.account_title()}
+    <section className="animate-rise-in mx-auto flex w-full max-w-xl flex-col items-center gap-3.5 px-6 pt-10 pb-14 text-center">
+      <p className="m-0 text-[0.78rem] font-bold tracking-[0.12em] text-mute uppercase">
+        {m.nav_my_account()}
       </p>
-      <h1 className="m-0 text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">
+      <h1 className="m-0 text-[clamp(1.6rem,3vw,2.2rem)] font-extrabold tracking-[-0.03em]">
         {m.account_title()}
       </h1>
-      <p className="text-lg text-ink-soft">{m.account_support()}</p>
+      <p className="m-0 max-w-md text-[1.05rem] text-ink-soft">
+        {m.account_support()}
+      </p>
       {me.data ? (
-        <p>
+        <p className="m-0 text-sm text-ink-soft">
           {m.account_username()}: {me.data.username}
           <br />
           {m.account_status()}:{' '}
@@ -92,77 +94,81 @@ function AccountPage() {
         </p>
       ) : null}
 
-      {me.data ? (
-        <ContactForm
-          email={me.data.email}
-          phone={me.data.phone}
-          onError={setError}
-          onNotice={setNotice}
-        />
-      ) : null}
+      <div className="grid w-full gap-3.5 text-left">
+        {me.data ? (
+          <ContactForm
+            email={me.data.email}
+            phone={me.data.phone}
+            onError={setError}
+            onNotice={setNotice}
+          />
+        ) : null}
 
-      <div className="flex flex-wrap items-center gap-2.5">
-        <button
-          className={pillButton({ variant: 'ghost' })}
-          type="button"
-          onClick={() => resend.mutate()}
-          disabled={resend.isPending}
+        <div className="flex flex-wrap items-center justify-center gap-2.5">
+          <button
+            className={pillButton({ variant: 'ghost' })}
+            type="button"
+            onClick={() => resend.mutate()}
+            disabled={resend.isPending}
+          >
+            {m.account_resend()}
+          </button>
+          <button
+            className={pillButton({ variant: 'ghost' })}
+            type="button"
+            onClick={() => sendOtp.mutate()}
+            disabled={sendOtp.isPending}
+          >
+            {m.phone_send()}
+          </button>
+        </div>
+
+        {otpDev ? (
+          <p className="m-0 text-center font-mono text-[0.85rem] text-ink-soft break-all">
+            {m.phone_otp_dev()}: {otpDev}
+          </p>
+        ) : null}
+
+        <form
+          className="grid gap-3.5"
+          onSubmit={(event) => {
+            event.preventDefault()
+            void phoneForm.handleSubmit()
+          }}
         >
-          {m.account_resend()}
-        </button>
-        <button
-          className={pillButton({ variant: 'ghost' })}
-          type="button"
-          onClick={() => sendOtp.mutate()}
-          disabled={sendOtp.isPending}
-        >
-          {m.phone_send()}
-        </button>
+          <phoneForm.Field name="code">
+            {(field) => (
+              <TextField
+                name={field.name}
+                inputMode="numeric"
+                maxLength={6}
+                label={m.phone_code()}
+                value={field.state.value}
+                onChange={(event) =>
+                  field.handleChange(event.target.value.replace(/\D/g, ''))
+                }
+                error={fieldError(field.state.meta.errors)}
+              />
+            )}
+          </phoneForm.Field>
+          <phoneForm.Subscribe selector={(state) => state.isSubmitting}>
+            {(isSubmitting) => (
+              <button
+                className={pillButton({ variant: 'gold', block: true })}
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {m.phone_verify()}
+              </button>
+            )}
+          </phoneForm.Subscribe>
+        </form>
+
+        <div className="text-center">
+          <FormMessage tone="warn">{error}</FormMessage>
+          <FormMessage>{notice}</FormMessage>
+        </div>
       </div>
-
-      {otpDev ? (
-        <p className="font-mono text-[0.85rem] text-ink-soft break-all">
-          {m.phone_otp_dev()}: {otpDev}
-        </p>
-      ) : null}
-
-      <form
-        className="grid gap-3.5"
-        onSubmit={(event) => {
-          event.preventDefault()
-          void phoneForm.handleSubmit()
-        }}
-      >
-        <phoneForm.Field name="code">
-          {(field) => (
-            <TextField
-              name={field.name}
-              inputMode="numeric"
-              maxLength={6}
-              label={m.phone_code()}
-              value={field.state.value}
-              onChange={(event) =>
-                field.handleChange(event.target.value.replace(/\D/g, ''))
-              }
-              error={fieldError(field.state.meta.errors)}
-            />
-          )}
-        </phoneForm.Field>
-        <phoneForm.Subscribe selector={(state) => state.isSubmitting}>
-          {(isSubmitting) => (
-            <button
-              className={pillButton({ variant: 'gold' })}
-              type="submit"
-              disabled={isSubmitting}
-            >
-              {m.phone_verify()}
-            </button>
-          )}
-        </phoneForm.Subscribe>
-      </form>
-
-      <FormMessage tone="warn">{error}</FormMessage>
-      <FormMessage>{notice}</FormMessage>
     </section>
   )
 }
@@ -237,7 +243,7 @@ function ContactForm({
       <form.Subscribe selector={(state) => state.isSubmitting}>
         {(isSubmitting) => (
           <button
-            className={pillButton({ variant: 'gold' })}
+            className={pillButton({ variant: 'gold', block: true })}
             type="submit"
             disabled={isSubmitting}
           >

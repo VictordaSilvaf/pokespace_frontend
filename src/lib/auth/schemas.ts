@@ -34,21 +34,33 @@ export const loginSchema = z.object({
   password: z.string().min(1, m.field_required()),
 })
 
-export const registerSchema = z.object({
-  email: emailSchema,
-  phone: phoneSchema,
-  username: usernameSchema,
-  password: passwordSchema,
-})
+export const registerSchema = z
+  .object({
+    email: emailSchema,
+    phone: phoneSchema,
+    username: usernameSchema,
+    password: passwordSchema,
+    confirmPassword: z.string().min(1, m.field_required()),
+  })
+  .refine((value) => value.password === value.confirmPassword, {
+    message: m.err_password_mismatch(),
+    path: ['confirmPassword'],
+  })
 
 export const forgotPasswordSchema = z.object({
   username: usernameSchema,
 })
 
-export const resetPasswordSchema = z.object({
-  token: tokenSchema,
-  newPassword: passwordSchema,
-})
+export const resetPasswordSchema = z
+  .object({
+    token: tokenSchema,
+    newPassword: passwordSchema,
+    confirmPassword: z.string().min(1, m.field_required()),
+  })
+  .refine((value) => value.newPassword === value.confirmPassword, {
+    message: m.err_password_mismatch(),
+    path: ['confirmPassword'],
+  })
 
 export const verifyEmailSchema = z.object({
   token: tokenSchema,

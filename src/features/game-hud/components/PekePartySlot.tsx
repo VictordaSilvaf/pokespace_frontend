@@ -137,24 +137,24 @@ export function PekePartySlot({
       whileTap={selected ? undefined : { scale: Math.min(scale, 1.015) }}
       transition={softSpring}
       className={cn(
-        'origin-left cursor-pointer bg-transparent select-none',
+        'origin-left cursor-pointer select-none',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35',
-        // Mobile: compact circular portrait
-        'relative size-11 rounded-full border-0 p-0 shadow-none',
+        // Mobile: compact circular portrait (1.5× base size-11)
+        'relative flex size-[4.125rem] items-center justify-center rounded-r-full border border-transparent bg-transparent p-0 shadow-none',
         // Desktop: full HUD row
-        'md:grid md:size-auto md:w-full md:grid-cols-[2.65rem_1fr] md:items-center md:gap-1.5 md:rounded-r-full md:border md:border-l-0 md:border-hud-panel-border md:bg-hud-panel md:py-1.5 md:pr-16 md:pl-1.5 md:text-left md:shadow-[0_4px_16px_rgba(0,0,0,0.35)] md:rounded-l-none md:backdrop-blur-sm',
+        'md:grid md:h-auto md:size-auto md:w-full md:grid-cols-[2.65rem_1fr] md:items-center md:gap-1.5 md:rounded-l-none md:rounded-r-full md:border md:border-l-0 md:border-hud-panel-border md:bg-hud-panel md:py-1.5 md:pr-16 md:pl-1.5 md:text-left md:shadow-[0_4px_16px_rgba(0,0,0,0.35)] md:backdrop-blur-sm',
         hovered && !selected && 'md:shadow-[0_6px_20px_rgba(0,0,0,0.45)]',
+        // Selected: flush left edge, rounded right, padded portrait
         selected &&
-          'md:border-white/40 md:bg-[rgba(32,36,42,0.92)] md:shadow-[0_8px_24px_rgba(0,0,0,0.5)]',
+          'h-[4.5rem] w-auto min-w-0 justify-start rounded-l-none rounded-r-full border border-l-0 border-white/40 bg-[rgba(32,36,42,0.94)] py-1.5 pr-2.5 pl-2 shadow-[0_8px_24px_rgba(0,0,0,0.5)] backdrop-blur-sm md:h-auto md:w-full md:border-white/40 md:bg-[rgba(32,36,42,0.92)] md:py-1.5 md:pr-16 md:pl-1.5 md:shadow-[0_8px_24px_rgba(0,0,0,0.5)]',
       )}
       style={{ willChange: 'transform', transformOrigin: 'left center' }}
     >
       <div
         className={cn(
-          'relative mx-auto size-11 shrink-0 md:mx-0 md:size-[2.65rem]',
-          'rounded-full bg-black/45',
-          'md:overflow-hidden md:border md:border-white/14',
-          selected && 'md:border-white/45 md:shadow-[0_0_0_2px_rgba(255,255,255,0.18)]',
+          'relative size-[4.125rem] shrink-0 md:size-[2.65rem]',
+          'overflow-hidden rounded-full border border-white/14 bg-black/45',
+          selected && 'size-[3.75rem] border-white/45 md:size-[2.65rem]',
         )}
         role="meter"
         aria-valuemin={0}

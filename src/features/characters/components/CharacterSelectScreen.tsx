@@ -5,93 +5,96 @@ import { Skeleton } from '#/components/ui/skeleton'
 import { pillButton } from '#/lib/pill-button'
 import { m } from '#/paraglide/messages'
 
+import { defaultLimits } from '../schemas'
+import { CHARACTER_MAX_PER_ACCOUNT } from '../config'
 import { charactersListQueryOptions } from '../queries'
-import { CharacterCreateCta, CharacterSlot } from './CharacterSlot'
+import {
+  CHARACTER_SLOT_COUNT,
+  CharacterSlot,
+  CharacterSlotEmpty,
+} from './CharacterSlot'
 
 export function CharacterSelectScreen() {
-  const { data, isPending, isError, refetch } = useQuery(
+  const { data, isPending, isError, refetch, isFetching } = useQuery(
     charactersListQueryOptions(),
   )
+
+  const characters = data?.characters ?? []
+  const limits = data?.limits ?? defaultLimits(0, CHARACTER_MAX_PER_ACCOUNT)
 
   if (isPending) {
     return (
       <SelectShell>
         <p className="text-ink-soft">{m.character_loading()}</p>
-        <div className="mt-2 grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-3.5">
-          <Skeleton className="h-24 rounded-2xl" />
-          <Skeleton className="h-24 rounded-2xl" />
-        </div>
+        <SlotGrid>
+          {Array.from({ length: CHARACTER_SLOT_COUNT }, (_, index) => (
+            <Skeleton key={index} className="aspect-square rounded-[14px]" />
+          ))}
+        </SlotGrid>
       </SelectShell>
     )
   }
-
-  if (isError) {
-    return (
-      <SelectShell>
-        <p className="font-semibold text-[#ff8d8d]">
-          {m.character_load_error()}
-        </p>
-        <button
-          type="button"
-          className={pillButton({ variant: 'ghost' })}
-          onClick={() => void refetch()}
-        >
-          {m.character_next()}
-        </button>
-      </SelectShell>
-    )
-  }
-
-  const { characters, limits } = data
-  const isEmpty = characters.length === 0
 
   return (
     <SelectShell>
-      {isEmpty ? (
-        <div className="animate-rise-in mt-2.5 grid justify-items-start gap-3.5">
-          <h2 className="m-0 text-[1.6rem] font-extrabold">
-            {m.character_empty_title()}
-          </h2>
-          <p className="m-0 max-w-[28rem] text-ink-soft">
-            {m.character_empty_body()}
+      {isError ? (
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <p className="m-0 text-sm text-[#ff8d8d]">
+            {m.character_load_error()}
           </p>
-          <CharacterCreateCta />
+          <button
+            type="button"
+            className={pillButton({ variant: 'ghost', size: 'sm' })}
+            disabled={isFetching}
+            onClick={() => void refetch()}
+          >
+            {m.character_next()}
+          </button>
         </div>
-      ) : (
-        <>
-          <div className="mt-2 grid grid-cols-[repeat(auto-fill,minmax(240px,1fr))] gap-3.5">
-            {characters.map((character) => (
-              <CharacterSlot key={character.id} character={character} />
-            ))}
-          </div>
+      ) : null}
 
-          <div className="mt-1.5 flex flex-wrap justify-start gap-3">
-            {limits.canCreate ? (
-              <CharacterCreateCta />
-            ) : (
-              <p className="font-semibold text-ink-soft">
-                {m.character_limit_reached({
-                  max: String(limits.maxPerAccount),
-                })}
-              </p>
-            )}
-          </div>
-        </>
-      )}
+      <SlotGrid>
+        {Array.from({ length: CHARACTER_SLOT_COUNT }, (_, index) => {
+          const character = characters.at(index)
+          if (!character) {
+            return (
+              <CharacterSlotEmpty
+                key={`slot-${index + 1}`}
+                canCreate={limits.canCreate}
+              />
+            )
+          }
+          return <CharacterSlot key={character.id} character={character} />
+        })}
+      </SlotGrid>
+
+      {!limits.canCreate ? (
+        <p className="m-0 text-sm text-mute">
+          {m.character_limit_reached({ max: String(limits.maxPerAccount) })}
+        </p>
+      ) : null}
     </SelectShell>
+  )
+}
+
+function SlotGrid({ children }: { children: ReactNode }) {
+  return (
+    <div className="mt-2 grid w-full grid-cols-2 gap-3.5 sm:grid-cols-4">
+      {children}
+    </div>
   )
 }
 
 function SelectShell({ children }: { children: ReactNode }) {
   return (
-    <section className="animate-rise-in grid max-w-[52rem] gap-3.5 px-6 pt-8 pb-14">
+    <section className="animate-rise-in mx-auto flex min-h-[calc(100svh-5rem)] w-full max-w-208 flex-col items-center justify-center gap-3.5 px-6 py-10 text-center">
       <p className="text-[0.78rem] font-bold tracking-[0.12em] text-mute uppercase">
         {m.character_select_kicker()}
       </p>
       <h1 className="m-0 text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold tracking-[-0.03em]">
         {m.character_select_title()}
       </h1>
-      <p className="m-0 text-[1.05rem] text-ink-soft">
+      <p className="m-0 max-w-xl text-[1.05rem] text-ink-soft">
         {m.character_select_subtitle()}
       </p>
       {children}

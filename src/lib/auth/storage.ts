@@ -11,8 +11,24 @@ export interface StoredSession {
 const SESSION_KEY = 'pokespace.session'
 const TEMP_TOKEN_KEY = 'pokespace.tempToken'
 
+type SessionListener = () => void
+const sessionListeners = new Set<SessionListener>()
+
 function canUseStorage(): boolean {
   return typeof window !== 'undefined'
+}
+
+export function subscribeSessionInvalidation(listener: SessionListener) {
+  sessionListeners.add(listener)
+  return () => {
+    sessionListeners.delete(listener)
+  }
+}
+
+function notifySessionInvalidation() {
+  for (const listener of sessionListeners) {
+    listener()
+  }
 }
 
 export function loadSession(): StoredSession | null {
@@ -47,6 +63,13 @@ export function clearSession(): void {
     return
   }
   window.localStorage.removeItem(SESSION_KEY)
+}
+
+/** Clears tokens and notifies AuthProvider (used on 401 / failed refresh). */
+export function invalidateSession(): void {
+  clearSession()
+  clearTempToken()
+  notifySessionInvalidation()
 }
 
 export function loadTempToken(): string | null {

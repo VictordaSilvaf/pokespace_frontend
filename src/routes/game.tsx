@@ -1,15 +1,19 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { requireSession } from '#/features/auth/session'
 import { GameHudShell } from '#/features/game-hud/components/GameHudShell'
+import { GameWorldViewport } from '#/features/game-world/components/GameWorldViewport'
+import { RequireSession } from '#/lib/auth/gates'
 
 export const Route = createFileRoute('/game')({
-  beforeLoad: async () => {
-    await requireSession()
-  },
   component: GamePage,
 })
 
 function GamePage() {
-  return <GameHudShell />
+  return (
+    <RequireSession>
+      <GameHudShell>
+        <GameWorldViewport />
+      </GameHudShell>
+    </RequireSession>
+  )
 }

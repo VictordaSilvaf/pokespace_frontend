@@ -1,11 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { requireSession } from '#/features/auth/session'
 import { CreateWizard } from '#/features/characters/components/CreateWizard'
+import { RequireSession } from '#/lib/auth/gates'
 
 export const Route = createFileRoute('/characters/create')({
-  beforeLoad: async () => {
-    await requireSession()
-  },
-  component: CreateWizard,
+  component: CreateCharacterPage,
 })
+
+function CreateCharacterPage() {
+  return (
+    <RequireSession>
+      <CreateWizard />
+    </RequireSession>
+  )
+}

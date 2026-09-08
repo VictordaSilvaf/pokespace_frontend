@@ -1,5 +1,6 @@
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router'
 import { useForm } from '@tanstack/react-form'
+import { useQueryClient } from '@tanstack/react-query'
 import { startTransition, useState } from 'react'
 import { AuthFrame } from '#/components/auth/AuthFrame'
 import { FormMessage, TextField } from '#/components/auth/TextField'
@@ -9,6 +10,7 @@ import { useAuth } from '#/lib/auth/auth-provider'
 import { RequireGuest } from '#/lib/auth/gates'
 import { registerSchema } from '#/lib/auth/schemas'
 import { establishDevSessionFn } from '#/features/auth/session'
+import { prefetchCharactersList } from '#/features/characters/prefetch'
 import { fieldError } from '#/lib/form/field-error'
 import { pillButton } from '#/lib/pill-button'
 import { m } from '#/paraglide/messages'
@@ -26,6 +28,7 @@ function RegisterPage() {
 function RegisterForm() {
   const auth = useAuth()
   const navigate = useNavigate()
+  const queryClient = useQueryClient()
   const [error, setError] = useState('')
 
   const form = useForm({
@@ -34,6 +37,7 @@ function RegisterForm() {
       phone: '',
       username: '',
       password: '',
+      confirmPassword: '',
     },
     validators: {
       onSubmit: registerSchema,
@@ -51,6 +55,7 @@ function RegisterForm() {
         await establishDevSessionFn({
           data: { id: result.userId, username: result.username },
         })
+        void prefetchCharactersList(queryClient)
         startTransition(() => {
           void navigate({ to: '/characters' })
         })
@@ -119,6 +124,20 @@ function RegisterForm() {
               type="password"
               label={m.register_password()}
               hint={m.register_password_hint()}
+              value={field.state.value}
+              autoComplete="new-password"
+              onBlur={field.handleBlur}
+              onChange={(event) => field.handleChange(event.target.value)}
+              error={fieldError(field.state.meta.errors)}
+            />
+          )}
+        </form.Field>
+        <form.Field name="confirmPassword">
+          {(field) => (
+            <TextField
+              name={field.name}
+              type="password"
+              label={m.register_password_confirm()}
               value={field.state.value}
               autoComplete="new-password"
               onBlur={field.handleBlur}

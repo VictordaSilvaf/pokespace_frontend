@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import { devtools } from '@tanstack/devtools-vite'
 import { paraglideVitePlugin } from '@inlang/paraglide-js'
 
@@ -9,7 +9,8 @@ import viteReact, { reactCompilerPreset } from '@vitejs/plugin-react'
 import babel from '@rolldown/plugin-babel'
 import tailwindcss from '@tailwindcss/vite'
 
-const apiOrigin = process.env.API_URL ?? 'http://localhost:3000'
+const env = loadEnv(process.env.NODE_ENV ?? 'development', process.cwd(), '')
+const apiOrigin = env.API_URL?.replace(/\/$/, '') || 'http://localhost:3000'
 
 const config = defineConfig({
   resolve: { tsconfigPaths: true },
@@ -27,7 +28,7 @@ const config = defineConfig({
     paraglideVitePlugin({
       project: './project.inlang',
       outdir: './src/paraglide',
-      strategy: ['cookie', 'preferredLanguage', 'baseLocale'],
+      strategy: ['cookie', 'baseLocale'],
     }),
     tailwindcss(),
     tanstackStart(),

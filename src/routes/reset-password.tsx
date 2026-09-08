@@ -30,6 +30,7 @@ function ResetPasswordPage() {
     defaultValues: {
       token: token ?? '',
       newPassword: '',
+      confirmPassword: '',
     },
     validators: { onSubmit: resetPasswordSchema },
     onSubmit: async ({ value }) => {
@@ -79,6 +80,20 @@ function ResetPasswordPage() {
                 name={field.name}
                 type="password"
                 label={m.reset_password()}
+                value={field.state.value}
+                autoComplete="new-password"
+                onBlur={field.handleBlur}
+                onChange={(event) => field.handleChange(event.target.value)}
+                error={fieldError(field.state.meta.errors)}
+              />
+            )}
+          </form.Field>
+          <form.Field name="confirmPassword">
+            {(field) => (
+              <TextField
+                name={field.name}
+                type="password"
+                label={m.reset_password_confirm()}
                 value={field.state.value}
                 autoComplete="new-password"
                 onBlur={field.handleBlur}
