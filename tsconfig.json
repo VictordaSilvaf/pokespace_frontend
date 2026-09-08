@@ -1,7 +1,7 @@
 {
   "include": ["**/*.ts", "**/*.tsx", "eslint.config.js", "prettier.config.js", "vite.config.js"],
-  "exclude": ["public/assets/kenney_tinny/Tiled/**"],
-  
+  "exclude": ["public/assets/kenney/tiled/**"],
+ 
   "compilerOptions": {
     "target": "ES2022",
     "jsx": "react-jsx",

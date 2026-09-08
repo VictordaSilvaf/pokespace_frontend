@@ -8,8 +8,8 @@ import { useAuth } from '#/lib/auth/auth-provider'
 import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
 
-const TOP_MENU = '/assets/data/images/ui/pxg/topMenu_icons'
-const PXG = '/assets/data/images/ui/pxg'
+const TOP_MENU = '/assets/poke/ui/pxg/topMenu_icons'
+const PXG = '/assets/poke/ui/pxg'
 
 type MenuId =
   | 'loja'

@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useEffect, type ReactNode } from 'react'
 
 import { mockParty } from '../mock-party'
 import { PekePartyBar } from './PekePartyBar'
@@ -9,10 +9,30 @@ type GameHudShellProps = {
 }
 
 export function GameHudShell({ children }: GameHudShellProps) {
+  useEffect(() => {
+    const html = document.documentElement
+    const { body } = document
+    const prev = {
+      htmlOverflow: html.style.overflow,
+      bodyOverflow: body.style.overflow,
+      bodyOverscroll: body.style.overscrollBehavior,
+    }
+
+    html.style.overflow = 'hidden'
+    body.style.overflow = 'hidden'
+    body.style.overscrollBehavior = 'none'
+
+    return () => {
+      html.style.overflow = prev.htmlOverflow
+      body.style.overflow = prev.bodyOverflow
+      body.style.overscrollBehavior = prev.bodyOverscroll
+    }
+  }, [])
+
   return (
-    <div className="fixed inset-0 z-40 h-dvh w-dvw overflow-hidden bg-hud-viewport">
+    <div className="fixed inset-0 z-40 h-dvh w-full touch-none overflow-hidden bg-hud-viewport">
       <div
-        className="absolute inset-0 overflow-hidden bg-[radial-gradient(ellipse_at_40%_30%,rgba(40,80,50,0.35),transparent_55%),linear-gradient(180deg,#132018_0%,#0b1210_100%)]"
+        className="absolute inset-0 size-full overflow-hidden bg-[radial-gradient(ellipse_at_40%_30%,rgba(40,80,50,0.35),transparent_55%),linear-gradient(180deg,#132018_0%,#0b1210_100%)]"
         aria-hidden={children ? undefined : true}
       >
         {children ?? (

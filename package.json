@@ -14,6 +14,8 @@
     "format": "prettier --write . && eslint --fix",
     "check": "prettier --check .",
     "check:i18n": "node ./scripts/check-i18n.mjs",
+    "ot:extract": "node ./tools/ot-pipeline/extract-ot-sprites.mjs",
+    "ot:map": "node ./tools/ot-pipeline/convert-otbm-crop.mjs",
     "start": "node --import ./.output/server/instrument.server.mjs .output/server/index.mjs"
   },
   "dependencies": {
@@ -57,9 +59,13 @@
     "@types/qrcode": "^1.5.5",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "@v0rt4c/dat": "^0.2.0",
+    "@v0rt4c/otbm": "^0.2.0",
+    "@v0rt4c/spr": "^0.1.1",
     "@vitejs/plugin-react": "^6.0.1",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^9.20.0",
+    "pngjs": "^7.0.0",
     "prettier": "^3.8.1",
     "typescript": "^6.0.2",
     "vite": "^8.0.0"

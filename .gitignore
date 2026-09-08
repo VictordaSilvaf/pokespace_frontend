@@ -13,3 +13,6 @@ dist-ssr
 __unconfig*
 todos.json
 .vercel
+tools/ot-source/*
+!tools/ot-source/.gitkeep
+tools/ot-pipeline/.cache/

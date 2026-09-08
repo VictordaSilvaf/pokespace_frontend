@@ -21,11 +21,11 @@ export function PekePartyBar({ party }: PekePartyBarProps) {
 
   return (
     <aside
-      className="pointer-events-auto absolute top-16 left-0 w-auto md:top-36 md:w-[min(20rem,calc(100vw-1.3rem))]"
+      className="pointer-events-auto absolute top-14 left-0 max-h-[calc(100dvh-3.75rem)] w-auto overflow-x-visible overflow-y-auto overscroll-contain pr-1 scrollbar-none md:top-36 md:max-h-[calc(100dvh-9.5rem)] md:w-[min(20rem,calc(100vw-1.3rem))]"
       aria-label={m.peke_party_label()}
     >
       <ul
-        className="m-0 grid list-none gap-3 overflow-visible p-0 md:gap-3"
+        className="m-0 grid list-none gap-2 overflow-visible p-0 md:gap-3"
         role="listbox"
       >
         {party.map((peke) => (

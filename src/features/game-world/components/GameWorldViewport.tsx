@@ -1,18 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { SAMPLE_MAP_URL, TILESET_IMAGE, TILE_SIZE } from '../assets'
+import { resolveWorldAssets } from '../assets'
 import {
   drawTile,
+  findSpawnPoint,
   loadImage,
   loadTmxMap,
   rectHitsSolid,
   type TileMap,
 } from '../tmx'
-
-const PLAYER_SPEED = 72
-const PLAYER_SIZE = 10
-/** Preferred zoom when the map is large enough to still cover the screen. */
-const PREFERRED_SCALE = 3
 
 type Player = {
   x: number
@@ -25,31 +21,40 @@ function coverScale(
   viewH: number,
   mapPxW: number,
   mapPxH: number,
+  preferredScale: number,
 ) {
   const cover = Math.max(viewW / mapPxW, viewH / mapPxH)
-  return Math.max(cover, PREFERRED_SCALE)
+  return Math.max(cover, preferredScale)
 }
 
 function drawPlayer(
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
+  size: number,
   facing: { x: number; y: number },
 ) {
-  const cx = x + PLAYER_SIZE / 2
-  const cy = y + PLAYER_SIZE / 2
+  const cx = x + size / 2
+  const cy = y + size / 2
+  const eyeOffset = Math.max(2, size * 0.3)
 
   ctx.fillStyle = '#f2d27a'
   ctx.strokeStyle = '#2a2114'
   ctx.lineWidth = 1
   ctx.beginPath()
-  ctx.roundRect(x, y, PLAYER_SIZE, PLAYER_SIZE, 2)
+  ctx.roundRect(x, y, size, size, Math.max(2, size * 0.2))
   ctx.fill()
   ctx.stroke()
 
   ctx.fillStyle = '#2a2114'
   ctx.beginPath()
-  ctx.arc(cx + facing.x * 3, cy + facing.y * 3, 1.5, 0, Math.PI * 2)
+  ctx.arc(
+    cx + facing.x * eyeOffset,
+    cy + facing.y * eyeOffset,
+    Math.max(1.5, size * 0.15),
+    0,
+    Math.PI * 2,
+  )
   ctx.fill()
 }
 
@@ -92,10 +97,12 @@ export function GameWorldViewport() {
     window.addEventListener('keyup', onKeyUp)
 
     let map: TileMap | null = null
-    let tileset: HTMLImageElement | null = null
     let player: Player = { x: 0, y: 0 }
     let facing = { x: 0, y: 1 }
-    let scale = PREFERRED_SCALE
+    let preferredScale = 3
+    let playerSize = 10
+    let playerSpeed = 72
+    let scale = preferredScale
     let viewW = 0
     let viewH = 0
     let lastTs = performance.now()
@@ -103,18 +110,24 @@ export function GameWorldViewport() {
     let ctx: CanvasRenderingContext2D | null = canvas.getContext('2d')
 
     const applySize = () => {
-      const nextW = Math.max(1, root.clientWidth)
-      const nextH = Math.max(1, root.clientHeight)
+      // Prefer layout box integers; fall back to visualViewport on mobile chrome.
+      const nextW = Math.max(
+        1,
+        Math.round(root.clientWidth || window.visualViewport?.width || window.innerWidth),
+      )
+      const nextH = Math.max(
+        1,
+        Math.round(root.clientHeight || window.visualViewport?.height || window.innerHeight),
+      )
       if (nextW === viewW && nextH === viewH) return
 
       viewW = nextW
       viewH = nextH
 
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
-      const bufferW = Math.floor(viewW * dpr)
-      const bufferH = Math.floor(viewH * dpr)
+      const bufferW = Math.max(1, Math.round(viewW * dpr))
+      const bufferH = Math.max(1, Math.round(viewH * dpr))
 
-      // Assigning canvas width/height clears the buffer — only do it when needed.
       if (canvas.width !== bufferW) canvas.width = bufferW
       if (canvas.height !== bufferH) canvas.height = bufferH
 
@@ -130,6 +143,7 @@ export function GameWorldViewport() {
           viewH,
           map.width * map.tileWidth,
           map.height * map.tileHeight,
+          preferredScale,
         )
       }
     }
@@ -146,16 +160,16 @@ export function GameWorldViewport() {
       if (!map) return
       const nextX = player.x + dx
       const nextY = player.y + dy
-      const maxX = map.width * map.tileWidth - PLAYER_SIZE
-      const maxY = map.height * map.tileHeight - PLAYER_SIZE
+      const maxX = map.width * map.tileWidth - playerSize
+      const maxY = map.height * map.tileHeight - playerSize
 
       const clampedX = Math.max(0, Math.min(maxX, nextX))
       const clampedY = Math.max(0, Math.min(maxY, nextY))
 
-      if (!rectHitsSolid(map, clampedX, player.y, PLAYER_SIZE, PLAYER_SIZE)) {
+      if (!rectHitsSolid(map, clampedX, player.y, playerSize, playerSize)) {
         player.x = clampedX
       }
-      if (!rectHitsSolid(map, player.x, clampedY, PLAYER_SIZE, PLAYER_SIZE)) {
+      if (!rectHitsSolid(map, player.x, clampedY, playerSize, playerSize)) {
         player.y = clampedY
       }
     }
@@ -164,7 +178,7 @@ export function GameWorldViewport() {
       if (cancelled) return
       raf = requestAnimationFrame(frame)
 
-      if (!ctx || !map || !tileset || viewW <= 0 || viewH <= 0) return
+      if (!ctx || !map || viewW <= 0 || viewH <= 0) return
 
       const dt = Math.min(0.05, (ts - lastTs) / 1000)
       lastTs = ts
@@ -179,7 +193,7 @@ export function GameWorldViewport() {
       if (vx !== 0 || vy !== 0) {
         const len = Math.hypot(vx, vy) || 1
         facing = { x: vx / len, y: vy / len }
-        tryMove((vx / len) * PLAYER_SPEED * dt, (vy / len) * PLAYER_SPEED * dt)
+        tryMove((vx / len) * playerSpeed * dt, (vy / len) * playerSpeed * dt)
       }
 
       const mapPxW = map.width * map.tileWidth
@@ -187,8 +201,8 @@ export function GameWorldViewport() {
       const viewWorldW = viewW / scale
       const viewWorldH = viewH / scale
 
-      let camX = player.x + PLAYER_SIZE / 2 - viewWorldW / 2
-      let camY = player.y + PLAYER_SIZE / 2 - viewWorldH / 2
+      let camX = player.x + playerSize / 2 - viewWorldW / 2
+      let camY = player.y + playerSize / 2 - viewWorldH / 2
       camX = Math.max(0, Math.min(Math.max(0, mapPxW - viewWorldW), camX))
       camY = Math.max(0, Math.min(Math.max(0, mapPxH - viewWorldH), camY))
 
@@ -201,46 +215,68 @@ export function GameWorldViewport() {
       ctx.translate(-camX, -camY)
       ctx.imageSmoothingEnabled = false
 
-      for (const layer of map.layers) {
+      for (const layer of map.drawLayers) {
         for (let y = 0; y < layer.height; y++) {
           for (let x = 0; x < layer.width; x++) {
             const tile = layer.tiles[y * layer.width + x]
             if (!tile || tile.localId < 0) continue
             drawTile(
               ctx,
-              tileset,
+              map,
               tile,
-              x * TILE_SIZE,
-              y * TILE_SIZE,
-              TILE_SIZE,
+              x * map.tileWidth,
+              y * map.tileHeight,
+              map.tileWidth,
             )
           }
         }
       }
 
-      drawPlayer(ctx, player.x, player.y, facing)
+      drawPlayer(ctx, player.x, player.y, playerSize, facing)
       ctx.restore()
     }
 
     void (async () => {
       try {
-        const [loadedMap, loadedTileset] = await Promise.all([
-          loadTmxMap(SAMPLE_MAP_URL),
-          loadImage(TILESET_IMAGE),
-        ])
+        const assets = await resolveWorldAssets()
         if (cancelled) return
 
-        map = loadedMap
-        tileset = loadedTileset
+        preferredScale = assets.preferredScale
+        playerSize = assets.playerSize
+        playerSpeed = assets.useOt ? 96 : 72
 
-        player = {
-          x: 15 * TILE_SIZE + (TILE_SIZE - PLAYER_SIZE) / 2,
-          y: 10 * TILE_SIZE + (TILE_SIZE - PLAYER_SIZE) / 2,
+        const loadedMap = await loadTmxMap(assets.mapUrl)
+        if (cancelled) return
+
+        // Ensure Kenney maps still have a tileset image if TSX path failed oddly.
+        for (const ts of loadedMap.tilesets) {
+          if (!ts.image && assets.fallbackTilesetImage) {
+            ts.image = await loadImage(assets.fallbackTilesetImage)
+          }
         }
-        if (rectHitsSolid(map, player.x, player.y, PLAYER_SIZE, PLAYER_SIZE)) {
+
+        map = loadedMap
+
+        const spawn = findSpawnPoint(map)
+        if (spawn) {
           player = {
-            x: 8 * TILE_SIZE + 3,
-            y: 11 * TILE_SIZE + 3,
+            x: spawn.x + (map.tileWidth - playerSize) / 2,
+            y: spawn.y + (map.tileHeight - playerSize) / 2,
+          }
+        } else {
+          player = {
+            x: (map.tileWidth - playerSize) / 2,
+            y: (map.tileHeight - playerSize) / 2,
+          }
+        }
+
+        if (rectHitsSolid(map, player.x, player.y, playerSize, playerSize)) {
+          const fallback = findSpawnPoint(map)
+          if (fallback) {
+            player = {
+              x: fallback.x + 3,
+              y: fallback.y + 3,
+            }
           }
         }
 
@@ -257,12 +293,18 @@ export function GameWorldViewport() {
 
     const observer = new ResizeObserver(scheduleResize)
     observer.observe(root)
+    window.visualViewport?.addEventListener('resize', scheduleResize)
+    window.visualViewport?.addEventListener('scroll', scheduleResize)
+    window.addEventListener('orientationchange', scheduleResize)
 
     return () => {
       cancelled = true
       cancelAnimationFrame(raf)
       if (resizeRaf) cancelAnimationFrame(resizeRaf)
       observer.disconnect()
+      window.visualViewport?.removeEventListener('resize', scheduleResize)
+      window.visualViewport?.removeEventListener('scroll', scheduleResize)
+      window.removeEventListener('orientationchange', scheduleResize)
       window.removeEventListener('keydown', onKeyDown)
       window.removeEventListener('keyup', onKeyUp)
     }
@@ -271,11 +313,11 @@ export function GameWorldViewport() {
   return (
     <div
       ref={rootRef}
-      className="absolute inset-0 touch-none select-none overflow-hidden"
+      className="absolute inset-0 size-full touch-none select-none overflow-hidden"
     >
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 size-full [image-rendering:pixelated]"
+        className="absolute inset-0 block size-full max-h-none max-w-none [image-rendering:pixelated]"
         aria-label="Mundo inicial de testes"
       />
       {!ready && !error ? (
