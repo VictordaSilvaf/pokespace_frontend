@@ -4,6 +4,7 @@ import type { LucideIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
+import { PokedexPanel } from '#/features/pokedex'
 import { useAuth } from '#/lib/auth/auth-provider'
 import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
@@ -97,7 +98,7 @@ function MenuButton({
       aria-label={label}
       onClick={onClick}
       className={cn(
-        'inline-flex cursor-pointer items-center justify-center rounded-xl border border-transparent text-hud-ink-soft transition-colors hover:border-white/15 hover:bg-white/8 hover:text-hud-ink',
+        'inline-flex cursor-pointer items-center justify-center rounded-[14px] border border-transparent text-ink-soft transition-colors hover:border-gold/35 hover:bg-white/6 hover:text-ink',
         layout === 'desktop' && 'size-11 flex-col gap-0.5 p-1',
         layout === 'modal' &&
           'aspect-square w-full flex-col gap-1.5 p-2 text-center',
@@ -119,7 +120,7 @@ function MenuButton({
         />
       ) : null}
       {layout === 'modal' ? (
-        <span className="text-[0.7rem] font-semibold leading-tight text-hud-ink">
+        <span className="text-[0.7rem] font-semibold leading-tight text-ink">
           {label}
         </span>
       ) : (
@@ -133,6 +134,7 @@ export function MenuBar() {
   const auth = useAuth()
   const navigate = useNavigate()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [pokedexOpen, setPokedexOpen] = useState(false)
 
   useEffect(() => {
     if (!mobileOpen) return
@@ -149,16 +151,19 @@ export function MenuBar() {
     if (id === 'logout') {
       await auth.signOut()
       await navigate({ to: '/login' })
+      return
     }
 
-    // Placeholders until those screens exist.
+    if (id === 'meus_pokemons') {
+      setPokedexOpen(true)
+    }
   }
 
   const modal =
     mobileOpen && typeof document !== 'undefined'
       ? createPortal(
           <div
-            className="pointer-events-auto fixed inset-0 z-[200] flex items-center justify-center bg-black/55 p-4 backdrop-blur-[2px] md:hidden"
+            className="pointer-events-auto fixed inset-0 z-200 flex items-center justify-center bg-black/55 p-4 backdrop-blur-[2px] md:hidden"
             role="presentation"
             onClick={() => setMobileOpen(false)}
           >
@@ -166,18 +171,18 @@ export function MenuBar() {
               role="dialog"
               aria-modal="true"
               aria-label={m.menu_label()}
-              className="w-full max-w-sm rounded-3xl border border-hud-panel-border bg-hud-panel p-4 shadow-[0_20px_50px_rgba(0,0,0,0.45)]"
+              className="w-full max-w-sm rounded-[18px] border border-line bg-[rgba(16,16,24,0.96)] p-4 shadow-[0_24px_60px_rgba(0,0,0,0.45)]"
               onClick={(event) => event.stopPropagation()}
             >
               <div className="mb-3 flex items-center justify-between gap-2 px-1">
-                <h2 className="m-0 text-sm font-bold tracking-wide text-hud-ink uppercase">
+                <h2 className="m-0 text-sm font-bold tracking-wide text-ink uppercase">
                   {m.menu_label()}
                 </h2>
                 <button
                   type="button"
                   aria-label={m.menu_label()}
                   onClick={() => setMobileOpen(false)}
-                  className="inline-flex size-9 cursor-pointer items-center justify-center rounded-xl text-hud-ink-soft hover:bg-white/8 hover:text-hud-ink"
+                  className="inline-flex size-9 cursor-pointer items-center justify-center rounded-[14px] text-ink-soft hover:bg-white/8 hover:text-ink"
                 >
                   <X className="size-5" strokeWidth={1.75} />
                 </button>
@@ -202,7 +207,7 @@ export function MenuBar() {
 
   return (
     <>
-      <header className="pointer-events-auto absolute top-0 left-1/2 w-auto max-w-[calc(100vw-1rem)] -translate-x-1/2 rounded-b-3xl border border-t-0 border-hud-panel-border bg-hud-panel px-3 py-2 md:px-5 md:py-3">
+      <header className="pointer-events-auto absolute top-0 left-1/2 w-auto max-w-[calc(100vw-1rem)] -translate-x-1/2 rounded-b-[18px] border border-t-0 border-line bg-[rgba(16,16,24,0.92)] px-3 py-2 shadow-[0_12px_40px_rgba(0,0,0,0.35)] md:px-5 md:py-3">
         <div className="flex items-center justify-center md:hidden">
           <button
             type="button"
@@ -210,7 +215,7 @@ export function MenuBar() {
             aria-haspopup="dialog"
             aria-label={m.menu_label()}
             onClick={() => setMobileOpen(true)}
-            className="inline-flex size-10 cursor-pointer items-center justify-center rounded-xl text-hud-ink hover:bg-white/8"
+            className="inline-flex size-10 cursor-pointer items-center justify-center rounded-[14px] text-ink hover:bg-white/8"
           >
             <Menu className="size-5" strokeWidth={1.75} />
           </button>
@@ -233,6 +238,7 @@ export function MenuBar() {
       </header>
 
       {modal}
+      <PokedexPanel open={pokedexOpen} onClose={() => setPokedexOpen(false)} />
     </>
   )
 }

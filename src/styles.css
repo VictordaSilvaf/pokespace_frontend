@@ -40,16 +40,16 @@
   --ring: #f9bc01;
   --radius: 0.75rem;
 
-  --hud-panel: rgba(18, 20, 24, 0.82);
-  --hud-panel-border: rgba(255, 255, 255, 0.12);
-  --hud-ink: #f2f4f7;
-  --hud-ink-soft: rgba(242, 244, 247, 0.7);
+  --hud-panel: rgba(16, 16, 24, 0.92);
+  --hud-panel-border: rgba(255, 255, 255, 0.08);
+  --hud-ink: #f5f5f7;
+  --hud-ink-soft: rgba(245, 245, 247, 0.64);
   --hud-hp-track: rgba(0, 0, 0, 0.55);
   --hud-hp-high: #3fd46c;
   --hud-hp-mid: #e6c84a;
   --hud-hp-low: #e24b4b;
   --hud-hp-empty: #5a3030;
-  --hud-viewport: #0b1210;
+  --hud-viewport: #07070b;
 }
 
 @theme inline {

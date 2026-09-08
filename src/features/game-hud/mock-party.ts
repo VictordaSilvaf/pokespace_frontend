@@ -1,12 +1,22 @@
 import type { Peke } from './types'
 
-/** Preview party for the floating HUD — replace with live API later. */
+const SPRITE_BASE =
+  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
+
+function pokeSprites(dexId: number) {
+  return {
+    dexId,
+    spriteUrl: `${SPRITE_BASE}/${dexId}.png`,
+    walkSpriteUrl: `${SPRITE_BASE}/other/showdown/${dexId}.gif`,
+  }
+}
+
+/** Preview party for the floating HUD — gen 1–3 only (dex ≤ 386). */
 export const mockParty: Peke[] = [
   {
     id: 'peke-1',
     name: 'Mewtwo',
-    spriteUrl:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png',
+    ...pokeSprites(150),
     hp: 100,
     maxHp: 100,
     bonus: 0,
@@ -15,8 +25,7 @@ export const mockParty: Peke[] = [
   {
     id: 'peke-2',
     name: 'Blastoise',
-    spriteUrl:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png',
+    ...pokeSprites(9),
     hp: 100,
     maxHp: 100,
     bonus: 0,
@@ -25,8 +34,7 @@ export const mockParty: Peke[] = [
   {
     id: 'peke-3',
     name: 'Vileplume',
-    spriteUrl:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/45.png',
+    ...pokeSprites(45),
     hp: 72,
     maxHp: 100,
     bonus: 0,
@@ -34,9 +42,8 @@ export const mockParty: Peke[] = [
   },
   {
     id: 'peke-4',
-    name: 'Zeraora',
-    spriteUrl:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/807.png',
+    name: 'Swampert',
+    ...pokeSprites(260),
     hp: 41,
     maxHp: 100,
     bonus: 0,
@@ -45,8 +52,7 @@ export const mockParty: Peke[] = [
   {
     id: 'peke-5',
     name: 'Gengar',
-    spriteUrl:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/94.png',
+    ...pokeSprites(94),
     hp: 0,
     maxHp: 100,
     bonus: 0,
@@ -54,9 +60,8 @@ export const mockParty: Peke[] = [
   },
   {
     id: 'peke-6',
-    name: 'Lucario',
-    spriteUrl:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png',
+    name: 'Gardevoir',
+    ...pokeSprites(282),
     hp: 88,
     maxHp: 100,
     bonus: 2,

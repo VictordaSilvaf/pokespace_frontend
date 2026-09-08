@@ -113,7 +113,7 @@ export function PekePartySlot({
   const percent = Math.round(ratio * 100)
   const opacity = peke.fainted ? (selected ? 0.92 : 0.82) : 1
 
-  const scale = selected ? 1.06 : hovered ? 1.03 : 1
+  const scale = selected ? 1.04 : hovered ? 1.02 : 1
   const zIndex = selected || hovered ? 10 : 1
   const meterLabel = peke.fainted ? m.peke_fainted() : `${percent}%`
 
@@ -134,27 +134,27 @@ export function PekePartySlot({
         opacity,
         zIndex,
       }}
-      whileTap={selected ? undefined : { scale: Math.min(scale, 1.015) }}
+      whileTap={selected ? undefined : { scale: Math.min(scale, 1.01) }}
       transition={softSpring}
       className={cn(
         'origin-left cursor-pointer select-none',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35',
-        // Mobile: compact circular portrait (1.5× base size-11)
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/40',
+        // Mobile: compact circular portrait
         'relative flex size-[4.125rem] items-center justify-center rounded-r-full border border-transparent bg-transparent p-0 shadow-none',
-        // Desktop: full HUD row
-        'md:grid md:h-auto md:size-auto md:w-full md:grid-cols-[2.65rem_1fr] md:items-center md:gap-1.5 md:rounded-l-none md:rounded-r-full md:border md:border-l-0 md:border-hud-panel-border md:bg-hud-panel md:py-1.5 md:pr-16 md:pl-1.5 md:text-left md:shadow-[0_4px_16px_rgba(0,0,0,0.35)] md:backdrop-blur-sm',
-        hovered && !selected && 'md:shadow-[0_6px_20px_rgba(0,0,0,0.45)]',
-        // Selected: flush left edge, rounded right, padded portrait
+        // Desktop: full HUD row — inset from screen edge so scale/shadows are not clipped
+        'md:grid md:h-auto md:size-auto md:w-full md:grid-cols-[2.65rem_1fr] md:items-center md:gap-1.5 md:rounded-l-2xl md:rounded-r-full md:border md:border-line md:bg-[rgba(16,16,24,0.92)] md:py-1.5 md:pr-14 md:pl-1.5 md:text-left md:shadow-[0_8px_24px_rgba(0,0,0,0.35)] md:backdrop-blur-sm',
+        hovered && !selected && 'md:border-gold/25 md:bg-[rgba(22,22,31,0.95)]',
+        // Selected: gold edge, slightly taller — still fully inside padded aside
         selected &&
-          'h-[4.5rem] w-auto min-w-0 justify-start rounded-l-none rounded-r-full border border-l-0 border-white/40 bg-[rgba(32,36,42,0.94)] py-1.5 pr-2.5 pl-2 shadow-[0_8px_24px_rgba(0,0,0,0.5)] backdrop-blur-sm md:h-auto md:w-full md:border-white/40 md:bg-[rgba(32,36,42,0.92)] md:py-1.5 md:pr-16 md:pl-1.5 md:shadow-[0_8px_24px_rgba(0,0,0,0.5)]',
+          'h-[4.5rem] w-auto min-w-0 justify-start rounded-l-2xl rounded-r-full border border-gold/45 bg-[rgba(16,16,24,0.96)] py-1.5 pr-2.5 pl-2 shadow-[0_8px_24px_rgba(0,0,0,0.45)] backdrop-blur-sm md:h-auto md:w-full md:rounded-l-2xl md:border-gold/45 md:bg-[rgba(22,22,31,0.96)] md:py-1.5 md:pr-14 md:pl-1.5',
       )}
       style={{ willChange: 'transform', transformOrigin: 'left center' }}
     >
       <div
         className={cn(
           'relative size-[4.125rem] shrink-0 md:size-[2.65rem]',
-          'overflow-hidden rounded-full border border-white/14 bg-black/45',
-          selected && 'size-[3.75rem] border-white/45 md:size-[2.65rem]',
+          'overflow-hidden rounded-full border border-line bg-black/45',
+          selected && 'size-[3.75rem] border-gold/50 md:size-[2.65rem]',
         )}
         role="meter"
         aria-valuemin={0}
@@ -197,17 +197,17 @@ export function PekePartySlot({
 
       <div className="hidden min-w-0 gap-0.5 md:grid">
         <div className="flex items-baseline justify-between gap-1.5">
-          <span className="truncate text-[0.78rem] font-bold text-hud-ink">
+          <span className="truncate text-[0.78rem] font-bold text-ink">
             {peke.name}
           </span>
           {!peke.fainted ? (
-            <span className="shrink-0 text-[0.65rem] font-semibold text-hud-ink-soft">
+            <span className="shrink-0 text-[0.65rem] font-semibold text-ink-soft">
               {percent}%
             </span>
           ) : null}
         </div>
 
-        <div className="relative min-h-4 overflow-hidden rounded-[3px] border border-white/8 bg-hud-hp-track">
+        <div className="relative min-h-4 overflow-hidden rounded-[3px] border border-line bg-hud-hp-track">
           <motion.div
             className={cn('h-full rounded-[inherit]', hpFillClass[tone])}
             initial={false}
@@ -221,7 +221,7 @@ export function PekePartySlot({
           ) : null}
         </div>
 
-        <span className="text-[0.62rem] font-semibold text-hud-ink-soft">
+        <span className="text-[0.62rem] font-semibold text-mute">
           {m.peke_bonus({ value: String(peke.bonus) })}
         </span>
       </div>
