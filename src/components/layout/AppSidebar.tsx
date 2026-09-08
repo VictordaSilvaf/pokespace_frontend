@@ -24,16 +24,19 @@ const AUTH_PREFIXES = [
   '/two-factor',
 ]
 
+export function isAuthPath(pathname: string) {
+  return AUTH_PREFIXES.some(
+    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
+  )
+}
+
 export function AppSidebar() {
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   })
   const auth = useAuth()
   const loggedIn = Boolean(auth.session)
-
-  const onAuthScreen = AUTH_PREFIXES.some(
-    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
-  )
+  const onAuthScreen = isAuthPath(pathname)
 
   const guestLinks = [
     { to: '/login' as const, label: m.nav_login() },
@@ -55,6 +58,39 @@ export function AppSidebar() {
     : loggedIn
       ? loggedInLinks
       : guestLinks
+
+  if (onAuthScreen) {
+    return (
+      <header className="sticky top-0 z-40 flex items-center gap-3 border-b border-line bg-[rgba(10,10,16,0.92)] px-4 py-3 backdrop-blur-[10px]">
+        <BrandMark compact />
+
+        <nav
+          className="flex min-w-0 flex-1 items-center justify-end gap-1 overflow-x-auto"
+          aria-label={m.app_brand()}
+        >
+          <div className="mr-4">
+            <LocaleSwitcher />
+            </div>
+
+          {links.map((link) => {
+            const active = isActivePath(pathname, link.to)
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={cn(
+                  'whitespace-nowrap rounded-[10px] border-b-2 border-transparent px-3 py-2 text-sm font-semibold text-ink-soft hover:bg-white/4 hover:text-ink',
+                  active && 'border-b-gold bg-gold/10 text-gold',
+                )}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
+        </nav>
+      </header>
+    )
+  }
 
   return (
     <aside
@@ -86,7 +122,7 @@ export function AppSidebar() {
                   'flex items-center gap-2.5 rounded-[10px] border-l-2 border-transparent px-3 py-2.5 font-semibold text-ink-soft hover:bg-white/4 hover:text-ink',
                   'max-lg:border-b-2 max-lg:border-l-0 max-lg:whitespace-nowrap max-lg:px-2.5 max-lg:py-2 max-lg:text-sm',
                   active &&
-                    'border-l-gold bg-gold/10 text-gold max-lg:border-b-gold max-lg:border-l-transparent',
+                  'border-l-gold bg-gold/10 text-gold max-lg:border-b-gold max-lg:border-l-transparent',
                 )}
               >
                 {link.label}
@@ -115,7 +151,7 @@ export function AppSidebar() {
           >
             {m.nav_logout()}
           </button>
-        ) : onAuthScreen ? null : (
+        ) : (
           <>
             <Link
               to="/register"
