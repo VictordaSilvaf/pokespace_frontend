@@ -13,7 +13,7 @@ runtime in the browser.
 | --- | --- |
 | `forgotten.otbm` | `Server/data/world/forgotten.otbm` |
 | `items.otb` | `Server/data/items/items.otb` |
-| `items.xml` | `Server/data/items/items.xml` |
+| `items.xml` | `Server/data/items/items.xml` (or reuse `tools/server-data/items/`) |
 | `Tibia.dat` | OTClient `client/data/things/` (not in the GitHub repo) |
 | `Tibia.spr` | OTClient `client/data/things/` (not in the GitHub repo) |
 
@@ -45,7 +45,7 @@ pnpm ot:map
 pnpm ot:map -- --x 320 --y 320 --w 64 --h 64 --z 7
 ```
 
-Outputs land in `public/assets/game/`:
+Outputs land in `public/assets/world/`:
 
 ```
 tilesets/overworld.png

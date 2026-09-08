@@ -5,8 +5,8 @@ import { fileURLToPath } from 'node:url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 export const ROOT = path.resolve(__dirname, '../..')
 export const OT_SOURCE = path.join(ROOT, 'tools/ot-source')
-export const OUT_TILESETS = path.join(ROOT, 'public/assets/game/tilesets')
-export const OUT_MAPS = path.join(ROOT, 'public/assets/game/maps')
+export const OUT_TILESETS = path.join(ROOT, 'public/assets/world/tilesets')
+export const OUT_MAPS = path.join(ROOT, 'public/assets/world/maps')
 export const PIPELINE_CACHE = path.join(ROOT, 'tools/ot-pipeline/.cache')
 
 export const TILE_SIZE = 32

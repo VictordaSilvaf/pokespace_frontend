@@ -1,3 +1,9 @@
+import {
+  getPokemonByDexId,
+  pokemonPortraitUrl,
+  type CatalogPokemon,
+} from '#/features/game-data'
+
 export type PokeType =
   | 'normal'
   | 'fire'
@@ -37,6 +43,7 @@ export type PokedexEntry = {
   moves?: PokedexMove[]
   evolution?: string
   description?: string
+  portraitId?: number | null
 }
 
 export const POKEDEX_TOTAL = 386
@@ -83,19 +90,63 @@ export const TYPE_COLORS: Record<PokeType, string> = {
   fairy: '#EE99AC',
 }
 
-const SPRITE_BASE =
-  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
+const KNOWN_TYPES = new Set<string>(ALL_TYPES)
 
-export function pokedexSpriteUrl(dexId: number, shiny = false) {
-  return shiny
-    ? `${SPRITE_BASE}/shiny/${dexId}.png`
-    : `${SPRITE_BASE}/${dexId}.png`
+function asPokeType(value: string): PokeType | null {
+  const t = value.toLowerCase()
+  return KNOWN_TYPES.has(t) ? (t as PokeType) : null
+}
+
+export function pokedexSpriteUrl(dexId: number, _shiny = false) {
+  return pokemonPortraitUrl(dexId)
 }
 
 export function pokedexWalkUrl(dexId: number) {
-  return `${SPRITE_BASE}/other/showdown/${dexId}.gif`
+  return pokemonPortraitUrl(dexId)
 }
 
 export function formatDexId(dexId: number) {
   return String(dexId).padStart(3, '0')
+}
+
+export function catalogToPokedexFields(entry: CatalogPokemon): Partial<PokedexEntry> {
+  const types = entry.types
+    .map(asPokeType)
+    .filter((t): t is PokeType => t != null)
+
+  const moves: PokedexMove[] = entry.moves.map((move, index) => ({
+    id: `m${index + 1}`,
+    name: move.name.replace(/\b\w/g, (c) => c.toUpperCase()),
+    type: types[0] ?? 'normal',
+  }))
+
+  const evolution =
+    entry.evolutions.length > 0
+      ? [...new Set(entry.evolutions.map((e) => e.name))].join(' / ')
+      : '—'
+
+  return {
+    name: entry.name,
+    types,
+    level: entry.levelMax ?? entry.levelMin ?? undefined,
+    moves,
+    evolution,
+    portraitId: entry.portraitId,
+    description: undefined,
+  }
+}
+
+export function resolvePokedexEntry(
+  dexId: number,
+  discovered: boolean,
+): PokedexEntry {
+  const catalog = getPokemonByDexId(dexId)
+  if (!catalog || !discovered) {
+    return { dexId, discovered }
+  }
+  return {
+    dexId,
+    discovered: true,
+    ...catalogToPokedexFields(catalog),
+  }
 }

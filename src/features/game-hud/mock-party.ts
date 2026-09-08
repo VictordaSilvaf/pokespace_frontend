@@ -1,70 +1,44 @@
+import {
+  getPokemonByDexId,
+  pokemonPortraitUrl,
+} from '#/features/game-data'
+
 import type { Peke } from './types'
 
-const SPRITE_BASE =
-  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon'
+type PartySeed = {
+  id: string
+  dexId: number
+  hp: number
+  maxHp: number
+  bonus: number
+  fainted: boolean
+}
 
-function pokeSprites(dexId: number) {
+const PARTY_SEEDS: PartySeed[] = [
+  { id: 'peke-1', dexId: 150, hp: 100, maxHp: 100, bonus: 0, fainted: false },
+  { id: 'peke-2', dexId: 9, hp: 100, maxHp: 100, bonus: 0, fainted: false },
+  { id: 'peke-3', dexId: 45, hp: 72, maxHp: 100, bonus: 0, fainted: false },
+  { id: 'peke-4', dexId: 260, hp: 41, maxHp: 100, bonus: 0, fainted: false },
+  { id: 'peke-5', dexId: 94, hp: 0, maxHp: 100, bonus: 0, fainted: true },
+  { id: 'peke-6', dexId: 282, hp: 88, maxHp: 100, bonus: 2, fainted: false },
+]
+
+function toPeke(seed: PartySeed): Peke {
+  const entry = getPokemonByDexId(seed.dexId)
+  const sprite = pokemonPortraitUrl(seed.dexId)
   return {
-    dexId,
-    spriteUrl: `${SPRITE_BASE}/${dexId}.png`,
-    walkSpriteUrl: `${SPRITE_BASE}/other/showdown/${dexId}.gif`,
+    id: seed.id,
+    name: entry?.name ?? `Dex ${seed.dexId}`,
+    dexId: seed.dexId,
+    spriteUrl: sprite,
+    // Walk sheets need lookType→creature mapping; use portrait until then.
+    walkSpriteUrl: sprite,
+    hp: seed.hp,
+    maxHp: seed.maxHp,
+    bonus: seed.bonus,
+    fainted: seed.fainted,
   }
 }
 
 /** Preview party for the floating HUD — gen 1–3 only (dex ≤ 386). */
-export const mockParty: Peke[] = [
-  {
-    id: 'peke-1',
-    name: 'Mewtwo',
-    ...pokeSprites(150),
-    hp: 100,
-    maxHp: 100,
-    bonus: 0,
-    fainted: false,
-  },
-  {
-    id: 'peke-2',
-    name: 'Blastoise',
-    ...pokeSprites(9),
-    hp: 100,
-    maxHp: 100,
-    bonus: 0,
-    fainted: false,
-  },
-  {
-    id: 'peke-3',
-    name: 'Vileplume',
-    ...pokeSprites(45),
-    hp: 72,
-    maxHp: 100,
-    bonus: 0,
-    fainted: false,
-  },
-  {
-    id: 'peke-4',
-    name: 'Swampert',
-    ...pokeSprites(260),
-    hp: 41,
-    maxHp: 100,
-    bonus: 0,
-    fainted: false,
-  },
-  {
-    id: 'peke-5',
-    name: 'Gengar',
-    ...pokeSprites(94),
-    hp: 0,
-    maxHp: 100,
-    bonus: 0,
-    fainted: true,
-  },
-  {
-    id: 'peke-6',
-    name: 'Gardevoir',
-    ...pokeSprites(282),
-    hp: 88,
-    maxHp: 100,
-    bonus: 2,
-    fainted: false,
-  },
-]
+export const mockParty: Peke[] = PARTY_SEEDS.map(toPeke)

@@ -3,9 +3,9 @@ export type Peke = {
   name: string
   /** National dex id (1–386 for gen 1–3). */
   dexId: number
-  /** Static portrait for the HUD. */
+  /** Local portrait for the HUD. */
   spriteUrl: string
-  /** Animated Showdown GIF used as the world follower. */
+  /** Follower sprite (portrait until creature walk sheets are mapped). */
   walkSpriteUrl: string
   hp: number
   maxHp: number

@@ -1,6 +1,6 @@
 {
   "include": ["**/*.ts", "**/*.tsx", "eslint.config.js", "prettier.config.js", "vite.config.js"],
-  "exclude": ["public/assets/kenney/tiled/**"],
+  "exclude": ["public/assets/world/kenney/tiled/**"],
  
   "compilerOptions": {
     "target": "ES2022",
@@ -17,6 +17,7 @@
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "allowJs": true,
+    "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
 

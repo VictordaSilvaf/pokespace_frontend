@@ -1,12 +1,12 @@
 /** Public paths for game-world assets. OT primary, Kenney fallback. */
 
-export const GAME_BASE = '/assets/game'
+export const GAME_BASE = '/assets/world'
 export const OT_MAP_URL = `${GAME_BASE}/maps/starter.tmx`
 export const OT_TILESET_IMAGE = `${GAME_BASE}/tilesets/overworld.png`
 export const OT_TILESET_META_URL = `${GAME_BASE}/tilesets/overworld.json`
 
-/** Kenney Tiny Town / Tiny Dungeon pack under public/assets. */
-export const KENNEY_BASE = '/assets/kenney'
+/** Kenney Tiny Town / Tiny Dungeon pack under public/assets/world. */
+export const KENNEY_BASE = '/assets/world/kenney'
 export const KENNEY_MAP_URL = `${KENNEY_BASE}/tiled/sampleMap.tmx`
 export const KENNEY_TILESET_IMAGE = `${KENNEY_BASE}/tilemap/tilemap.png`
 

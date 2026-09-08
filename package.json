@@ -14,6 +14,7 @@
     "format": "prettier --write . && eslint --fix",
     "check": "prettier --check .",
     "check:i18n": "node ./scripts/check-i18n.mjs",
+    "catalog:build": "node ./tools/catalog/build-catalog.mjs",
     "ot:extract": "node ./tools/ot-pipeline/extract-ot-sprites.mjs",
     "ot:map": "node ./tools/ot-pipeline/convert-otbm-crop.mjs",
     "start": "node --import ./.output/server/instrument.server.mjs .output/server/index.mjs"

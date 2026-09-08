@@ -5,7 +5,7 @@ import { m } from '#/paraglide/messages'
 import type { Character } from '../schemas'
 
 export const CHARACTER_SLOT_COUNT = 4
-export const EMPTY_CHARACTER_IMAGE = '/assets/poke/skins/None.png'
+export const EMPTY_CHARACTER_IMAGE = '/assets/ui/skins/None.png'
 
 const slotShellClassName =
   'animate-rise-in flex aspect-square flex-col overflow-hidden rounded-[14px] border border-line bg-[rgba(16,16,24,0.88)] transition-[transform,border-color,background-color] duration-160 hover:-translate-y-0.5 hover:border-gold/35 hover:bg-[rgba(22,22,31,0.95)]'
