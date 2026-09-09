@@ -224,6 +224,9 @@ export async function createCharacterFn(input: {
       {
         method: 'POST',
         auth: true,
+        headers: {
+          'Idempotency-Key': idempotencyKey,
+        },
         body: {
           name: body.displayName,
           serverId: body.worldId,

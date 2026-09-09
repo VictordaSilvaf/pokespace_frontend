@@ -17,6 +17,7 @@ type RequestOptions = {
   body?: unknown
   auth?: boolean
   retryOnUnauthorized?: boolean
+  headers?: Record<string, string>
 }
 
 let refreshInFlight: Promise<boolean> | null = null
@@ -103,11 +104,18 @@ export async function apiRequest<T>(
     body,
     auth = false,
     retryOnUnauthorized = true,
+    headers: extraHeaders,
   } = options
   const headers = new Headers()
 
   if (body !== undefined) {
     headers.set('Content-Type', 'application/json')
+  }
+
+  if (extraHeaders) {
+    for (const [key, value] of Object.entries(extraHeaders)) {
+      headers.set(key, value)
+    }
   }
 
   if (auth) {
