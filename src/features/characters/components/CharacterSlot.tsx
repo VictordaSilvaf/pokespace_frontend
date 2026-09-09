@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router'
 
 import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
+import { saveActiveCharacterId } from '../active-character'
 import type { Character } from '../schemas'
 
 export const CHARACTER_SLOT_COUNT = 4
@@ -20,6 +21,7 @@ export function CharacterSlot({ character }: CharacterSlotProps) {
       to="/game"
       className={cn(slotShellClassName, 'text-inherit no-underline')}
       title={m.character_enter_world()}
+      onClick={() => saveActiveCharacterId(character.id)}
     >
       <div className="relative min-h-0 flex-1 bg-[#0c0c13]">
         <img

@@ -60,6 +60,12 @@ export {
   creatureUrl,
 } from './creature-map'
 export type { SheetGeometry } from './creature-map'
+export {
+  buildPokemonVisual,
+  getPokemonVisual,
+  listCuratedPokemonVisuals,
+} from './pokemon-visual'
+export type { AssetCategory, AssetReference, PokemonVisual } from './pokemon-visual'
 export { CreaturePortrait } from './CreaturePortrait'
 export { drawCreatureFrame, facingFromVector, frameRect } from './sheet'
 export type { FacingDir, FrameRect } from './sheet'

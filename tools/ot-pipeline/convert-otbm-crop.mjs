@@ -1,41 +1,42 @@
 #!/usr/bin/env node
 /**
- * Convert a crop of forgotten.otbm into starter.tmx for the web client.
+ * Convert a crop of an OTBM world into starter.tmx for the web client.
  *
  * Usage:
  *   pnpm ot:map
- *   pnpm ot:map -- --x 320 --y 320 --w 64 --h 64 --z 7
- *   pnpm ot:map -- --scan   # write used-ids.json only (no TMX)
+ *   pnpm ot:map -- --otbm tools/server-data/world/global_dash.otbm
+ *   pnpm ot:map -- --x 1160 --y 574 --w 96 --h 96 --z 7
+ *   pnpm ot:map -- --scan
+ *   pnpm ot:map -- --scan --x 1160 --y 574 --w 96 --h 96
  */
 import fs from 'node:fs'
 import path from 'node:path'
 import { OTBMReader, OTBM_NODE_TYPE } from '@v0rt4c/otbm'
 
 import {
-  OT_SOURCE,
   OUT_MAPS,
   OUT_TILESETS,
   PIPELINE_CACHE,
   TILE_SIZE,
   ensureDirs,
   parseArgs,
-  requireFile,
+  resolveOtbmPath,
 } from './paths.mjs'
 
 const args = parseArgs(process.argv.slice(2))
 const scanOnly = Boolean(args.scan)
 const floorZ = args.z !== undefined ? Number(args.z) : 7
-const cropW = args.w !== undefined ? Number(args.w) : 64
-const cropH = args.h !== undefined ? Number(args.h) : 64
+const cropW = args.w !== undefined ? Number(args.w) : 96
+const cropH = args.h !== undefined ? Number(args.h) : 96
+const hasCropOrigin = args.x !== undefined && args.y !== undefined
+const cropOriginX = hasCropOrigin ? Number(args.x) : null
+const cropOriginY = hasCropOrigin ? Number(args.y) : null
 
-const otbmPath = requireFile(
-  path.join(OT_SOURCE, 'forgotten.otbm'),
-  'forgotten.otbm',
-)
+const otbmPath = resolveOtbmPath(args)
 
 ensureDirs()
 
-console.log('Reading OTBM…')
+console.log(`Reading OTBM… ${otbmPath}`)
 const buffer = new Uint8Array(fs.readFileSync(otbmPath))
 const reader = new OTBMReader(buffer)
 const root = reader.getRootNode()
@@ -49,17 +50,37 @@ const TILE_TYPES = new Set([
 const tiles = new Map()
 const usedIds = new Set()
 
+function inScanBounds(x, y) {
+  if (!hasCropOrigin) return true
+  return (
+    x >= cropOriginX &&
+    y >= cropOriginY &&
+    x < cropOriginX + cropW &&
+    y < cropOriginY + cropH
+  )
+}
+
 function walk(node) {
   if (TILE_TYPES.has(node.type)) {
     const x = node.realX
     const y = node.realY
     const z = node.z
-    if (z === floorZ && Number.isFinite(x) && Number.isFinite(y)) {
+    if (
+      z === floorZ &&
+      Number.isFinite(x) &&
+      Number.isFinite(y) &&
+      inScanBounds(x, y)
+    ) {
       const groundId =
-        typeof node.attributes?.tileId === 'number' ? node.attributes.tileId : null
+        typeof node.attributes?.tileId === 'number'
+          ? node.attributes.tileId
+          : null
       const itemIds = []
       for (const child of node.children ?? []) {
-        if (child.type === OTBM_NODE_TYPE.OTBM_ITEM && typeof child.id === 'number') {
+        if (
+          child.type === OTBM_NODE_TYPE.OTBM_ITEM &&
+          typeof child.id === 'number'
+        ) {
           itemIds.push(child.id)
         }
       }
@@ -72,37 +93,126 @@ function walk(node) {
 }
 
 walk(root)
-console.log(`Found ${tiles.size} tiles on z=${floorZ}; ${usedIds.size} unique item IDs`)
+console.log(
+  `Found ${tiles.size} tiles on z=${floorZ}; ${usedIds.size} unique item IDs`,
+)
 
 const usedIdsPath = path.join(PIPELINE_CACHE, 'used-ids.json')
 fs.writeFileSync(
   usedIdsPath,
-  JSON.stringify({ z: floorZ, ids: [...usedIds].sort((a, b) => a - b) }, null, 2),
+  JSON.stringify(
+    {
+      z: floorZ,
+      otbm: path.relative(process.cwd(), otbmPath),
+      crop: hasCropOrigin
+        ? { x: cropOriginX, y: cropOriginY, w: cropW, h: cropH }
+        : null,
+      ids: [...usedIds].sort((a, b) => a - b),
+    },
+    null,
+    2,
+  ),
 )
 console.log(`Wrote ${usedIdsPath}`)
 
 if (scanOnly) {
-  console.log('Scan complete (--scan). Run pnpm ot:extract -- --only-used next.')
+  console.log('Scan only — done.')
   process.exit(0)
 }
 
 const metaPath = path.join(OUT_TILESETS, 'overworld.json')
 if (!fs.existsSync(metaPath)) {
   throw new Error(
-    `Missing ${metaPath}. Run pnpm ot:extract first (optionally after --scan).`,
+    `Missing ${metaPath}. Run pnpm ot:extract:local -- --only-used first (optionally after --scan).`,
   )
 }
 const meta = JSON.parse(fs.readFileSync(metaPath, 'utf8'))
 const tileMeta = meta.tiles
 
-function atlasGid(clientId) {
-  const entry = tileMeta[String(clientId)]
+/**
+ * OTClient ThingType::getSpriteIndex order:
+ * (((((phase * pz + z) * py + y) * px + x) * layers + layer) * h + hy) * w + wx
+ */
+function localSpriteIndex(g, wx, hy, layer, patX, patY, patZ, phase) {
+  return (
+    (((((phase * g.pz + patZ) * g.py + patY) * g.px + patX) * g.layers +
+      layer) *
+      g.h +
+      hy) *
+      g.w +
+    wx
+  )
+}
+
+function getEntry(clientId) {
+  return tileMeta[String(clientId)] ?? null
+}
+
+function atlasGidForSprite(entry, localIndex) {
   if (!entry) return 0
-  return entry.atlasIndex + 1 // firstgid = 1
+  const sprites = entry.sprites
+  if (Array.isArray(sprites) && sprites.length > 0) {
+    const atlas =
+      sprites[Math.max(0, Math.min(localIndex, sprites.length - 1))]
+    return atlas + 1
+  }
+  return (entry.atlasIndex ?? 0) + 1
+}
+
+/** Pattern-aware GID for a 1×1 cell (grounds / simple objects). */
+function atlasGid(clientId, worldX = 0, worldY = 0) {
+  const entry = getEntry(clientId)
+  if (!entry) return 0
+  const g = entry.g ?? { w: 1, h: 1, layers: 1, px: 1, py: 1, pz: 1, phases: 1 }
+  const patX = ((worldX % g.px) + g.px) % g.px
+  const patY = ((worldY % g.py) + g.py) % g.py
+  // Multi-tile grounds: use SE part (richest / least empty)
+  const wx = Math.max(0, g.w - 1)
+  const hy = Math.max(0, g.h - 1)
+  const local = localSpriteIndex(g, wx, hy, 0, patX, patY, 0, 0)
+  return atlasGidForSprite(entry, local)
 }
 
 function isSolidId(clientId) {
-  return Boolean(tileMeta[String(clientId)]?.solid)
+  return Boolean(getEntry(clientId)?.solid)
+}
+
+/**
+ * Paint an item onto the objects layer, expanding multi-tile footprints
+ * (anchor = SE tile, matching OT draw offsets).
+ */
+function paintItem(objectsLayer, clientId, lx, ly, worldX, worldY) {
+  const entry = getEntry(clientId)
+  if (!entry) return
+  const g = entry.g ?? { w: 1, h: 1, layers: 1, px: 1, py: 1, pz: 1, phases: 1 }
+  const patX = ((worldX % g.px) + g.px) % g.px
+  const patY = ((worldY % g.py) + g.py) % g.py
+
+  for (let hy = 0; hy < g.h; hy++) {
+    for (let wx = 0; wx < g.w; wx++) {
+      const tx = lx - (g.w - 1) + wx
+      const ty = ly - (g.h - 1) + hy
+      if (tx < 0 || ty < 0 || tx >= cropW || ty >= cropH) continue
+      const local = localSpriteIndex(g, wx, hy, 0, patX, patY, 0, 0)
+      const gid = atlasGidForSprite(entry, local)
+      if (gid === 0) continue
+      // Do not stamp fully-empty multi-tile parts over neighbors
+      const sprites = entry.sprites
+      if (Array.isArray(sprites)) {
+        const atlasIndex = sprites[Math.max(0, Math.min(local, sprites.length - 1))]
+        // atlasIndex  reserved — empty cells still get a gid; skip if name marks empty
+        // Heuristic: only overwrite when this part is the SE anchor or prior is empty
+        const isAnchor = wx === g.w - 1 && hy === g.h - 1
+        const prev = objectsLayer[ty * cropW + tx]
+        if (!isAnchor && prev !== 0 && g.w * g.h > 1) {
+          // keep existing furniture/walls unless this is the main SE tile
+          continue
+        }
+        void atlasIndex
+      }
+      objectsLayer[ty * cropW + tx] = gid
+    }
+  }
 }
 
 let minX = Infinity
@@ -122,9 +232,9 @@ if (!Number.isFinite(minX)) {
 
 let originX
 let originY
-if (args.x !== undefined && args.y !== undefined) {
-  originX = Number(args.x)
-  originY = Number(args.y)
+if (hasCropOrigin) {
+  originX = cropOriginX
+  originY = cropOriginY
 } else {
   const centerX = Math.floor((minX + maxX) / 2)
   const centerY = Math.floor((minY + maxY) / 2)
@@ -147,30 +257,26 @@ for (let ly = 0; ly < cropH; ly++) {
     const wy = originY + ly
     const tile = tiles.get(`${wx},${wy},${floorZ}`)
     if (!tile) {
-      // Empty SQM → solid void
       collision[ly * cropW + lx] = 1
       continue
     }
     painted++
     const idx = ly * cropW + lx
     if (tile.groundId != null) {
-      ground[idx] = atlasGid(tile.groundId)
+      ground[idx] = atlasGid(tile.groundId, wx, wy)
       if (isSolidId(tile.groundId)) collision[idx] = 1
     } else {
       collision[idx] = 1
     }
-    if (tile.itemIds.length > 0) {
-      const top = tile.itemIds[tile.itemIds.length - 1]
-      objects[idx] = atlasGid(top)
-      if (tile.itemIds.some(isSolidId)) collision[idx] = 1
+    for (const itemId of tile.itemIds) {
+      paintItem(objects, itemId, lx, ly, wx, wy)
+      if (isSolidId(itemId)) collision[idx] = 1
     }
   }
 }
 
 console.log(`Painted ${painted}/${cropW * cropH} SQMs in crop`)
 
-// Collision layer uses a dedicated 1-tile marker: reuse atlas index 0 if solid,
-// else write any solid gid. Simplest: use gid 1 (first atlas tile) as marker when solid.
 const collisionMarkerGid = 1
 for (let i = 0; i < collision.length; i++) {
   collision[i] = collision[i] ? collisionMarkerGid : 0
@@ -188,7 +294,6 @@ function layerCsv(arr) {
   return lines.join(',\n')
 }
 
-// Find walkable spawn near center
 let spawnX = Math.floor(cropW / 2)
 let spawnY = Math.floor(cropH / 2)
 let foundSpawn = false
@@ -237,9 +342,12 @@ ${layerCsv(collision)}
 </map>
 `
 
-const outPath = path.join(OUT_MAPS, 'starter.tmx')
-fs.writeFileSync(outPath, tmx)
-console.log(`Wrote ${outPath}`)
+const outOtbm = path.join(OUT_MAPS, 'starter-otbm.tmx')
+const outStarter = path.join(OUT_MAPS, 'starter.tmx')
+fs.writeFileSync(outOtbm, tmx)
+fs.writeFileSync(outStarter, tmx)
+console.log(`Wrote ${outOtbm}`)
+console.log(`Wrote ${outStarter} (playable default)`)
 console.log(
   foundSpawn
     ? `player_spawn at tile (${spawnX},${spawnY}) px (${spawnPxX},${spawnPxY})`

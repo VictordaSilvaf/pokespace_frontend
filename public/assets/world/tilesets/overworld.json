@@ -1,0 +1,7399 @@
+{
+  "tileSize": 32,
+  "columns": 35,
+  "tilecount": 1175,
+  "image": "../tilesets/overworld.png",
+  "imageWidth": 1120,
+  "imageHeight": 1088,
+  "tiles": {
+    "103": {
+      "atlasIndex": 0,
+      "solid": false,
+      "ground": false,
+      "name": "dirt",
+      "clientId": 103,
+      "assetId": 103,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 2,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        0,
+        1
+      ]
+    },
+    "106": {
+      "atlasIndex": 3,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 106,
+      "assetId": 106,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        2,
+        3
+      ]
+    },
+    "108": {
+      "atlasIndex": 5,
+      "solid": false,
+      "ground": false,
+      "name": "flowers",
+      "clientId": 108,
+      "assetId": 108,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        4,
+        5
+      ]
+    },
+    "109": {
+      "atlasIndex": 7,
+      "solid": false,
+      "ground": false,
+      "name": "flowers",
+      "clientId": 109,
+      "assetId": 109,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        6,
+        7
+      ]
+    },
+    "231": {
+      "atlasIndex": 9,
+      "solid": false,
+      "ground": false,
+      "name": "sand",
+      "clientId": 231,
+      "assetId": 231,
+      "g": {
+        "w": 2,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        8,
+        9
+      ]
+    },
+    "406": {
+      "atlasIndex": 10,
+      "solid": false,
+      "ground": false,
+      "name": "white marble floor",
+      "clientId": 409,
+      "assetId": 409,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        10
+      ]
+    },
+    "407": {
+      "atlasIndex": 11,
+      "solid": false,
+      "ground": false,
+      "name": "black marble floor",
+      "clientId": 410,
+      "assetId": 410,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        11
+      ]
+    },
+    "412": {
+      "atlasIndex": 12,
+      "solid": false,
+      "ground": false,
+      "name": "sandstone floor",
+      "clientId": 415,
+      "assetId": 415,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        12
+      ]
+    },
+    "420": {
+      "atlasIndex": 13,
+      "solid": false,
+      "ground": false,
+      "name": "tiled floor",
+      "clientId": 423,
+      "assetId": 423,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        13
+      ]
+    },
+    "424": {
+      "atlasIndex": 14,
+      "solid": false,
+      "ground": false,
+      "name": "stone tile",
+      "clientId": 429,
+      "assetId": 429,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 2,
+        "px": 2,
+        "py": 2,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    "430": {
+      "atlasIndex": 18,
+      "solid": false,
+      "ground": false,
+      "name": "sewer grate",
+      "clientId": 435,
+      "assetId": 435,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        18
+      ]
+    },
+    "431": {
+      "atlasIndex": 19,
+      "solid": false,
+      "ground": false,
+      "name": "stone floor",
+      "clientId": 436,
+      "assetId": 436,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        19
+      ]
+    },
+    "457": {
+      "atlasIndex": 20,
+      "solid": false,
+      "ground": false,
+      "name": "white stone tile",
+      "clientId": 463,
+      "assetId": 463,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        20
+      ]
+    },
+    "493": {
+      "atlasIndex": 22,
+      "solid": false,
+      "ground": false,
+      "name": "water",
+      "clientId": 622,
+      "assetId": 622,
+      "g": {
+        "w": 2,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        21,
+        22
+      ]
+    },
+    "724": {
+      "atlasIndex": 23,
+      "solid": false,
+      "ground": false,
+      "name": "cobbled pavement",
+      "clientId": 870,
+      "assetId": 870,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        23
+      ]
+    },
+    "873": {
+      "atlasIndex": 24,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 1081,
+      "assetId": 1081,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        24
+      ]
+    },
+    "874": {
+      "atlasIndex": 25,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 1082,
+      "assetId": 1082,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        25
+      ]
+    },
+    "875": {
+      "atlasIndex": 26,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 1083,
+      "assetId": 1083,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        26
+      ]
+    },
+    "877": {
+      "atlasIndex": 27,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 1085,
+      "assetId": 1085,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        27
+      ]
+    },
+    "891": {
+      "atlasIndex": 28,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 1100,
+      "assetId": 1100,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        28
+      ]
+    },
+    "892": {
+      "atlasIndex": 29,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 1101,
+      "assetId": 1101,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        29
+      ]
+    },
+    "893": {
+      "atlasIndex": 30,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 1102,
+      "assetId": 1102,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        30
+      ]
+    },
+    "894": {
+      "atlasIndex": 31,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 1103,
+      "assetId": 1103,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        31
+      ]
+    },
+    "895": {
+      "atlasIndex": 32,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 1104,
+      "assetId": 1104,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        32
+      ]
+    },
+    "896": {
+      "atlasIndex": 33,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 1105,
+      "assetId": 1105,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        33
+      ]
+    },
+    "897": {
+      "atlasIndex": 34,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 1106,
+      "assetId": 1106,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        34
+      ]
+    },
+    "898": {
+      "atlasIndex": 35,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 1107,
+      "assetId": 1107,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        35
+      ]
+    },
+    "899": {
+      "atlasIndex": 36,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 1108,
+      "assetId": 1108,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        36
+      ]
+    },
+    "900": {
+      "atlasIndex": 37,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 1109,
+      "assetId": 1109,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        37
+      ]
+    },
+    "901": {
+      "atlasIndex": 38,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 1110,
+      "assetId": 1110,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        38
+      ]
+    },
+    "919": {
+      "atlasIndex": 39,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 1128,
+      "assetId": 1128,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        39
+      ]
+    },
+    "1049": {
+      "atlasIndex": 43,
+      "solid": true,
+      "ground": false,
+      "name": "stone wall",
+      "clientId": 1294,
+      "assetId": 1294,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        40,
+        41,
+        42,
+        43
+      ]
+    },
+    "1050": {
+      "atlasIndex": 47,
+      "solid": true,
+      "ground": false,
+      "name": "stone wall",
+      "clientId": 1295,
+      "assetId": 1295,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        44,
+        45,
+        46,
+        47
+      ]
+    },
+    "1051": {
+      "atlasIndex": 51,
+      "solid": true,
+      "ground": false,
+      "name": "stone wall",
+      "clientId": 1296,
+      "assetId": 1296,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        48,
+        49,
+        50,
+        51
+      ]
+    },
+    "1053": {
+      "atlasIndex": 55,
+      "solid": true,
+      "ground": false,
+      "name": "stone wall",
+      "clientId": 1298,
+      "assetId": 1298,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        52,
+        53,
+        54,
+        55
+      ]
+    },
+    "1056": {
+      "atlasIndex": 59,
+      "solid": true,
+      "ground": false,
+      "name": "stone wall",
+      "clientId": 1301,
+      "assetId": 1301,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        56,
+        57,
+        58,
+        59
+      ]
+    },
+    "1060": {
+      "atlasIndex": 63,
+      "solid": true,
+      "ground": false,
+      "name": "sandstone wall",
+      "clientId": 1305,
+      "assetId": 1305,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        60,
+        61,
+        62,
+        63
+      ]
+    },
+    "1061": {
+      "atlasIndex": 67,
+      "solid": true,
+      "ground": false,
+      "name": "sandstone wall",
+      "clientId": 1306,
+      "assetId": 1306,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        64,
+        65,
+        66,
+        67
+      ]
+    },
+    "1062": {
+      "atlasIndex": 71,
+      "solid": true,
+      "ground": false,
+      "name": "sandstone wall",
+      "clientId": 1307,
+      "assetId": 1307,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        68,
+        69,
+        70,
+        71
+      ]
+    },
+    "1089": {
+      "atlasIndex": 75,
+      "solid": true,
+      "ground": false,
+      "name": "metal wall",
+      "clientId": 1334,
+      "assetId": 1334,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        72,
+        73,
+        74,
+        75
+      ]
+    },
+    "1090": {
+      "atlasIndex": 79,
+      "solid": true,
+      "ground": false,
+      "name": "metal wall",
+      "clientId": 1335,
+      "assetId": 1335,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        76,
+        77,
+        78,
+        79
+      ]
+    },
+    "1091": {
+      "atlasIndex": 83,
+      "solid": true,
+      "ground": false,
+      "name": "metal wall",
+      "clientId": 1336,
+      "assetId": 1336,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        80,
+        81,
+        82,
+        83
+      ]
+    },
+    "1092": {
+      "atlasIndex": 87,
+      "solid": true,
+      "ground": false,
+      "name": "metal wall",
+      "clientId": 1337,
+      "assetId": 1337,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        84,
+        85,
+        86,
+        87
+      ]
+    },
+    "1098": {
+      "atlasIndex": 91,
+      "solid": true,
+      "ground": false,
+      "name": "metal wall",
+      "clientId": 1343,
+      "assetId": 1343,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        88,
+        89,
+        90,
+        91
+      ]
+    },
+    "1099": {
+      "atlasIndex": 95,
+      "solid": true,
+      "ground": false,
+      "name": "metal wall",
+      "clientId": 1344,
+      "assetId": 1344,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 2,
+        "py": 1,
+        "pz": 1,
+        "phases": 3
+      },
+      "sprites": [
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115
+      ]
+    },
+    "1100": {
+      "atlasIndex": 119,
+      "solid": true,
+      "ground": false,
+      "name": "sandstone wall",
+      "clientId": 1345,
+      "assetId": 1345,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 3
+      },
+      "sprites": [
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127
+      ]
+    },
+    "1102": {
+      "atlasIndex": 131,
+      "solid": true,
+      "ground": false,
+      "name": "sandstone wall",
+      "clientId": 1347,
+      "assetId": 1347,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 3
+      },
+      "sprites": [
+        128,
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139
+      ]
+    },
+    "1103": {
+      "atlasIndex": 143,
+      "solid": true,
+      "ground": false,
+      "name": "sandstone wall",
+      "clientId": 1348,
+      "assetId": 1348,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 2,
+        "py": 1,
+        "pz": 1,
+        "phases": 3
+      },
+      "sprites": [
+        140,
+        141,
+        142,
+        143,
+        144,
+        145,
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159,
+        160,
+        161,
+        162,
+        163
+      ]
+    },
+    "1104": {
+      "atlasIndex": 167,
+      "solid": true,
+      "ground": false,
+      "name": "sandstone wall",
+      "clientId": 1349,
+      "assetId": 1349,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 3
+      },
+      "sprites": [
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170,
+        171,
+        172,
+        173,
+        174,
+        175
+      ]
+    },
+    "1105": {
+      "atlasIndex": 179,
+      "solid": true,
+      "ground": false,
+      "name": "sandstone wall",
+      "clientId": 1350,
+      "assetId": 1350,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 2,
+        "py": 3,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188,
+        189,
+        190,
+        191,
+        192,
+        193,
+        194,
+        195,
+        196,
+        197,
+        198,
+        199
+      ]
+    },
+    "1106": {
+      "atlasIndex": 203,
+      "solid": true,
+      "ground": false,
+      "name": "sandstone wall",
+      "clientId": 1351,
+      "assetId": 1351,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 3,
+        "py": 2,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210,
+        211,
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223
+      ]
+    },
+    "1107": {
+      "atlasIndex": 227,
+      "solid": true,
+      "ground": false,
+      "name": "sandstone wall",
+      "clientId": 1352,
+      "assetId": 1352,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        224,
+        225,
+        226,
+        227
+      ]
+    },
+    "1109": {
+      "atlasIndex": 231,
+      "solid": true,
+      "ground": false,
+      "name": "sandstone wall",
+      "clientId": 1354,
+      "assetId": 1354,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        228,
+        229,
+        230,
+        231
+      ]
+    },
+    "1286": {
+      "atlasIndex": 232,
+      "solid": false,
+      "ground": false,
+      "name": "stone",
+      "clientId": 1773,
+      "assetId": 1773,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        232
+      ]
+    },
+    "1287": {
+      "atlasIndex": 233,
+      "solid": false,
+      "ground": false,
+      "name": "stone",
+      "clientId": 1774,
+      "assetId": 1774,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        233
+      ]
+    },
+    "1288": {
+      "atlasIndex": 234,
+      "solid": false,
+      "ground": false,
+      "name": "stone",
+      "clientId": 1775,
+      "assetId": 1775,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        234
+      ]
+    },
+    "1289": {
+      "atlasIndex": 235,
+      "solid": false,
+      "ground": false,
+      "name": "stone",
+      "clientId": 1776,
+      "assetId": 1776,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        235
+      ]
+    },
+    "1374": {
+      "atlasIndex": 236,
+      "solid": false,
+      "ground": false,
+      "name": "marble fountain",
+      "clientId": 1936,
+      "assetId": 1936,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        236
+      ]
+    },
+    "1375": {
+      "atlasIndex": 237,
+      "solid": false,
+      "ground": false,
+      "name": "marble fountain",
+      "clientId": 1937,
+      "assetId": 1937,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        237
+      ]
+    },
+    "1376": {
+      "atlasIndex": 241,
+      "solid": false,
+      "ground": false,
+      "name": "marble fountain",
+      "clientId": 1938,
+      "assetId": 1938,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        238,
+        239,
+        240,
+        241
+      ]
+    },
+    "1377": {
+      "atlasIndex": 243,
+      "solid": false,
+      "ground": false,
+      "name": "marble fountain",
+      "clientId": 1939,
+      "assetId": 1939,
+      "g": {
+        "w": 2,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        242,
+        243
+      ]
+    },
+    "1385": {
+      "atlasIndex": 244,
+      "solid": false,
+      "ground": false,
+      "name": "stairs",
+      "clientId": 1947,
+      "assetId": 1947,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        244
+      ]
+    },
+    "1387": {
+      "atlasIndex": 245,
+      "solid": false,
+      "ground": false,
+      "name": "magic forcefield",
+      "clientId": 1949,
+      "assetId": 1949,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        245
+      ]
+    },
+    "1388": {
+      "atlasIndex": 246,
+      "solid": false,
+      "ground": false,
+      "name": "ramp",
+      "clientId": 1950,
+      "assetId": 1950,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        246
+      ]
+    },
+    "1389": {
+      "atlasIndex": 247,
+      "solid": false,
+      "ground": false,
+      "name": "ramp",
+      "clientId": 1951,
+      "assetId": 1951,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        247
+      ]
+    },
+    "1390": {
+      "atlasIndex": 248,
+      "solid": false,
+      "ground": false,
+      "name": "ramp",
+      "clientId": 1952,
+      "assetId": 1952,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        248
+      ]
+    },
+    "1391": {
+      "atlasIndex": 249,
+      "solid": false,
+      "ground": false,
+      "name": "ramp",
+      "clientId": 1953,
+      "assetId": 1953,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        249
+      ]
+    },
+    "1392": {
+      "atlasIndex": 250,
+      "solid": false,
+      "ground": false,
+      "name": "ramp",
+      "clientId": 1954,
+      "assetId": 1954,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        250
+      ]
+    },
+    "1393": {
+      "atlasIndex": 252,
+      "solid": false,
+      "ground": false,
+      "name": "ramp",
+      "clientId": 1955,
+      "assetId": 1955,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        251,
+        252
+      ]
+    },
+    "1394": {
+      "atlasIndex": 254,
+      "solid": false,
+      "ground": false,
+      "name": "ramp",
+      "clientId": 1956,
+      "assetId": 1956,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        253,
+        254
+      ]
+    },
+    "1395": {
+      "atlasIndex": 256,
+      "solid": false,
+      "ground": false,
+      "name": "ramp",
+      "clientId": 1957,
+      "assetId": 1957,
+      "g": {
+        "w": 2,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        255,
+        256
+      ]
+    },
+    "1417": {
+      "atlasIndex": 260,
+      "solid": false,
+      "ground": false,
+      "name": "sarcophagus",
+      "clientId": 1992,
+      "assetId": 1992,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        257,
+        258,
+        259,
+        260
+      ]
+    },
+    "1418": {
+      "atlasIndex": 264,
+      "solid": false,
+      "ground": false,
+      "name": "sarcophagus",
+      "clientId": 1993,
+      "assetId": 1993,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        261,
+        262,
+        263,
+        264
+      ]
+    },
+    "1475": {
+      "atlasIndex": 268,
+      "solid": false,
+      "ground": false,
+      "name": "pedestal",
+      "clientId": 2058,
+      "assetId": 2058,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        265,
+        266,
+        267,
+        268
+      ]
+    },
+    "1482": {
+      "atlasIndex": 270,
+      "solid": false,
+      "ground": false,
+      "name": "coal basin",
+      "clientId": 2111,
+      "assetId": 2111,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 2,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        269,
+        270,
+        271,
+        272
+      ]
+    },
+    "1486": {
+      "atlasIndex": 276,
+      "solid": false,
+      "ground": false,
+      "name": "stone coal basin",
+      "clientId": 2115,
+      "assetId": 2115,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        273,
+        274,
+        275,
+        276
+      ]
+    },
+    "1515": {
+      "atlasIndex": 277,
+      "solid": true,
+      "ground": false,
+      "name": "marble pillar",
+      "clientId": 2153,
+      "assetId": 2153,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        277
+      ]
+    },
+    "1549": {
+      "atlasIndex": 279,
+      "solid": true,
+      "ground": false,
+      "name": "sandstone pillar",
+      "clientId": 2188,
+      "assetId": 2188,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        278,
+        279
+      ]
+    },
+    "1551": {
+      "atlasIndex": 283,
+      "solid": true,
+      "ground": false,
+      "name": "oriental pillar",
+      "clientId": 2190,
+      "assetId": 2190,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        280,
+        281,
+        282,
+        283
+      ]
+    },
+    "1774": {
+      "atlasIndex": 285,
+      "solid": false,
+      "ground": false,
+      "name": "barrel",
+      "clientId": 2523,
+      "assetId": 2523,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        284,
+        285
+      ]
+    },
+    "2700": {
+      "atlasIndex": 286,
+      "solid": true,
+      "ground": false,
+      "name": "fir tree",
+      "clientId": 3614,
+      "assetId": 3614,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        286
+      ]
+    },
+    "2701": {
+      "atlasIndex": 288,
+      "solid": false,
+      "ground": false,
+      "name": "sycamore",
+      "clientId": 3615,
+      "assetId": 3615,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        287,
+        288
+      ]
+    },
+    "2702": {
+      "atlasIndex": 289,
+      "solid": false,
+      "ground": false,
+      "name": "willow",
+      "clientId": 3616,
+      "assetId": 3616,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        289
+      ]
+    },
+    "2703": {
+      "atlasIndex": 290,
+      "solid": true,
+      "ground": false,
+      "name": "plum tree",
+      "clientId": 3617,
+      "assetId": 3617,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        290
+      ]
+    },
+    "2704": {
+      "atlasIndex": 291,
+      "solid": false,
+      "ground": false,
+      "name": "red maple",
+      "clientId": 3618,
+      "assetId": 3618,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        291
+      ]
+    },
+    "2705": {
+      "atlasIndex": 292,
+      "solid": true,
+      "ground": false,
+      "name": "pear tree",
+      "clientId": 3619,
+      "assetId": 3619,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        292
+      ]
+    },
+    "2706": {
+      "atlasIndex": 293,
+      "solid": false,
+      "ground": false,
+      "name": "yellow maple",
+      "clientId": 3620,
+      "assetId": 3620,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        293
+      ]
+    },
+    "2707": {
+      "atlasIndex": 295,
+      "solid": false,
+      "ground": false,
+      "name": "beech",
+      "clientId": 3621,
+      "assetId": 3621,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        294,
+        295
+      ]
+    },
+    "2708": {
+      "atlasIndex": 297,
+      "solid": false,
+      "ground": false,
+      "name": "poplar",
+      "clientId": 3622,
+      "assetId": 3622,
+      "g": {
+        "w": 2,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        296,
+        297
+      ]
+    },
+    "2711": {
+      "atlasIndex": 299,
+      "solid": true,
+      "ground": false,
+      "name": "dwarf tree",
+      "clientId": 3625,
+      "assetId": 3625,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        298,
+        299
+      ]
+    },
+    "2740": {
+      "atlasIndex": 303,
+      "solid": false,
+      "ground": false,
+      "name": "moon flowers",
+      "clientId": 3654,
+      "assetId": 3654,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        300,
+        301,
+        302,
+        303
+      ]
+    },
+    "2741": {
+      "atlasIndex": 307,
+      "solid": false,
+      "ground": false,
+      "name": "moon flower",
+      "clientId": 3655,
+      "assetId": 3655,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        304,
+        305,
+        306,
+        307
+      ]
+    },
+    "2742": {
+      "atlasIndex": 311,
+      "solid": false,
+      "ground": false,
+      "name": "white flower",
+      "clientId": 3656,
+      "assetId": 3656,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        308,
+        309,
+        310,
+        311
+      ]
+    },
+    "2743": {
+      "atlasIndex": 315,
+      "solid": false,
+      "ground": false,
+      "name": "heaven blossom",
+      "clientId": 3657,
+      "assetId": 3657,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        312,
+        313,
+        314,
+        315
+      ]
+    },
+    "2747": {
+      "atlasIndex": 319,
+      "solid": false,
+      "ground": false,
+      "name": "grave flower",
+      "clientId": 3661,
+      "assetId": 3661,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        316,
+        317,
+        318,
+        319
+      ]
+    },
+    "2767": {
+      "atlasIndex": 320,
+      "solid": false,
+      "ground": false,
+      "name": "bush",
+      "clientId": 3681,
+      "assetId": 3681,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        320
+      ]
+    },
+    "2768": {
+      "atlasIndex": 321,
+      "solid": true,
+      "ground": false,
+      "name": "small fir tree",
+      "clientId": 3682,
+      "assetId": 3682,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        321
+      ]
+    },
+    "2782": {
+      "atlasIndex": 322,
+      "solid": false,
+      "ground": false,
+      "name": "jungle grass",
+      "clientId": 3696,
+      "assetId": 3696,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        322
+      ]
+    },
+    "3311": {
+      "atlasIndex": 323,
+      "solid": false,
+      "ground": false,
+      "name": "pitfall",
+      "clientId": 1067,
+      "assetId": 1067,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 2,
+        "phases": 1
+      },
+      "sprites": [
+        323,
+        324
+      ]
+    },
+    "3608": {
+      "atlasIndex": 328,
+      "solid": false,
+      "ground": false,
+      "name": "stones",
+      "clientId": 1852,
+      "assetId": 1852,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        325,
+        326,
+        327,
+        328
+      ]
+    },
+    "3609": {
+      "atlasIndex": 332,
+      "solid": false,
+      "ground": false,
+      "name": "stone",
+      "clientId": 1853,
+      "assetId": 1853,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        329,
+        330,
+        331,
+        332
+      ]
+    },
+    "3611": {
+      "atlasIndex": 334,
+      "solid": false,
+      "ground": false,
+      "name": "stones",
+      "clientId": 1855,
+      "assetId": 1855,
+      "g": {
+        "w": 2,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        333,
+        334
+      ]
+    },
+    "3612": {
+      "atlasIndex": 338,
+      "solid": false,
+      "ground": false,
+      "name": "stone",
+      "clientId": 1856,
+      "assetId": 1856,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        335,
+        336,
+        337,
+        338
+      ]
+    },
+    "3613": {
+      "atlasIndex": 342,
+      "solid": false,
+      "ground": false,
+      "name": "stones",
+      "clientId": 1857,
+      "assetId": 1857,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        339,
+        340,
+        341,
+        342
+      ]
+    },
+    "3614": {
+      "atlasIndex": 346,
+      "solid": false,
+      "ground": false,
+      "name": "stones",
+      "clientId": 1858,
+      "assetId": 1858,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        343,
+        344,
+        345,
+        346
+      ]
+    },
+    "3985": {
+      "atlasIndex": 347,
+      "solid": false,
+      "ground": false,
+      "name": "jungle grass",
+      "clientId": 3702,
+      "assetId": 3702,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        347
+      ]
+    },
+    "4013": {
+      "atlasIndex": 348,
+      "solid": false,
+      "ground": false,
+      "name": "jungle crown plant",
+      "clientId": 3749,
+      "assetId": 3749,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        348
+      ]
+    },
+    "4017": {
+      "atlasIndex": 349,
+      "solid": false,
+      "ground": false,
+      "name": "purple kiss bush",
+      "clientId": 3753,
+      "assetId": 3753,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        349
+      ]
+    },
+    "4156": {
+      "atlasIndex": 353,
+      "solid": false,
+      "ground": false,
+      "name": "dew kisser flower",
+      "clientId": 3892,
+      "assetId": 3892,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        350,
+        351,
+        352,
+        353
+      ]
+    },
+    "4157": {
+      "atlasIndex": 354,
+      "solid": false,
+      "ground": false,
+      "name": "dew kisser flower",
+      "clientId": 3893,
+      "assetId": 3893,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        354
+      ]
+    },
+    "4158": {
+      "atlasIndex": 355,
+      "solid": false,
+      "ground": false,
+      "name": "dew kisser flower",
+      "clientId": 3894,
+      "assetId": 3894,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 2
+      },
+      "sprites": [
+        355,
+        356
+      ]
+    },
+    "4168": {
+      "atlasIndex": 357,
+      "solid": false,
+      "ground": false,
+      "name": "dead man's saddle",
+      "clientId": 3904,
+      "assetId": 3904,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        357
+      ]
+    },
+    "4456": {
+      "atlasIndex": 358,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 4445,
+      "assetId": 4445,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        358
+      ]
+    },
+    "4457": {
+      "atlasIndex": 359,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 4446,
+      "assetId": 4446,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        359
+      ]
+    },
+    "4458": {
+      "atlasIndex": 360,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 4447,
+      "assetId": 4447,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        360
+      ]
+    },
+    "4459": {
+      "atlasIndex": 361,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 4448,
+      "assetId": 4448,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        361
+      ]
+    },
+    "4460": {
+      "atlasIndex": 362,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 4449,
+      "assetId": 4449,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        362
+      ]
+    },
+    "4461": {
+      "atlasIndex": 363,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 4450,
+      "assetId": 4450,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        363
+      ]
+    },
+    "4462": {
+      "atlasIndex": 364,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 4451,
+      "assetId": 4451,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        364
+      ]
+    },
+    "4463": {
+      "atlasIndex": 365,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 4452,
+      "assetId": 4452,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        365
+      ]
+    },
+    "4464": {
+      "atlasIndex": 366,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 4453,
+      "assetId": 4453,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        366
+      ]
+    },
+    "4465": {
+      "atlasIndex": 367,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 4454,
+      "assetId": 4454,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        367
+      ]
+    },
+    "4466": {
+      "atlasIndex": 368,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 4455,
+      "assetId": 4455,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        368
+      ]
+    },
+    "4467": {
+      "atlasIndex": 369,
+      "solid": false,
+      "ground": false,
+      "name": "rocks",
+      "clientId": 4456,
+      "assetId": 4456,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        369
+      ]
+    },
+    "4468": {
+      "atlasIndex": 370,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 4457,
+      "assetId": 4457,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        370
+      ]
+    },
+    "4469": {
+      "atlasIndex": 371,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 4458,
+      "assetId": 4458,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        371
+      ]
+    },
+    "4470": {
+      "atlasIndex": 372,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 4459,
+      "assetId": 4459,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 3,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        372,
+        373,
+        374,
+        375,
+        376,
+        377,
+        378,
+        379,
+        380,
+        381,
+        382,
+        383
+      ]
+    },
+    "4471": {
+      "atlasIndex": 384,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 4460,
+      "assetId": 4460,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 3,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        384,
+        385,
+        386,
+        387,
+        388,
+        389,
+        390,
+        391,
+        392,
+        393,
+        394,
+        395
+      ]
+    },
+    "4472": {
+      "atlasIndex": 396,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 4461,
+      "assetId": 4461,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 3,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        396,
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407
+      ]
+    },
+    "4473": {
+      "atlasIndex": 408,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 4462,
+      "assetId": 4462,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 3,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415,
+        416,
+        417,
+        418,
+        419
+      ]
+    },
+    "4474": {
+      "atlasIndex": 420,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 4463,
+      "assetId": 4463,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 3,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        420,
+        421,
+        422,
+        423,
+        424,
+        425,
+        426,
+        427,
+        428,
+        429,
+        430,
+        431
+      ]
+    },
+    "4475": {
+      "atlasIndex": 432,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 4464,
+      "assetId": 4464,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 3,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        432,
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442,
+        443
+      ]
+    },
+    "4476": {
+      "atlasIndex": 444,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 4465,
+      "assetId": 4465,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 3,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        444,
+        445,
+        446,
+        447,
+        448,
+        449,
+        450,
+        451,
+        452,
+        453,
+        454,
+        455
+      ]
+    },
+    "4477": {
+      "atlasIndex": 456,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 4466,
+      "assetId": 4466,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 3,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462,
+        463,
+        464,
+        465,
+        466,
+        467
+      ]
+    },
+    "4478": {
+      "atlasIndex": 468,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 4467,
+      "assetId": 4467,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 3,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        468,
+        469,
+        470,
+        471,
+        472,
+        473,
+        474,
+        475,
+        476,
+        477,
+        478,
+        479
+      ]
+    },
+    "4479": {
+      "atlasIndex": 480,
+      "solid": false,
+      "ground": false,
+      "name": "mountain",
+      "clientId": 4468,
+      "assetId": 4468,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 3,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        480,
+        481,
+        482,
+        483,
+        484,
+        485,
+        486,
+        487,
+        488,
+        489,
+        490,
+        491
+      ]
+    },
+    "4526": {
+      "atlasIndex": 492,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4515,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        492
+      ]
+    },
+    "4527": {
+      "atlasIndex": 493,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4516,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        493
+      ]
+    },
+    "4528": {
+      "atlasIndex": 494,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4517,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        494
+      ]
+    },
+    "4529": {
+      "atlasIndex": 495,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4518,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        495
+      ]
+    },
+    "4530": {
+      "atlasIndex": 496,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4519,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        496
+      ]
+    },
+    "4531": {
+      "atlasIndex": 497,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4520,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        497
+      ]
+    },
+    "4532": {
+      "atlasIndex": 498,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4521,
+      "assetId": 4521,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        498,
+        499,
+        500,
+        501
+      ]
+    },
+    "4533": {
+      "atlasIndex": 502,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4522,
+      "assetId": 4522,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        502,
+        503,
+        504,
+        505
+      ]
+    },
+    "4534": {
+      "atlasIndex": 506,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4523,
+      "assetId": 4523,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        506,
+        507,
+        508,
+        509
+      ]
+    },
+    "4535": {
+      "atlasIndex": 510,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4524,
+      "assetId": 4524,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        510,
+        511,
+        512,
+        513
+      ]
+    },
+    "4536": {
+      "atlasIndex": 514,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4525,
+      "assetId": 4525,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        514,
+        515,
+        516,
+        517
+      ]
+    },
+    "4537": {
+      "atlasIndex": 518,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4526,
+      "assetId": 4526,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        518,
+        519,
+        520,
+        521
+      ]
+    },
+    "4538": {
+      "atlasIndex": 522,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4527,
+      "assetId": 4527,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        522,
+        523,
+        524,
+        525
+      ]
+    },
+    "4539": {
+      "atlasIndex": 526,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4528,
+      "assetId": 4528,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        526,
+        527,
+        528,
+        529
+      ]
+    },
+    "4540": {
+      "atlasIndex": 530,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4529,
+      "assetId": 4529,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        530,
+        531,
+        532,
+        533
+      ]
+    },
+    "4541": {
+      "atlasIndex": 534,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4530,
+      "assetId": 4530,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        534,
+        535,
+        536,
+        537
+      ]
+    },
+    "4542": {
+      "atlasIndex": 538,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4531,
+      "assetId": 4531,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        538,
+        539,
+        540,
+        541
+      ]
+    },
+    "4543": {
+      "atlasIndex": 542,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4532,
+      "assetId": 4532,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        542,
+        543,
+        544,
+        545
+      ]
+    },
+    "4544": {
+      "atlasIndex": 546,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4533,
+      "assetId": 4533,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 3,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        546,
+        547,
+        548,
+        549,
+        550,
+        551,
+        552,
+        553,
+        554,
+        555,
+        556,
+        557
+      ]
+    },
+    "4545": {
+      "atlasIndex": 558,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4534,
+      "assetId": 4534,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 3,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        558,
+        559,
+        560,
+        561,
+        562,
+        563,
+        564,
+        565,
+        566,
+        567,
+        568,
+        569
+      ]
+    },
+    "4546": {
+      "atlasIndex": 570,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4535,
+      "assetId": 4535,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 3,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        570,
+        571,
+        572,
+        573,
+        574,
+        575,
+        576,
+        577,
+        578,
+        579,
+        580,
+        581
+      ]
+    },
+    "4547": {
+      "atlasIndex": 582,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4536,
+      "assetId": 4536,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 3,
+        "pz": 1,
+        "phases": 3
+      },
+      "sprites": [
+        582,
+        583,
+        584,
+        585,
+        586,
+        587,
+        588,
+        589,
+        590
+      ]
+    },
+    "4548": {
+      "atlasIndex": 591,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4537,
+      "assetId": 4537,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        591,
+        592,
+        593,
+        594
+      ]
+    },
+    "4549": {
+      "atlasIndex": 595,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4538,
+      "assetId": 4538,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        595,
+        596,
+        597,
+        598
+      ]
+    },
+    "4550": {
+      "atlasIndex": 599,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4539,
+      "assetId": 4539,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        599,
+        600,
+        601,
+        602
+      ]
+    },
+    "4551": {
+      "atlasIndex": 603,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4540,
+      "assetId": 4540,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        603,
+        604,
+        605,
+        606
+      ]
+    },
+    "4552": {
+      "atlasIndex": 607,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4541,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        607
+      ]
+    },
+    "4553": {
+      "atlasIndex": 608,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4542,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        608
+      ]
+    },
+    "4645": {
+      "atlasIndex": 609,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4634,
+      "assetId": 4634,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        609
+      ]
+    },
+    "4646": {
+      "atlasIndex": 610,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4635,
+      "assetId": 4635,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        610
+      ]
+    },
+    "4647": {
+      "atlasIndex": 611,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4636,
+      "assetId": 4636,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        611
+      ]
+    },
+    "4649": {
+      "atlasIndex": 612,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4638,
+      "assetId": 4638,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 3,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        612,
+        613,
+        614,
+        615,
+        616,
+        617,
+        618,
+        619
+      ]
+    },
+    "4650": {
+      "atlasIndex": 620,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4639,
+      "assetId": 4639,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        620,
+        621,
+        622,
+        623
+      ]
+    },
+    "4651": {
+      "atlasIndex": 624,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4640,
+      "assetId": 4640,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        624,
+        625,
+        626,
+        627,
+        628,
+        629
+      ]
+    },
+    "4652": {
+      "atlasIndex": 630,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4641,
+      "assetId": 4641,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        630,
+        631,
+        632,
+        633,
+        634,
+        635,
+        636,
+        637
+      ]
+    },
+    "4653": {
+      "atlasIndex": 638,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4642,
+      "assetId": 4642,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 3,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        638,
+        639,
+        640,
+        641,
+        642,
+        643,
+        644,
+        645
+      ]
+    },
+    "4654": {
+      "atlasIndex": 646,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4643,
+      "assetId": 4643,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 3,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        646,
+        647,
+        648,
+        649,
+        650,
+        651,
+        652,
+        653,
+        654,
+        655,
+        656,
+        657
+      ]
+    },
+    "4655": {
+      "atlasIndex": 658,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4644,
+      "assetId": 4644,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 3,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        658,
+        659,
+        660,
+        661,
+        662,
+        663,
+        664,
+        665
+      ]
+    },
+    "4785": {
+      "atlasIndex": 666,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4774,
+      "assetId": 4774,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 3
+      },
+      "sprites": [
+        666,
+        667,
+        668
+      ]
+    },
+    "4786": {
+      "atlasIndex": 669,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4775,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        669
+      ]
+    },
+    "4787": {
+      "atlasIndex": 670,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4776,
+      "assetId": 4776,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        670,
+        671,
+        672,
+        673
+      ]
+    },
+    "4788": {
+      "atlasIndex": 674,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4777,
+      "assetId": 4777,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        674,
+        675,
+        676,
+        677
+      ]
+    },
+    "4790": {
+      "atlasIndex": 678,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4779,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        678
+      ]
+    },
+    "4791": {
+      "atlasIndex": 679,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4780,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        679
+      ]
+    },
+    "4792": {
+      "atlasIndex": 683,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4781,
+      "assetId": 4781,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        680,
+        681,
+        682,
+        683
+      ]
+    },
+    "4794": {
+      "atlasIndex": 687,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4783,
+      "assetId": 4783,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        684,
+        685,
+        686,
+        687
+      ]
+    },
+    "4820": {
+      "atlasIndex": 691,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4809,
+      "assetId": 4809,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        688,
+        689,
+        690,
+        691
+      ]
+    },
+    "4821": {
+      "atlasIndex": 695,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4810,
+      "assetId": 4810,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        692,
+        693,
+        694,
+        695
+      ]
+    },
+    "4822": {
+      "atlasIndex": 699,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4811,
+      "assetId": 4811,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        696,
+        697,
+        698,
+        699
+      ]
+    },
+    "4823": {
+      "atlasIndex": 703,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4812,
+      "assetId": 4812,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        700,
+        701,
+        702,
+        703
+      ]
+    },
+    "4824": {
+      "atlasIndex": 707,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4813,
+      "assetId": 4813,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        704,
+        705,
+        706,
+        707
+      ]
+    },
+    "4825": {
+      "atlasIndex": 711,
+      "solid": false,
+      "ground": false,
+      "name": "shallow water",
+      "clientId": 4814,
+      "assetId": 4814,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        708,
+        709,
+        710,
+        711
+      ]
+    },
+    "5009": {
+      "atlasIndex": 715,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 5008,
+      "assetId": 5008,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 2,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        712,
+        713,
+        714,
+        715
+      ]
+    },
+    "5068": {
+      "atlasIndex": 716,
+      "solid": false,
+      "ground": false,
+      "name": "electric sparks",
+      "clientId": 5068,
+      "assetId": 5068,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        716
+      ]
+    },
+    "5069": {
+      "atlasIndex": 717,
+      "solid": false,
+      "ground": false,
+      "name": "electric sparks",
+      "clientId": 5069,
+      "assetId": 5069,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        717
+      ]
+    },
+    "5070": {
+      "atlasIndex": 718,
+      "solid": false,
+      "ground": false,
+      "name": "electric sparks",
+      "clientId": 5070,
+      "assetId": 5070,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        718
+      ]
+    },
+    "5258": {
+      "atlasIndex": 719,
+      "solid": false,
+      "ground": false,
+      "name": "stairs",
+      "clientId": 5257,
+      "assetId": 5257,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        719
+      ]
+    },
+    "5328": {
+      "atlasIndex": 720,
+      "solid": false,
+      "ground": false,
+      "name": "wooden column",
+      "clientId": 5327,
+      "assetId": 5327,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        720,
+        721,
+        722,
+        723
+      ]
+    },
+    "5331": {
+      "atlasIndex": 724,
+      "solid": false,
+      "ground": false,
+      "name": "wooden column",
+      "clientId": 5330,
+      "assetId": 5330,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        724,
+        725,
+        726,
+        727
+      ]
+    },
+    "5350": {
+      "atlasIndex": 731,
+      "solid": false,
+      "ground": false,
+      "name": "sign",
+      "clientId": 5349,
+      "assetId": 5349,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 2,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        728,
+        729,
+        730,
+        731,
+        732,
+        733,
+        734,
+        735
+      ]
+    },
+    "5771": {
+      "atlasIndex": 737,
+      "solid": false,
+      "ground": false,
+      "name": "metal fittings",
+      "clientId": 5771,
+      "assetId": 5771,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 3
+      },
+      "sprites": [
+        736,
+        737,
+        738,
+        739,
+        740,
+        741
+      ]
+    },
+    "5773": {
+      "atlasIndex": 743,
+      "solid": false,
+      "ground": false,
+      "name": "metal fittings",
+      "clientId": 5773,
+      "assetId": 5773,
+      "g": {
+        "w": 2,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 3
+      },
+      "sprites": [
+        742,
+        743,
+        744,
+        745,
+        746,
+        747
+      ]
+    },
+    "6216": {
+      "atlasIndex": 751,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 6215,
+      "assetId": 6215,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        748,
+        749,
+        750,
+        751
+      ]
+    },
+    "6217": {
+      "atlasIndex": 755,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 6216,
+      "assetId": 6216,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        752,
+        753,
+        754,
+        755
+      ]
+    },
+    "6218": {
+      "atlasIndex": 759,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 6217,
+      "assetId": 6217,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        756,
+        757,
+        758,
+        759
+      ]
+    },
+    "6219": {
+      "atlasIndex": 760,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 6218,
+      "assetId": 6218,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        760
+      ]
+    },
+    "6476": {
+      "atlasIndex": 764,
+      "solid": false,
+      "ground": false,
+      "name": "debris",
+      "clientId": 6475,
+      "assetId": 6475,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 3,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        761,
+        762,
+        763,
+        764,
+        765,
+        766,
+        767,
+        768,
+        769,
+        770,
+        771,
+        772
+      ]
+    },
+    "6477": {
+      "atlasIndex": 773,
+      "solid": false,
+      "ground": false,
+      "name": "debris",
+      "clientId": 6476,
+      "assetId": 6476,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        773
+      ]
+    },
+    "6478": {
+      "atlasIndex": 777,
+      "solid": false,
+      "ground": false,
+      "name": "debris",
+      "clientId": 6477,
+      "assetId": 6477,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 3,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        774,
+        775,
+        776,
+        777,
+        778,
+        779,
+        780,
+        781,
+        782,
+        783,
+        784,
+        785
+      ]
+    },
+    "6479": {
+      "atlasIndex": 786,
+      "solid": false,
+      "ground": false,
+      "name": "debris",
+      "clientId": 6478,
+      "assetId": 6478,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        786
+      ]
+    },
+    "6480": {
+      "atlasIndex": 787,
+      "solid": false,
+      "ground": false,
+      "name": "debris",
+      "clientId": 6479,
+      "assetId": 6479,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        787
+      ]
+    },
+    "6481": {
+      "atlasIndex": 788,
+      "solid": false,
+      "ground": false,
+      "name": "debris",
+      "clientId": 6480,
+      "assetId": 6480,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        788
+      ]
+    },
+    "6482": {
+      "atlasIndex": 789,
+      "solid": false,
+      "ground": false,
+      "name": "debris",
+      "clientId": 6481,
+      "assetId": 6481,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        789
+      ]
+    },
+    "6483": {
+      "atlasIndex": 790,
+      "solid": false,
+      "ground": false,
+      "name": "debris",
+      "clientId": 6482,
+      "assetId": 6482,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        790
+      ]
+    },
+    "6484": {
+      "atlasIndex": 791,
+      "solid": false,
+      "ground": false,
+      "name": "debris",
+      "clientId": 6483,
+      "assetId": 6483,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        791
+      ]
+    },
+    "7024": {
+      "atlasIndex": 792,
+      "solid": false,
+      "ground": false,
+      "name": "pine",
+      "clientId": 7024,
+      "assetId": 7024,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        792
+      ]
+    },
+    "7653": {
+      "atlasIndex": 793,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 304,
+      "assetId": 304,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        793
+      ]
+    },
+    "7656": {
+      "atlasIndex": 794,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 307,
+      "assetId": 307,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 2,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        794,
+        795
+      ]
+    },
+    "7657": {
+      "atlasIndex": 796,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 308,
+      "assetId": 308,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        796
+      ]
+    },
+    "7658": {
+      "atlasIndex": 797,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 309,
+      "assetId": 309,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 2,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        797,
+        798,
+        799,
+        800,
+        801,
+        802,
+        803,
+        804
+      ]
+    },
+    "7659": {
+      "atlasIndex": 805,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 310,
+      "assetId": 310,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 2,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        805,
+        806,
+        807,
+        808,
+        809,
+        810,
+        811,
+        812
+      ]
+    },
+    "7660": {
+      "atlasIndex": 813,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 311,
+      "assetId": 311,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        813
+      ]
+    },
+    "7661": {
+      "atlasIndex": 814,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 312,
+      "assetId": 312,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        814
+      ]
+    },
+    "7662": {
+      "atlasIndex": 815,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 313,
+      "assetId": 313,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        815
+      ]
+    },
+    "7664": {
+      "atlasIndex": 816,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 315,
+      "assetId": 315,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 3,
+        "py": 3,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        816,
+        817,
+        818,
+        819,
+        820,
+        821,
+        822,
+        823,
+        824
+      ]
+    },
+    "7709": {
+      "atlasIndex": 825,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 407,
+      "assetId": 407,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        825
+      ]
+    },
+    "7710": {
+      "atlasIndex": 827,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 618,
+      "assetId": 618,
+      "g": {
+        "w": 2,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        826,
+        827
+      ]
+    },
+    "7831": {
+      "atlasIndex": 829,
+      "solid": false,
+      "ground": false,
+      "name": "celestial map",
+      "clientId": 754,
+      "assetId": 754,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        828,
+        829
+      ]
+    },
+    "8047": {
+      "atlasIndex": 830,
+      "solid": false,
+      "ground": false,
+      "name": "something sparkling",
+      "clientId": 1723,
+      "assetId": 1723,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        830
+      ]
+    },
+    "9043": {
+      "atlasIndex": 831,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4515,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        831
+      ]
+    },
+    "9045": {
+      "atlasIndex": 832,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4517,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        832
+      ]
+    },
+    "9046": {
+      "atlasIndex": 833,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4518,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        833
+      ]
+    },
+    "9048": {
+      "atlasIndex": 834,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4520,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        834
+      ]
+    },
+    "9050": {
+      "atlasIndex": 835,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4522,
+      "assetId": 4522,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        835,
+        836,
+        837,
+        838
+      ]
+    },
+    "9053": {
+      "atlasIndex": 839,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4525,
+      "assetId": 4525,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        839,
+        840,
+        841,
+        842
+      ]
+    },
+    "9055": {
+      "atlasIndex": 843,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4527,
+      "assetId": 4527,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        843,
+        844,
+        845,
+        846
+      ]
+    },
+    "9057": {
+      "atlasIndex": 847,
+      "solid": false,
+      "ground": false,
+      "name": "grass",
+      "clientId": 4529,
+      "assetId": 4529,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        847,
+        848,
+        849,
+        850
+      ]
+    },
+    "11785": {
+      "atlasIndex": 854,
+      "solid": false,
+      "ground": false,
+      "name": "muddy floor",
+      "clientId": 10829,
+      "assetId": 10829,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        851,
+        852,
+        853,
+        854
+      ]
+    },
+    "26560": {
+      "atlasIndex": 855,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 23727,
+      "assetId": 23727,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        855
+      ]
+    },
+    "26561": {
+      "atlasIndex": 856,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 23728,
+      "assetId": 23728,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        856
+      ]
+    },
+    "26562": {
+      "atlasIndex": 857,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 23729,
+      "assetId": 23729,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        857
+      ]
+    },
+    "26563": {
+      "atlasIndex": 858,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 23730,
+      "assetId": 23730,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        858
+      ]
+    },
+    "26564": {
+      "atlasIndex": 859,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 23731,
+      "assetId": 23731,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        859
+      ]
+    },
+    "26565": {
+      "atlasIndex": 860,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 23732,
+      "assetId": 23732,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        860
+      ]
+    },
+    "26566": {
+      "atlasIndex": 861,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 23733,
+      "assetId": 23733,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        861
+      ]
+    },
+    "26567": {
+      "atlasIndex": 862,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 23734,
+      "assetId": 23734,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        862
+      ]
+    },
+    "26568": {
+      "atlasIndex": 863,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 23735,
+      "assetId": 23735,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        863
+      ]
+    },
+    "26569": {
+      "atlasIndex": 867,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 23736,
+      "assetId": 23736,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        864,
+        865,
+        866,
+        867
+      ]
+    },
+    "26576": {
+      "atlasIndex": 871,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 23743,
+      "assetId": 23743,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        868,
+        869,
+        870,
+        871
+      ]
+    },
+    "26699": {
+      "atlasIndex": 872,
+      "solid": false,
+      "ground": false,
+      "name": "locker",
+      "clientId": 23866,
+      "assetId": 23866,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        872
+      ]
+    },
+    "26700": {
+      "atlasIndex": 873,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 23867,
+      "assetId": 23867,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        873
+      ]
+    },
+    "26713": {
+      "atlasIndex": 874,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 23880,
+      "assetId": 23880,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        874
+      ]
+    },
+    "26770": {
+      "atlasIndex": 875,
+      "solid": false,
+      "ground": false,
+      "name": "TC teleport",
+      "clientId": 23937,
+      "assetId": 23937,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        875
+      ]
+    },
+    "29061": {
+      "atlasIndex": 876,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 26644,
+      "assetId": 26644,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        876
+      ]
+    },
+    "29062": {
+      "atlasIndex": 885,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 26645,
+      "assetId": 26645,
+      "g": {
+        "w": 3,
+        "h": 3,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 3
+      },
+      "sprites": [
+        877,
+        878,
+        879,
+        880,
+        881,
+        882,
+        883,
+        884,
+        885,
+        886,
+        887,
+        888,
+        889,
+        890,
+        891,
+        892,
+        893,
+        894,
+        895,
+        896,
+        897,
+        898,
+        899,
+        900,
+        901,
+        902,
+        903
+      ]
+    },
+    "29487": {
+      "atlasIndex": 905,
+      "solid": false,
+      "ground": false,
+      "name": "stairs",
+      "clientId": 27070,
+      "assetId": 27070,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        904,
+        905
+      ]
+    },
+    "30413": {
+      "atlasIndex": 907,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 27996,
+      "assetId": 27996,
+      "g": {
+        "w": 2,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        906,
+        907
+      ]
+    },
+    "30691": {
+      "atlasIndex": 909,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 28274,
+      "assetId": 28274,
+      "g": {
+        "w": 1,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        908,
+        909
+      ]
+    },
+    "33889": {
+      "atlasIndex": 910,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31472,
+      "assetId": 31472,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        910
+      ]
+    },
+    "33890": {
+      "atlasIndex": 911,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31473,
+      "assetId": 31473,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        911
+      ]
+    },
+    "33893": {
+      "atlasIndex": 912,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31476,
+      "assetId": 31476,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        912
+      ]
+    },
+    "33907": {
+      "atlasIndex": 921,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31490,
+      "assetId": 31490,
+      "g": {
+        "w": 3,
+        "h": 3,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        913,
+        914,
+        915,
+        916,
+        917,
+        918,
+        919,
+        920,
+        921,
+        922,
+        923,
+        924,
+        925,
+        926,
+        927,
+        928,
+        929,
+        930,
+        931,
+        932,
+        933,
+        934,
+        935,
+        936,
+        937,
+        938,
+        939,
+        940,
+        941,
+        942,
+        943,
+        944,
+        945,
+        946,
+        947,
+        948
+      ]
+    },
+    "33909": {
+      "atlasIndex": 949,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31492,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        949
+      ]
+    },
+    "33929": {
+      "atlasIndex": 950,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31512,
+      "assetId": 31512,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        950
+      ]
+    },
+    "34045": {
+      "atlasIndex": 951,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31628,
+      "assetId": 31628,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 3,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        951,
+        952,
+        953,
+        954,
+        955,
+        956,
+        957,
+        958,
+        959,
+        960,
+        961,
+        962
+      ]
+    },
+    "34053": {
+      "atlasIndex": 963,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31636,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        963
+      ]
+    },
+    "34079": {
+      "atlasIndex": 964,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31662,
+      "assetId": 31662,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        964,
+        965,
+        966,
+        967
+      ]
+    },
+    "34080": {
+      "atlasIndex": 968,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31663,
+      "assetId": 31663,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        968,
+        969,
+        970,
+        971
+      ]
+    },
+    "34081": {
+      "atlasIndex": 972,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31664,
+      "assetId": 31664,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        972,
+        973,
+        974,
+        975
+      ]
+    },
+    "34082": {
+      "atlasIndex": 976,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31665,
+      "assetId": 31665,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        976,
+        977,
+        978,
+        979
+      ]
+    },
+    "34083": {
+      "atlasIndex": 980,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 1792,
+      "assetId": 1792,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        980
+      ]
+    },
+    "34084": {
+      "atlasIndex": 981,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31667,
+      "assetId": 31667,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        981,
+        982,
+        983,
+        984
+      ]
+    },
+    "34085": {
+      "atlasIndex": 985,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31668,
+      "assetId": 31668,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        985,
+        986,
+        987,
+        988
+      ]
+    },
+    "34086": {
+      "atlasIndex": 989,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31669,
+      "assetId": 31669,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        989,
+        990,
+        991,
+        992
+      ]
+    },
+    "34090": {
+      "atlasIndex": 993,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31673,
+      "assetId": 31673,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        993,
+        994,
+        995,
+        996
+      ]
+    },
+    "34091": {
+      "atlasIndex": 997,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31674,
+      "assetId": 31674,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        997,
+        998,
+        999,
+        1000
+      ]
+    },
+    "34092": {
+      "atlasIndex": 1001,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31675,
+      "assetId": 31675,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1001,
+        1002,
+        1003,
+        1004
+      ]
+    },
+    "34096": {
+      "atlasIndex": 1005,
+      "solid": true,
+      "ground": false,
+      "name": "closed door",
+      "clientId": 31679,
+      "assetId": 31679,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1005
+      ]
+    },
+    "34097": {
+      "atlasIndex": 1006,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31680,
+      "assetId": 31680,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1006
+      ]
+    },
+    "34099": {
+      "atlasIndex": 1007,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31682,
+      "assetId": 31682,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1007
+      ]
+    },
+    "34115": {
+      "atlasIndex": 1008,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31698,
+      "assetId": 31698,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1008,
+        1009,
+        1010,
+        1011
+      ]
+    },
+    "34116": {
+      "atlasIndex": 1012,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31699,
+      "assetId": 31699,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1012,
+        1013,
+        1014,
+        1015
+      ]
+    },
+    "34123": {
+      "atlasIndex": 1016,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31706,
+      "assetId": 31706,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1016,
+        1017,
+        1018,
+        1019
+      ]
+    },
+    "34128": {
+      "atlasIndex": 1020,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31711,
+      "assetId": 31711,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1020,
+        1021,
+        1022,
+        1023
+      ]
+    },
+    "34141": {
+      "atlasIndex": 1024,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31724,
+      "assetId": 31724,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1024,
+        1025,
+        1026,
+        1027
+      ]
+    },
+    "34142": {
+      "atlasIndex": 1028,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31725,
+      "assetId": 31725,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1028,
+        1029,
+        1030,
+        1031
+      ]
+    },
+    "34153": {
+      "atlasIndex": 1032,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31736,
+      "assetId": 31736,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1032,
+        1033,
+        1034,
+        1035
+      ]
+    },
+    "34154": {
+      "atlasIndex": 1036,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31737,
+      "assetId": 31737,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1036,
+        1037,
+        1038,
+        1039
+      ]
+    },
+    "34168": {
+      "atlasIndex": 1040,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31751,
+      "assetId": 31751,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1040,
+        1041,
+        1042,
+        1043
+      ]
+    },
+    "34210": {
+      "atlasIndex": 1044,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31793,
+      "assetId": 31793,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1044
+      ]
+    },
+    "34211": {
+      "atlasIndex": 1045,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31794,
+      "assetId": 31794,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1045
+      ]
+    },
+    "34228": {
+      "atlasIndex": 1049,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31811,
+      "assetId": 31811,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1046,
+        1047,
+        1048,
+        1049
+      ]
+    },
+    "34229": {
+      "atlasIndex": 1053,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31812,
+      "assetId": 31812,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1050,
+        1051,
+        1052,
+        1053
+      ]
+    },
+    "34267": {
+      "atlasIndex": 1054,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31850,
+      "assetId": 31850,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1054,
+        1055,
+        1056,
+        1057
+      ]
+    },
+    "34293": {
+      "atlasIndex": 1058,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31876,
+      "assetId": 31876,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1058
+      ]
+    },
+    "34295": {
+      "atlasIndex": 1059,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31878,
+      "assetId": 31878,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1059
+      ]
+    },
+    "34296": {
+      "atlasIndex": 1060,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 31879,
+      "assetId": 31879,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 2,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1060,
+        1061,
+        1062,
+        1063,
+        1064,
+        1065,
+        1066,
+        1067
+      ]
+    },
+    "34403": {
+      "atlasIndex": 1068,
+      "solid": false,
+      "ground": false,
+      "name": "dustbin",
+      "clientId": 31986,
+      "assetId": 31986,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1068,
+        1069,
+        1070,
+        1071
+      ]
+    },
+    "34435": {
+      "atlasIndex": 1072,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32018,
+      "assetId": 32018,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1072,
+        1073,
+        1074,
+        1075
+      ]
+    },
+    "34536": {
+      "atlasIndex": 1076,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32119,
+      "assetId": 32119,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1076
+      ]
+    },
+    "34619": {
+      "atlasIndex": 1080,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32202,
+      "assetId": 32202,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 4
+      },
+      "sprites": [
+        1077,
+        1078,
+        1079,
+        1080,
+        1081,
+        1082,
+        1083,
+        1084,
+        1085,
+        1086,
+        1087,
+        1088,
+        1089,
+        1090,
+        1091,
+        1092
+      ]
+    },
+    "34620": {
+      "atlasIndex": 1093,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32203,
+      "assetId": 2400,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1093
+      ]
+    },
+    "34667": {
+      "atlasIndex": 1094,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32250,
+      "assetId": 32250,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1094
+      ]
+    },
+    "34668": {
+      "atlasIndex": 1095,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32251,
+      "assetId": 32251,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1095
+      ]
+    },
+    "34669": {
+      "atlasIndex": 1096,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32252,
+      "assetId": 32252,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1096
+      ]
+    },
+    "34670": {
+      "atlasIndex": 1097,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32253,
+      "assetId": 32253,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1097
+      ]
+    },
+    "34671": {
+      "atlasIndex": 1098,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32254,
+      "assetId": 32254,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1098
+      ]
+    },
+    "34672": {
+      "atlasIndex": 1099,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32255,
+      "assetId": 32255,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1099
+      ]
+    },
+    "34673": {
+      "atlasIndex": 1100,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32256,
+      "assetId": 32256,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1100
+      ]
+    },
+    "34674": {
+      "atlasIndex": 1101,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32257,
+      "assetId": 32257,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 2,
+        "py": 3,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1101,
+        1102,
+        1103,
+        1104,
+        1105,
+        1106
+      ]
+    },
+    "34681": {
+      "atlasIndex": 1107,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32264,
+      "assetId": 32264,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1107
+      ]
+    },
+    "34683": {
+      "atlasIndex": 1111,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32266,
+      "assetId": 32266,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 3,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1108,
+        1109,
+        1110,
+        1111,
+        1112,
+        1113,
+        1114,
+        1115,
+        1116,
+        1117,
+        1118,
+        1119
+      ]
+    },
+    "34686": {
+      "atlasIndex": 1123,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32269,
+      "assetId": 32269,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1120,
+        1121,
+        1122,
+        1123
+      ]
+    },
+    "34688": {
+      "atlasIndex": 1124,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32271,
+      "assetId": 32271,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1124
+      ]
+    },
+    "34737": {
+      "atlasIndex": 1125,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32320,
+      "assetId": 32320,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1125
+      ]
+    },
+    "34827": {
+      "atlasIndex": 1126,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32410,
+      "assetId": 32410,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1126
+      ]
+    },
+    "34836": {
+      "atlasIndex": 1127,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32419,
+      "assetId": 32419,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1127
+      ]
+    },
+    "34979": {
+      "atlasIndex": 1136,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32562,
+      "assetId": 32562,
+      "g": {
+        "w": 3,
+        "h": 3,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1128,
+        1129,
+        1130,
+        1131,
+        1132,
+        1133,
+        1134,
+        1135,
+        1136
+      ]
+    },
+    "34987": {
+      "atlasIndex": 1140,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32570,
+      "assetId": 32570,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1137,
+        1138,
+        1139,
+        1140
+      ]
+    },
+    "34995": {
+      "atlasIndex": 1144,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32578,
+      "assetId": 32578,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1141,
+        1142,
+        1143,
+        1144
+      ]
+    },
+    "35000": {
+      "atlasIndex": 1145,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32583,
+      "assetId": 32583,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1145
+      ]
+    },
+    "35001": {
+      "atlasIndex": 1146,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32584,
+      "assetId": 32584,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1146
+      ]
+    },
+    "35002": {
+      "atlasIndex": 1147,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32585,
+      "assetId": 32585,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1147
+      ]
+    },
+    "35003": {
+      "atlasIndex": 1148,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32586,
+      "assetId": 32586,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1148
+      ]
+    },
+    "35004": {
+      "atlasIndex": 1149,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32587,
+      "assetId": 32587,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 4,
+        "py": 2,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1149,
+        1150,
+        1151,
+        1152,
+        1153,
+        1154,
+        1155,
+        1156
+      ]
+    },
+    "35006": {
+      "atlasIndex": 1157,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32589,
+      "assetId": 32589,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1157
+      ]
+    },
+    "35007": {
+      "atlasIndex": 1158,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32590,
+      "assetId": 32590,
+      "g": {
+        "w": 1,
+        "h": 1,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1158
+      ]
+    },
+    "35008": {
+      "atlasIndex": 1162,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32591,
+      "assetId": 32591,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1159,
+        1160,
+        1161,
+        1162
+      ]
+    },
+    "35009": {
+      "atlasIndex": 1166,
+      "solid": false,
+      "ground": false,
+      "name": "",
+      "clientId": 32592,
+      "assetId": 32592,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1163,
+        1164,
+        1165,
+        1166
+      ]
+    },
+    "35089": {
+      "atlasIndex": 1170,
+      "solid": true,
+      "ground": false,
+      "name": "closed door",
+      "clientId": 32672,
+      "assetId": 32672,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1167,
+        1168,
+        1169,
+        1170
+      ]
+    },
+    "35091": {
+      "atlasIndex": 1174,
+      "solid": true,
+      "ground": false,
+      "name": "closed door",
+      "clientId": 32674,
+      "assetId": 32674,
+      "g": {
+        "w": 2,
+        "h": 2,
+        "layers": 1,
+        "px": 1,
+        "py": 1,
+        "pz": 1,
+        "phases": 1
+      },
+      "sprites": [
+        1171,
+        1172,
+        1173,
+        1174
+      ]
+    }
+  },
+  "source": "local-sprites+otb"
+}

@@ -16,3 +16,7 @@ todos.json
 tools/ot-source/*
 !tools/ot-source/.gitkeep
 tools/ot-pipeline/.cache/
+tools/client-assets/input/*
+!tools/client-assets/input/.gitkeep
+tools/client-assets/output/
+

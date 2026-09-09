@@ -17,6 +17,7 @@ export const env = createEnv({
     VITE_API_URL: z.string().url().optional(),
     VITE_SENTRY_DSN: z.string().optional(),
     VITE_AUTH_MOCK: z.enum(['true', 'false', '1', '0']).optional(),
+    VITE_WS_URL: z.string().url().optional(),
   },
 
   /**

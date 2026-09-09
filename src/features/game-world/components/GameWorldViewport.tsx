@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
+import { loadActiveCharacterId } from '#/features/characters/active-character'
 import {
   CREATURE_GEOMETRY,
   PLAYER_CREATURE_ID,
@@ -12,6 +13,7 @@ import {
 import type { Peke } from '#/features/game-hud/types'
 
 import { resolveWorldAssets } from '../assets'
+import { useWorldRealtime } from '../realtime/use-world-realtime'
 import {
   drawTile,
   findSpawnPoint,
@@ -94,6 +96,14 @@ export function GameWorldViewport({
   const followerPekeRef = useRef<Peke | null>(followerPeke)
   const [error, setError] = useState<string | null>(null)
   const [ready, setReady] = useState(false)
+  const [characterId] = useState(() => loadActiveCharacterId())
+  const realtime = useWorldRealtime({
+    characterId,
+    mapId: 'laboratory',
+    enabled: Boolean(characterId),
+  })
+  const realtimeRef = useRef(realtime)
+  realtimeRef.current = realtime
 
   useEffect(() => {
     followerPekeRef.current = followerPeke
@@ -109,6 +119,8 @@ export function GameWorldViewport({
     let raf = 0
     const keys = new Set<string>()
     const imageCache = new Map<number, HTMLImageElement>()
+    let lastServerStepAt = 0
+    const serverStepMs = 140
 
     const ensureImage = (creatureId: number) => {
       let img = imageCache.get(creatureId)
@@ -188,8 +200,25 @@ export function GameWorldViewport({
       label: def.name,
     }))
 
+    const remotes = new Map<string, Actor>()
+
     ensureImage(PLAYER_CREATURE_ID)
     for (const npc of npcs) ensureImage(npc.creatureId)
+
+    const facingFromServer = (dir?: string): FacingDir => {
+      if (dir === 'UP') return 0
+      if (dir === 'RIGHT') return 1
+      if (dir === 'LEFT') return 3
+      return 2
+    }
+
+    const tileToPx = (tx: number, ty: number, size: number) => {
+      if (!map) return { x: 0, y: 0 }
+      return {
+        x: tx * map.tileWidth + (map.tileWidth - size) / 2,
+        y: ty * map.tileHeight + (map.tileHeight - size) / 2,
+      }
+    }
 
     const applySize = () => {
       const nextW = Math.max(
@@ -292,6 +321,71 @@ export function GameWorldViewport({
       ctx.restore()
     }
 
+    const syncFromServer = () => {
+      const rt = realtimeRef.current
+      if (!rt.connected || !map) return
+      const selfId = rt.selfEntityId
+      if (selfId) {
+        const self = rt.entities.get(selfId)
+        if (self?.position) {
+          const px = tileToPx(self.position.x, self.position.y, player.size)
+          player.x = px.x
+          player.y = px.y
+          player.facing = facingFromServer(self.direction)
+        }
+      }
+
+      const seen = new Set<string>()
+      for (const [id, entity] of rt.entities) {
+        if (id === selfId) continue
+        if (entity.type === 'npc' || id.startsWith('npc-')) {
+          // server NPCs overlay local cosmetic NPCs by label later
+          continue
+        }
+        if (entity.type === 'pokemon' || id.startsWith('pokemon-')) continue
+        seen.add(id)
+        let actor = remotes.get(id)
+        if (!actor) {
+          actor = {
+            x: 0,
+            y: 0,
+            facing: 2,
+            phase: 1,
+            phaseT: 0,
+            creatureId: PLAYER_CREATURE_ID,
+            size: playerSize,
+            label: 'Trainer',
+          }
+          remotes.set(id, actor)
+          ensureImage(PLAYER_CREATURE_ID)
+        }
+        const px = tileToPx(entity.position.x, entity.position.y, actor.size)
+        actor.x = px.x
+        actor.y = px.y
+        actor.facing = facingFromServer(entity.direction)
+      }
+      for (const id of remotes.keys()) {
+        if (!seen.has(id)) remotes.delete(id)
+      }
+
+      // Align local cosmetic NPCs with server npc-* tiles when present
+      for (const [id, entity] of rt.entities) {
+        if (!id.startsWith('npc-')) continue
+        const label = entity.visual?.assetKey?.split('/').pop()
+        const match = npcs.find(
+          (n) =>
+            n.label?.toLowerCase().includes(label ?? '') ||
+            id.includes((n.label ?? '').toLowerCase().replace(/\s+/g, '')),
+        )
+        if (match) {
+          const px = tileToPx(entity.position.x, entity.position.y, match.size)
+          match.x = px.x
+          match.y = px.y
+          match.facing = facingFromServer(entity.direction)
+        }
+      }
+    }
+
     const frame = (ts: number) => {
       if (cancelled) return
       raf = requestAnimationFrame(frame)
@@ -309,14 +403,34 @@ export function GameWorldViewport({
       if (keys.has('d') || keys.has('arrowright')) vx += 1
 
       const moving = vx !== 0 || vy !== 0
-      if (moving) {
+      const online = realtimeRef.current.connected
+      const inBattle =
+        realtimeRef.current.battle?.battle?.status === 'active' ||
+        realtimeRef.current.battle?.type === 'battle.started'
+
+      if (online) {
+        syncFromServer()
+        if (moving && !inBattle && ts - lastServerStepAt >= serverStepMs) {
+          lastServerStepAt = ts
+          const dir =
+            Math.abs(vx) >= Math.abs(vy)
+              ? vx < 0
+                ? 'LEFT'
+                : 'RIGHT'
+              : vy < 0
+                ? 'UP'
+                : 'DOWN'
+          player.facing = facingFromServer(dir)
+          void realtimeRef.current.move(dir)
+        }
+      } else if (moving) {
         const len = Math.hypot(vx, vy) || 1
         const nx = vx / len
         const ny = vy / len
         player.facing = facingFromVector(nx, ny)
         tryMove(nx * playerSpeed * dt, ny * playerSpeed * dt)
       }
-      advanceWalkPhase(player, moving, dt)
+      advanceWalkPhase(player, moving && !inBattle, dt)
 
       const peke = followerPekeRef.current
       const followDistance = player.size * 1.6
@@ -369,6 +483,9 @@ export function GameWorldViewport({
       for (const npc of npcs) {
         advanceWalkPhase(npc, true, dt * 0.35, 3)
       }
+      for (const remote of remotes.values()) {
+        advanceWalkPhase(remote, true, dt * 0.5, 6)
+      }
 
       const mapPxW = map.width * map.tileWidth
       const mapPxH = map.height * map.tileHeight
@@ -413,7 +530,7 @@ export function GameWorldViewport({
       actorCtx.translate(-camX, -camY)
       actorCtx.imageSmoothingEnabled = false
 
-      const drawList: Actor[] = [...npcs]
+      const drawList: Actor[] = [...npcs, ...remotes.values()]
       if (peke && !peke.fainted && peke.creatureId != null && followerReady) {
         drawList.push(follower)
       }
@@ -427,6 +544,9 @@ export function GameWorldViewport({
 
       for (const npc of npcs) {
         drawNpcLabel(actorCtx, npc, camX, camY)
+      }
+      for (const remote of remotes.values()) {
+        drawNpcLabel(actorCtx, remote, camX, camY)
       }
     }
 
@@ -470,7 +590,7 @@ export function GameWorldViewport({
           }
         }
 
-        // Place NPCs around the spawn on open tiles
+        // Place NPCs around the spawn on open tiles (offline fallback)
         const offsets = [
           { x: 3, y: 0 },
           { x: -3, y: 1 },
@@ -528,6 +648,10 @@ export function GameWorldViewport({
     }
   }, [])
 
+  const battle = realtime.battle?.battle
+  const battleActive = battle?.status === 'active'
+  const firstMove = battle?.playerMoves?.[0]
+
   return (
     <div
       ref={rootRef}
@@ -536,7 +660,7 @@ export function GameWorldViewport({
       <canvas
         ref={mapCanvasRef}
         className="absolute inset-0 block size-full max-h-none max-w-none [image-rendering:pixelated]"
-        aria-label="Mundo inicial de testes"
+        aria-label="Mundo PokeTibia"
       />
       <canvas
         ref={actorCanvasRef}
@@ -553,9 +677,64 @@ export function GameWorldViewport({
           {error}
         </p>
       ) : null}
+      {battleActive && battle ? (
+        <div className="absolute bottom-14 left-1/2 z-4 w-[min(92%,22rem)] -translate-x-1/2 rounded bg-black/70 px-3 py-2 text-[0.75rem] text-white/90">
+          <p className="m-0 mb-1 font-semibold">
+            Wild {battle.wild?.name ?? 'Pokémon'} (HP {battle.wild?.hp}/
+            {battle.wild?.maxHp})
+          </p>
+          <p className="m-0 mb-2 text-white/65">
+            Your {battle.player?.name ?? 'Pokémon'} (HP {battle.player?.hp}/
+            {battle.player?.maxHp})
+            {firstMove?.missileAssetKey
+              ? ` · fx ${firstMove.missileAssetKey}`
+              : ''}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              className="rounded bg-emerald-700/90 px-2 py-1 text-[0.7rem]"
+              onClick={() =>
+                void realtime.battleAction({
+                  action: 'move',
+                  moveId: firstMove?.id ?? 'tackle',
+                })
+              }
+            >
+              Attack
+            </button>
+            <button
+              type="button"
+              className="rounded bg-sky-800/90 px-2 py-1 text-[0.7rem]"
+              onClick={() =>
+                void realtime.battleAction({ action: 'capture', ballBonus: 1 })
+              }
+            >
+              Catch
+            </button>
+            <button
+              type="button"
+              className="rounded bg-stone-600/90 px-2 py-1 text-[0.7rem]"
+              onClick={() => void realtime.battleAction({ action: 'flee' })}
+            >
+              Flee
+            </button>
+          </div>
+        </div>
+      ) : null}
       {ready ? (
         <p className="pointer-events-none absolute right-3 bottom-3 z-3 m-0 rounded bg-black/45 px-2 py-1 text-[0.7rem] tracking-wide text-white/70">
           WASD / setas para andar
+          {characterId
+            ? realtime.connected
+              ? ` · lab online (${realtime.entities.size} entidades)`
+              : ' · lab offline'
+            : ' · selecione um personagem'}
+        </p>
+      ) : null}
+      {realtime.error ? (
+        <p className="pointer-events-none absolute top-3 left-3 z-3 m-0 max-w-[min(90%,24rem)] rounded bg-black/55 px-2 py-1 text-[0.65rem] text-amber-200/90">
+          WS: {realtime.error}
         </p>
       ) : null}
     </div>
