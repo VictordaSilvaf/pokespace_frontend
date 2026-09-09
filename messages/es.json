@@ -159,6 +159,8 @@
   "nav_settings": "Ajustes",
   "nav_start_session": "Iniciar sesión",
   "no": "No",
+  "not_found_support": "Esa ruta no existe en PokeSpace. Vuelve y continúa tu viaje.",
+  "not_found_title": "Página no encontrada",
   "password_current": "Contraseña actual",
   "password_done": "Contraseña cambiada. Inicia sesión de nuevo.",
   "password_hide": "Ocultar contraseña",

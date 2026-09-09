@@ -12,6 +12,7 @@ import { TanStackDevtools } from '@tanstack/react-devtools'
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
 
 import { AppShell } from '#/components/layout/AppShell'
+import { NotFoundScreen } from '#/components/NotFoundScreen'
 import { CosmicScene } from '#/components/space/CosmicScene'
 import { AuthProvider } from '#/lib/auth/auth-provider'
 import { getLocale } from '#/paraglide/runtime'
@@ -61,6 +62,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     ],
   }),
   component: RootComponent,
+  notFoundComponent: NotFoundScreen,
   shellComponent: RootDocument,
 })
 

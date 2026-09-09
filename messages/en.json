@@ -159,6 +159,8 @@
   "nav_settings": "Settings",
   "nav_start_session": "Start session",
   "no": "No",
+  "not_found_support": "That path does not exist in PokeSpace. Head back and continue your journey.",
+  "not_found_title": "Page not found",
   "password_current": "Current password",
   "password_done": "Password changed. Log in again to continue.",
   "password_hide": "Hide password",
