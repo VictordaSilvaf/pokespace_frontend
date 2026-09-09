@@ -1,0 +1,5 @@
+Nome: Leuzaum xv
+PosX: 969, PosY: 1066, PosZ: 13
+Data: 08/14/15 20:13:49
+
+Bug: levei hs na mao de 1 weedle

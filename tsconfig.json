@@ -1,6 +1,6 @@
 {
   "include": ["**/*.ts", "**/*.tsx", "eslint.config.js", "prettier.config.js", "vite.config.js"],
-  "exclude": ["public/assets/world/kenney/tiled/**"],
+  "exclude": [],
  
   "compilerOptions": {
     "target": "ES2022",

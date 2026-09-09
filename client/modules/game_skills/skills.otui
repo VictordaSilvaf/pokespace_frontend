@@ -1,0 +1,226 @@
+SkillButton < UIButton
+  height: 21
+  margin-bottom: 2
+  &onClick: onSkillButtonClick
+
+SkillNameLabel < GameLabel
+  id: name
+  font: verdana-11px-monochrome
+  anchors.left: parent.left
+  anchors.top: parent.top
+  anchors.bottom: parent.bottom
+
+SkillValueLabel < GameLabel
+  id: value
+  font: verdana-11px-monochrome
+  text-align: topright
+  anchors.right: parent.right
+  anchors.top: parent.top
+  anchors.bottom: parent.bottom
+  anchors.left: prev.left
+
+SkillPercentPanel < ProgressBar
+  id: percent
+  background-color: green
+  height: 5
+  margin-top: 15
+  anchors.left: parent.left
+  anchors.right: parent.right
+  anchors.top: parent.top
+  phantom: false
+
+MiniWindow
+  id: skillWindow
+  !text: tr('Skills')
+  height: 150
+  icon: /images/topbuttons/miniwindowicon/skills
+  icon-rect: 4 4 18 16
+  text-offset: 23 5
+  @onClose: modules.game_skills.onMiniWindowClose()
+  &save: true
+
+  MiniWindowContents
+    padding-left: 5
+    padding-right: 5
+    layout: verticalBox
+
+    SkillButton
+      margin-top: 5
+      id: level
+      height: 45
+      icon-align: topleft
+      SkillNameLabel
+        font: verdana-11px-italic
+        text-align: top
+        text-offset: 40 0
+        anchors.right: parent.right
+        margin-top: 5
+      SkillValueLabel
+        font: sans-bold-16px-italic
+        text-align: bottom
+        text-offset: 40 0
+        anchors.horizontalCenter: parent.horizontalCenter
+        margin-bottom: 5
+
+    SkillButton
+      id: experience
+      SkillNameLabel
+        !text: tr('Experience')
+      SkillValueLabel
+      SkillPercentPanel
+        background-color: red
+
+    SkillButton
+      id: skillId6
+      SkillNameLabel
+        !text: tr('Fishing')
+      SkillValueLabel
+      SkillPercentPanel
+
+    SkillButton
+      id: skillId1
+      SkillNameLabel
+        !text: tr('Headbutt')
+      SkillValueLabel
+      SkillPercentPanel
+
+    SkillButton
+      id: skillId2
+      SkillNameLabel
+        !text: tr('Nivel de Treinador')
+      SkillValueLabel
+      SkillPercentPanel
+
+    SkillButton
+      id: stamina
+      height: 15
+      SkillNameLabel
+        !text: tr('Stamina')
+      SkillValueLabel
+
+    SkillButton
+      id: pokemonSkillId0
+      height: 22
+      SkillNameLabel
+        !text: tr('Casino Coins')
+      SkillValueLabel
+      HorizontalSeparator
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        margin-bottom: 2
+
+    SkillButton
+      id: pokemonSkillId1
+      height: 15
+      SkillNameLabel
+        !text: tr('Kanto Catches')
+      SkillValueLabel
+
+    SkillButton
+      id: pokemonSkillId2
+      height: 22
+      SkillNameLabel
+        !text: tr('Total Catches')
+      SkillValueLabel
+      HorizontalSeparator
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        margin-bottom: 2
+
+    SkillButton
+      id: pokemonSkillId3
+      height: 15
+      SkillNameLabel
+        !text: tr('Wins')
+      SkillValueLabel
+
+    SkillButton
+      id: pokemonSkillId4
+      height: 15
+      SkillNameLabel
+        !text: tr('Loses')
+      SkillValueLabel
+
+    SkillButton
+      id: pokemonSkillId5
+      height: 15
+      SkillNameLabel
+        !text: tr('Official Wins')
+      SkillValueLabel
+
+    SkillButton
+      id: pokemonSkillId6
+      height: 15
+      SkillNameLabel
+        !text: tr('Official Loses')
+      SkillValueLabel
+
+    SkillButton
+      id: pokemonSkillId7
+      height: 15
+      SkillNameLabel
+        !text: tr('PVP Score')
+      SkillValueLabel
+
+    SkillButton
+      id: pokemonSkillId8
+      height: 70
+      margin-top: 5
+      UIWidget
+        id: boulderBadge
+        !tooltip: tr('Boulder Badge')
+        image-source: /images/game/badges/boulder_badge_off
+        anchors.top: parent.top
+        anchors.right: next.left
+        margin-right: 10
+      UIWidget
+        id: cascadeBadge
+        !tooltip: tr('Cascade Badge')
+        image-source: /images/game/badges/cascade_badge_off
+        anchors.top: parent.top
+        anchors.right: next.left
+        margin-right: 9
+      UIWidget
+        id: thunderBadge
+        !tooltip: tr('Thunder Badge')
+        image-source: /images/game/badges/thunder_badge_off
+        anchors.top: parent.top
+        anchors.right: next.left
+        margin-right: 10
+      UIWidget
+        id: rainbowBadge
+        !tooltip: tr('Rainbow Badge')
+        image-source: /images/game/badges/rainbow_badge_off
+        anchors.top: parent.top
+        anchors.right: parent.right
+        margin-right: 5
+      UIWidget
+        id: marshBadge
+        !tooltip: tr('Marsh Badge')
+        image-source: /images/game/badges/marsh_badge_off
+        anchors.right: next.left
+        anchors.bottom: parent.bottom
+        margin-right: 10
+      UIWidget
+        id: soulBadge
+        !tooltip: tr('Soul Badge')
+        image-source: /images/game/badges/soul_badge_off
+        anchors.right: next.left
+        anchors.bottom: parent.bottom
+        margin-right: 9
+      UIWidget
+        id: volcanoBadge
+        !tooltip: tr('Volcano Badge')
+        image-source: /images/game/badges/volcano_badge_off
+        anchors.right: next.left
+        anchors.bottom: parent.bottom
+        margin-right: 10
+      UIWidget
+        id: earthBadge
+        !tooltip: tr('Earth Badge')
+        image-source: /images/game/badges/earth_badge_off
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        margin-right: 5

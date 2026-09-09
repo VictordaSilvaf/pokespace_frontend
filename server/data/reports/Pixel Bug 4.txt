@@ -1,0 +1,5 @@
+Nome: Pixel
+PosX: 1059, PosY: 1038, PosZ: 7
+Data: 08/13/15 14:24:44
+
+Bug: Nao esta abrindo o canal ctrl+o

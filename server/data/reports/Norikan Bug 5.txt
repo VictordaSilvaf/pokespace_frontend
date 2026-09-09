@@ -1,0 +1,5 @@
+Nome: Norikan
+PosX: 1073, PosY: 937, PosZ: 7
+Data: 08/13/15 19:21:33
+
+Bug: o skill de pesca não aumenta pescando.

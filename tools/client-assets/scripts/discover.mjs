@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Discover local Tibia.dat + Tibia.spr and write manifests/manifest.json
+ * Discover local things.dat + things.spr and write manifests/manifest.json
  *
  *   pnpm assets:discover
- *   pnpm assets:discover -- --input tools/ot-source --max 100
+ *   pnpm assets:discover -- --input client/data/things --max 100
  */
 import fs from 'node:fs'
 import path from 'node:path'
@@ -14,6 +14,7 @@ import {
   INPUT_DIR,
   MANIFEST_DIR,
   parseArgs,
+  resolveDatSpr,
   resolveInputDir,
 } from './paths.mjs'
 
@@ -22,25 +23,20 @@ const inputDir = resolveInputDir(args)
 const max = args.max ? Number(args.max) : Infinity
 const categoryFilter = args.category ?? 'all'
 
-const datPath = path.join(inputDir, 'Tibia.dat')
-const sprPath = path.join(inputDir, 'Tibia.spr')
+const { datPath, sprPath, sprExists } = resolveDatSpr(inputDir)
 
-function requireFile(filePath, label) {
-  if (!fs.existsSync(filePath)) {
-    throw new Error(
-      `Missing ${label}: ${filePath}\n` +
-        `Place 10.98 client assets in tools/ot-source/ (or tools/client-assets/input/).\n` +
-        `See tools/client-assets/README.md — no automatic download.`,
-    )
-  }
-  return filePath
+if (!fs.existsSync(datPath)) {
+  throw new Error(
+    `Missing DAT: ${datPath}\n` +
+      `Expected client/data/things/things.dat\n` +
+      `See tools/client-assets/README.md`,
+  )
 }
 
-requireFile(datPath, 'Tibia.dat')
-const sprExists = fs.existsSync(sprPath)
-
 console.log(`DAT: ${datPath}`)
-console.log(`SPR: ${sprExists ? sprPath : '(missing — discover continues without SPR)'}`)
+console.log(
+  `SPR: ${sprExists ? sprPath : '(missing — discover continues without SPR)'}`,
+)
 
 const { signature, things: allThings } = parseDatFile(datPath)
 let things = allThings

@@ -53,11 +53,13 @@ export {
 } from './urls'
 export {
   CREATURE_GEOMETRY,
+  DEFAULT_CREATURE_GEOMETRY,
   DEX_CREATURE_ID,
   PLAYER_CREATURE_ID,
   WORLD_NPC_DEFS,
   creatureIdForDex,
   creatureUrl,
+  geometryForCreature,
 } from './creature-map'
 export type { SheetGeometry } from './creature-map'
 export {

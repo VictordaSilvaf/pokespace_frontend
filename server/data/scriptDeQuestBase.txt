@@ -1,0 +1,11 @@
+local config = {
+	items_que_vai_ganhar = { -- copia a linha e muda. exemplo: o proximo dessa lista seria (id3 = {4342, 3},)
+							id1 = {2160, 1}, -- primeiro numero é o id do item o segundo é a quantidade q vai ganhar
+							id2 = {2313, 1},
+						   },
+	teleportarParaCityNatal = "sim", -- teleportar para cidade natal
+}
+
+function onUse(cid, item, itemEx)
+	
+end

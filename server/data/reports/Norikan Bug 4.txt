@@ -1,0 +1,5 @@
+Nome: Norikan
+PosX: 1013, PosY: 1043, PosZ: 7
+Data: 08/13/15 19:18:05
+
+Bug: 2 NPCs Guru em saffron

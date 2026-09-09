@@ -13,10 +13,21 @@ dist-ssr
 __unconfig*
 todos.json
 .vercel
-tools/ot-source/*
-!tools/ot-source/.gitkeep
+
+# OT pipeline caches / generated extract (local)
 tools/ot-pipeline/.cache/
 tools/client-assets/input/*
 !tools/client-assets/input/.gitkeep
 tools/client-assets/output/
 
+# Never reintroduce Windows runtime / logs under client or server
+client/**/*.log
+client/**/*.dll
+client/**/*.exe
+client/**/*.vrs
+server/**/*.log
+server/**/*.dll
+server/**/*.exe
+server/**/*.s3db
+server/data/logs/**
+!server/data/logs/.gitkeep

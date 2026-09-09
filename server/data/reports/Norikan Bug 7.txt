@@ -1,0 +1,5 @@
+Nome: Norikan
+PosX: 1055, PosY: 1045, PosZ: 7
+Data: 08/13/15 19:27:07
+
+Bug: Na aba de escolha da roupa, seguindo a sequencia clicando na setinha pra frente Christimasdepois do outfit 2 da DEBUGG no Client.

@@ -1,0 +1,24 @@
+Panel
+  MultilineTextEdit
+    id: pokemonMoves
+    image-color: alpha
+    color: white
+    anchors.fill: parent
+    margin-right: 22
+    padding: 5
+    vertical-scrollbar: pokemonMovesScrollBar
+    text-wrap: true
+    editable: false
+    cursor-visible: false
+    focusable: false
+
+  VerticalScrollBar
+    id: pokemonMovesScrollBar
+    anchors.top: pokemonMoves.top
+    anchors.left: pokemonMoves.right
+    anchors.bottom: pokemonMoves.bottom
+    margin-top: 2
+    margin-left: 5
+    margin-bottom: 2
+    step: 14
+    pixels-scroll: true

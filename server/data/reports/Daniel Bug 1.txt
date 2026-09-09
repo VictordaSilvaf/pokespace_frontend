@@ -1,0 +1,41 @@
+Nome: Daniel
+PosX: 1069, PosY: 1020, PosZ: 7
+Data: 08/13/15 13:43:35
+
+Bug: o pokemon nao sobe com vc na escada até que vc de outro passo
+se vc conseguir liberar o mapa no igual no pxg seria legal tbm
+
+self destruct arrumar
+--melee do oddish batendo 2
+
+--quando a nurse heala o poke fora da ball nao atualiza a life(nao testei dentro)
+
+-- os canais vc vai arrumar ainda neh?(ctrl+0
+
+-- ctrl+o*
+
+-- rever poison pownder *(oddish)
+
+--Contador de catch no perfil(Habilidaes Ctrl+s)
+
+--locker em cidades diferentes conter itens diferentes
+
+--gastly selvagem nao se move ao (atacando um inimigo)
+
+-?-area de coliso water gun maior que a sprite(pode nao ser bug)
+
+--arrumar xp do zubat
+
+-- rattata hs
+
+--poder usar rock smash/cut em battle
+
+-- passiva levitate em pokemons(opcional)
+
+--gastly tomando hit melee
+
+--aumentar a frequencia da passiva do cubone
+
+-- pokemon teleporta com voce instantaneamente ao subir uma escada
+
+--rever o mapa/npcs

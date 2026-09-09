@@ -1,0 +1,529 @@
+
+Name: Senhor - Pokémon: Abra - 5 Ultra balls
+Name: Seebax - Pokémon: Gloom - 
+Name: Takeshi - Pokémon: Sandshrew - 
+Name: Takeshi - Pokémon: Sandslash - 44 Ultra balls
+Name: Expectrus - Pokémon: Pidgey - 
+Name: Expectrus - Pokémon: Parasect - 
+Name: Nurse - Pokémon: Oddish - 
+Name: Expectrus - Pokémon: Tyrogue - 1 Ultra ball
+Name: Drogba - Pokémon: Gloom - 1 Ultra ball
+Name: Shinom - Pokémon: Abra - 
+Name: Seebax - Pokémon: Yanma - 2 Ultra balls
+Name: Lord Marvell - Pokémon: Diglett - 
+Name: Polones - Pokémon: Machop - 4 Ultra balls
+Name: Seebax - Pokémon: Forretress - 8 Ultra balls
+
+
+Name: Expectrus - Pokémon: Shiny Machamp - 1 Ultra ball
+Name: Shinom - Pokémon: Abra - 
+Name: Expectrus - Pokémon: Tyrogue - 
+Name: Takeshi - Pokémon: Skarmory - 37 Ultra balls
+Name: Lord Marvell - Pokémon: Slowpoke - 
+Name: Takeshi - Pokémon: Drowzee - 4 Ultra balls
+Name: Catitus - Pokémon: Oddish - 
+Name: Polones - Pokémon: Exeggcute - 
+Name: Tripa Seca - Pokémon: Gloom - 2 Ultra balls
+Name: Takeshi - Pokémon: Kadabra - 7 Ultra balls
+Name: Polones - Pokémon: Scyther - 2 Ultra balls
+Name: Polones - Pokémon: Forretress - 2 Ultra balls
+Name: Polones - Pokémon: Parasect - 3 Ultra balls
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Catitus - Pokémon: Magikarp - 
+Name: Shinom - Pokémon: Voltorb - 
+Name: Shinom - Pokémon: Elekid - 7 Ultra balls
+Name: Tripa Seca - Pokémon: Parasect - 
+Name: Tripa Seca - Pokémon: Parasect - 
+Name: Catitus - Pokémon: Remoraid - 4 Ultra balls
+Name: Tiago - Pokémon: Beedrill - 2 Ultra balls
+Name: Japa - Pokémon: Hoppip - 
+Name: Japa - Pokémon: Yanma - 1 Ultra ball
+Name: Japa - Pokémon: Pineco - 1 Ultra ball
+Name: Sr Omar - Pokémon: Slowpoke - 1 Ultra ball
+Name: Catitus - Pokémon: Omanyte - 1 Ultra ball
+Name: Sr Omar - Pokémon: Sandslash - 3 Ultra balls
+Name: Seebax - Pokémon: Hitmontop - 8 Ultra balls
+Name: Danilo - Pokémon: Magmar - 2 Ultra balls
+Name: Tryn - Pokémon: Cubone - 
+
+
+Name: Senhor - Pokémon: Shiny Cubone - 
+Name: Senhor - Pokémon: Magmortar - 
+
+
+Name: Senhor - Pokémon: Shiny Snorlax - 
+Name: [ADM] Forsaken - Pokémon: Steelix - 
+Name: Master Lee - Pokémon: Aerodactyl - 2 Ultra balls
+Name: [ADM] One - Pokémon: Charizard - 
+Name: Teste - Pokémon: Rattata - 
+Name: Teste - Pokémon: Rattata - 
+Name: Teste - Pokémon: Rattata - 
+Name: Teste - Pokémon: Rattata - 
+
+
+Name: [ADM] One - Pokémon: Shiny Charizard - 12 Ultra balls
+Name: [ADM] One - Pokémon: Blissey - 
+
+
+Name: [ADM] One - Pokémon: Shiny Charizard - 
+
+
+Name: [ADM] One - Pokémon: Shiny Electabuzz - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Lord - Pokémon: Rattata - 
+Name: Calos - Pokémon: Rattata - 
+Name: Calos - Pokémon: Rattata - 
+Name: Calos - Pokémon: Rattata - 
+Name: Calos - Pokémon: Rattata - 
+Name: Calos - Pokémon: Rattata - 
+Name: Calos - Pokémon: Rattata - 
+Name: Calos - Pokémon: Rattata - 
+Name: Calos - Pokémon: Rattata - 
+Name: Calos - Pokémon: Rattata - 
+Name: Calos - Pokémon: Rattata - 
+Name: [ADM] One - Pokémon: Golem - 1 Ultra ball
+Name: [ADM] Two - Pokémon: Rattata - 
+Name: [ADM] Two - Pokémon: Rattata - 
+Name: [ADM] Two - Pokémon: Weedle - 
+Name: Pixel - Pokémon: Oddish - 1 Super ball
+Name: Daniel - Pokémon: Rattata - 1 Poke ball
+Name: Daniel - Pokémon: Oddish - 
+Name: Pixel - Pokémon: Oddish - 
+Name: Daniel - Pokémon: Magikarp - 
+Name: Pixel - Pokémon: Magikarp - 
+Name: Darkge - Pokémon: Oddish - 1 Poke ball
+Name: Daniel - Pokémon: Bellsprout - 
+Name: Daniel - Pokémon: Oddish - 
+Name: Darkge - Pokémon: Bellsprout - 
+Name: Leuzaum Xv - Pokémon: Bellsprout - 
+Name: Leuzaum Xv - Pokémon: Sentret - 
+Name: Jair - Pokémon: Magikarp - 
+Name: Daniel - Pokémon: Pidgey - 1 Poke ball
+Name: Jair - Pokémon: Oddish - 
+Name: Jair - Pokémon: Magikarp - 
+Name: Leuzaum Xv - Pokémon: Gloom - 
+Name: Alucard - Pokémon: Pidgey - 
+Name: Alucard - Pokémon: Oddish - 
+Name: Alucard - Pokémon: Bellsprout - 
+Name: Daniel - Pokémon: Diglett - 
+Name: Alucard - Pokémon: Magikarp - 
+Name: Daniel - Pokémon: Magikarp - 
+Name: Daniel - Pokémon: Weedle - 
+Name: Leuzaum Xv - Pokémon: Diglett - 
+Name: Leuzaum Xv - Pokémon: Cubone - 1 Poke ball
+Name: Daniel - Pokémon: Cubone - 1 Ultra ball
+Name: Daniel - Pokémon: Magnemite - 
+Name: Alucard - Pokémon: Weepinbell - 1 Ultra ball
+Name: Zero - Pokémon: Magikarp - 
+Name: Daniel - Pokémon: Caterpie - 
+Name: Alucard - Pokémon: Sandshrew - 
+Name: Alucard - Pokémon: Dugtrio - 7 Ultra balls
+Name: Alucard - Pokémon: Sentret - 
+Name: Alucard - Pokémon: Tangela - 5 Ultra balls
+Name: Alucard - Pokémon: Geodude - 
+Name: Daniel - Pokémon: Gloom - 1 Ultra ball
+Name: Alucard - Pokémon: Machop - 
+Name: Zonako - Pokémon: Caterpie - 
+Name: Zonako - Pokémon: Oddish - 2 Poke balls
+Name: Daniel - Pokémon: Voltorb - 5 Great balls
+Name: Zonako - Pokémon: Sentret - 
+Name: Leuzaum Xv - Pokémon: Rattata - 2 Poke balls
+Name: Leuzaum Xv - Pokémon: Rattata - 
+Name: Leuzaum Xv - Pokémon: Voltorb - 
+Name: Norikan - Pokémon: Oddish - 3 Poke balls
+Name: JonaNW - Pokémon: Magikarp - 
+Name: Daniel - Pokémon: Pidgeotto - 3 Poke balls4 Great balls, 1 Ultra ball
+Name: Daniel - Pokémon: Mankey - 1 Great ball
+Name: Daniel - Pokémon: Spearow - 
+Name: Zonako - Pokémon: Bellsprout - 
+Name: Daniel - Pokémon: Gastly - 8 Great balls6 Ultra balls
+Name: Daniel - Pokémon: Zubat - 
+Name: Zonako - Pokémon: Metapod - 
+Name: Daniel - Pokémon: Bellsprout - 
+Name: Daniel - Pokémon: Kakuna - 1 Great ball
+Name: Daniel - Pokémon: Spearow - 
+Name: Daniel - Pokémon: Metapod - 1 Poke ball3 Great balls
+Name: Daniel - Pokémon: Bellsprout - 
+Name: Calos - Pokémon: Rattata - 
+Name: Teste - Pokémon: Rattata - 
+Name: Teste - Pokémon: Rattata - 
+Name: Teste - Pokémon: Gastly - 
+Name: [ADM] One - Pokémon: Charizard - 1 Poke ball1 Great ball, 1 Super ball, 1 Ultra ball
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+
+
+Name: [ADM] One - Pokémon: Shiny Charizard - 1 Ultra ball
+Name: Leuzaum Xv - Pokémon: Rattata - 
+Name: Leuzaum Xv - Pokémon: Pidgey - 
+Name: Leuzaum Xv - Pokémon: Metapod - 1 Poke ball
+Name: Zwei - Pokémon: Oddish - 
+Name: Leuzaum xv - Pokémon: Bellsprout - 
+Name: Leuzaum xv - Pokémon: Pidgey - 
+Name: Daniel - Pokémon: Oddish - 1 Ultra ball
+Name: Daniel - Pokémon: Hoppip - 
+Name: Leuzaum xv - Pokémon: Gloom - 4 Ultra balls
+Name: King Zun - Pokémon: Magikarp - 
+Name: Kirito - Pokémon: Bellsprout - 
+Name: Zweii - Pokémon: Oddish - 
+Name: Swaney - Pokémon: Magikarp - 
+Name: Kirito - Pokémon: Pidgey - 
+Name: Alucard - Pokémon: Pidgey - 
+Name: Zwei - Pokémon: Oddish - 
+Name: Zwei - Pokémon: Hoppip - 
+Name: Zwei - Pokémon: Bellsprout - 
+Name: Zwei - Pokémon: Magikarp - 
+Name: [ADM] One - Pokémon: Swinub - 
+Name: Daniel - Pokémon: Magikarp - 
+Name: Zwei - Pokémon: Exeggcute - 
+Name: Daniel - Pokémon: Metapod - 
+Name: Daniel - Pokémon: Cubone - 3 Ultra balls
+Name: Daniel - Pokémon: Pidgey - 
+
+
+Name: Daniel - Pokémon: Shiny Tangela - 
+Name: Zwei - Pokémon: Graveler - 
+Name: Norikan - Pokémon: Oddish - 
+Name: [ADM] One - Pokémon: Snorlax - 
+Name: Daniel - Pokémon: Magikarp - 
+Name: Daniel - Pokémon: Pidgeotto - 
+Name: Daniel - Pokémon: Slowpoke - 
+Name: Leuzaum - Pokémon: Bellsprout - 
+Name: Leuzaum - Pokémon: Diglett - 
+Name: Leuzaum - Pokémon: Slowpoke - 
+Name: Daniel - Pokémon: Hitmonlee - 
+Name: Zwei - Pokémon: Graveler - 
+Name: Zwei - Pokémon: Gyarados - 
+Name: Zwei - Pokémon: Feraligatr - 
+Name: Zwei - Pokémon: Slowking - 
+Name: Zwei - Pokémon: Kangaskhan - 
+Name: Zwei - Pokémon: Rattata - 
+Name: Daniel - Pokémon: Machop - 1 Ultra ball
+Name: Daniel - Pokémon: Machop - 
+Name: Daniel - Pokémon: Sentret - 
+Name: Daniel - Pokémon: Oddish - 
+Name: Daniel - Pokémon: Oddish - 
+Name: Daniel - Pokémon: Spearow - 
+Name: [ADM] One - Pokémon: Vileplume - 
+Name: Zwei - Pokémon: Graveler - 
+Name: Zwei - Pokémon: Slowking - 
+
+
+Name: [GM] Sete - Pokémon: Shiny Electabuzz - 
+
+
+Name: [GM] Zwei - Pokémon: Shiny Onix - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [GM] Zwei - Pokémon: Gyarados - 
+Name: [GM] Zwei - Pokémon: Slowking - 
+Name: [GM] Zwei - Pokémon: Feraligatr - 
+
+
+Name: [ADM] One - Pokémon: Shiny Gyarados - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Rattata - 
+Name: [ADM] One - Pokémon: Rattata - 
+
+
+Name: [ADM] One - Pokémon: Shiny Charizard - 
+
+
+Name: [ADM] One - Pokémon: Shiny Rattata - 
+
+
+Name: [ADM] One - Pokémon: Shiny Rattata - 
+
+
+Name: [ADM] One - Pokémon: Shiny Rattata - 
+
+
+Name: [ADM] One - Pokémon: Shiny Rattata - 
+Name: [GM] Sete - Pokémon: Omanyte - 
+Name: [GM] Sete - Pokémon: Graveler - 
+Name: [GM] Sete - Pokémon: Graveler - 
+Name: [GM] Sete - Pokémon: Sandslash - 2 Ultra balls
+Name: [GM] Sete - Pokémon: Diglett - 
+Name: [GM] Sete - Pokémon: Diglett - 
+Name: [GM] Sete - Pokémon: Diglett - 
+Name: [GM] Sete - Pokémon: Diglett - 
+Name: [GM] Sete - Pokémon: Oddish - 
+Name: [GM] Sete - Pokémon: Metapod - 
+Name: [GM] Sete - Pokémon: Machop - 
+Name: [GM] Sete - Pokémon: Machop - 
+Name: [GM] Sete - Pokémon: Machop - 
+Name: [GM] Sete - Pokémon: Machop - 
+Name: [GM] Sete - Pokémon: Machop - 
+Name: [GM] Sete - Pokémon: Machop - 
+Name: [GM] Sete - Pokémon: Hitmonlee - 5 Ultra balls
+Name: [GM] Sete - Pokémon: Hitmonchan - 5 Ultra balls
+Name: [GM] Sete - Pokémon: Machamp - 10 Ultra balls
+Name: [GM] Sete - Pokémon: Tyrogue - 3 Ultra balls
+Name: [GM] Sete - Pokémon: Machamp - 
+Name: [GM] Sete - Pokémon: Hitmonlee - 
+Name: [GM] Sete - Pokémon: Hitmonchan - 
+Name: [GM] Sete - Pokémon: Hitmonchan - 
+Name: [GM] Sete - Pokémon: Hitmonlee - 
+Name: [GM] Sete - Pokémon: Hitmontop - 2 Ultra balls
+Name: [GM] Sete - Pokémon: Hitmontop - 
+Name: [GM] Sete - Pokémon: Hitmontop - 
+Name: [GM] Sete - Pokémon: Hitmonlee - 
+Name: [GM] Sete - Pokémon: Hitmonchan - 
+Name: [GM] Sete - Pokémon: Hitmontop - 
+Name: [GM] Sete - Pokémon: Hitmontop - 
+Name: [GM] Sete - Pokémon: Machamp - 
+Name: [GM] Sete - Pokémon: Hitmonchan - 
+Name: [GM] Sete - Pokémon: Hitmontop - 
+Name: [GM] Sete - Pokémon: Machamp - 
+Name: [GM] Sete - Pokémon: Hitmonchan - 
+Name: [GM] Sete - Pokémon: Hitmonchan - 
+Name: [GM] Sete - Pokémon: Hitmonlee - 
+Name: [GM] Sete - Pokémon: Hitmontop - 
+Name: [GM] Sete - Pokémon: Hitmonlee - 
+Name: [GM] Sete - Pokémon: Hitmonchan - 
+Name: [GM] Sete - Pokémon: Tyrogue - 
+Name: [GM] Sete - Pokémon: Hitmonlee - 
+Name: [GM] Sete - Pokémon: Hitmonchan - 
+Name: [GM] Sete - Pokémon: Machoke - 2 Ultra balls
+Name: [GM] Sete - Pokémon: Snorlax - 
+Name: [GM] Sete - Pokémon: Hitmontop - 
+Name: [GM] Sete - Pokémon: Slowking - 
+Name: [GM] Sete - Pokémon: Vaporeon - 
+Name: [GM] Sete - Pokémon: Gyarados - 
+Name: [GM] Sete - Pokémon: Blastoise - 
+Name: [GM] Sete - Pokémon: Feraligatr - 
+Name: [ADM] One - Pokémon: Grimer - 
+Name: [ADM] One - Pokémon: Ekans - 
+Name: [GM] Sete - Pokémon: Onix - 18 Ultra balls
+
+
+Name: [ADM] One - Pokémon: Shiny Arcanine - 
+
+
+Name: [ADM] One - Pokémon: Shiny Jynx - 
+Name: [GM] Sete - Pokémon: Wooper - 
+Name: [GM] Sete - Pokémon: Kingdra - 
+Name: [GM] Sete - Pokémon: Gyarados - 
+Name: [GM] Sete - Pokémon: Blastoise - 
+Name: [GM] Sete - Pokémon: Omastar - 2 Ultra balls
+Name: [GM] Sete - Pokémon: Feraligatr - 
+Name: [GM] Sete - Pokémon: Quagsire - 
+Name: [GM] Sete - Pokémon: Politoed - 
+Name: [GM] Sete - Pokémon: Slowking - 
+Name: [GM] Sete - Pokémon: Porygon - 
+Name: [GM] Sete - Pokémon: Dewgong - 
+Name: [GM] Sete - Pokémon: Dratini - 
+Name: [GM] Sete - Pokémon: Cloyster - 
+Name: [GM] Sete - Pokémon: Jynx - 
+Name: [GM] Sete - Pokémon: Cloyster - 
+Name: [GM] Sete - Pokémon: Dewgong - 
+Name: [GM] Sete - Pokémon: Gyarados - 
+Name: [GM] Sete - Pokémon: Scizor - 
+Name: [GM] Sete - Pokémon: Raichu - 
+Name: [GM] Sete - Pokémon: Wigglytuff - 
+Name: [GM] Sete - Pokémon: Arbok - 
+Name: [GM] Sete - Pokémon: Rapidash - 
+Name: [GM] Sete - Pokémon: Arcanine - 
+Name: [GM] Sete - Pokémon: Growlithe - 
+Name: [GM] Sete - Pokémon: Magmar - 
+Name: [GM] Sete - Pokémon: Charmeleon - 
+Name: [GM] Sete - Pokémon: Ponyta - 
+Name: [GM] Sete - Pokémon: Cyndaquil - 
+Name: [GM] Sete - Pokémon: Rhydon - 9 Ultra balls
+Name: [GM] Sete - Pokémon: Onix - 
+Name: [GM] Sete - Pokémon: Onix - 
+Name: [GM] Sete - Pokémon: Onix - 
+Name: [GM] Sete - Pokémon: Rhydon - 
+
+
+Name: [GM] Sete - Pokémon: Shiny Ampharos - 
+
+
+Name: [GM] Sete - Pokémon: Shiny Gyarados - 
+
+
+Name: [GM] Sete - Pokémon: Shiny Gyarados - 
+
+
+Name: [GM] Sete - Pokémon: Shiny Gyarados - 
+
+
+Name: [GM] Sete - Pokémon: Shiny Gyarados - 
+
+
+Name: [GM] Sete - Pokémon: Shiny Electivire - 
+
+
+Name: [GM] Sete - Pokémon: Shiny Electivire - 
+
+
+Name: [GM] Sete - Pokémon: Shiny Magmortar - 
+
+
+Name: [GM] Sete - Pokémon: Shiny Magmortar - 
+Name: [ADM] One - Pokémon: Golem - 
+Name: [ADM] One - Pokémon: Golem - 
+Name: [ADM] One - Pokémon: Electivire - 
+Name: [ADM] One - Pokémon: Scizor - 
+Name: [ADM] One - Pokémon: Scizor - 
+
+
+Name: [ADM] One - Pokémon: Shiny Electabuzz - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: Teste - Pokémon: Charizard - 
+Name: Teste - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: Teste - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [GM] Zwei - Pokémon: Caterpie - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Chansey - 
+
+
+Name: [ADM] One - Pokémon: Shiny Tangela - 
+Name: [ADM] Two - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Weezing - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Alakazam - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Charizard - 
+Name: [ADM] One - Pokémon: Nidorino - 

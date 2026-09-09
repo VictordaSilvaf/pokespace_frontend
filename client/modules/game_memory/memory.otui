@@ -1,0 +1,153 @@
+HeadlessWindow
+  id: memory
+  size: 185 160
+  anchors.centerIn: parent
+  @onEnter: modules.game_memory.hide()
+  @onEscape: modules.game_memory.hide()
+  focusable: false
+
+  UIButton
+    id: closeButton
+    @onClick: modules.game_memory.hide()
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: -3
+    margin-right: -2
+    size: 14 14
+    image-source: /images/ui/miniwindow_buttons
+    image-clip: 28 0 14 14
+
+    $hover:
+      image-clip: 28 14 14 14
+
+    $pressed:
+      image-clip: 28 28 14 14
+
+  UIWidget
+    id: iconDitto
+    size: 16 12
+    image-source: /images/game/battle/iconDitto
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 1
+
+  Label
+    id: windownName
+    !text: tr('Ditto Memory')
+    text-align: topleft
+    text-auto-resize: true
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 20
+    phantom: true
+    @onClick: modules.game_memory.hide()
+
+  UIWidget
+    id: dittoImg
+    size: 162 93
+    image-source: /images/game/battle/ditto
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-left: 8
+
+  Item
+    id: portrait1
+    image-color: alpha
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-left: 25
+    virtual: true
+    @onClick: modules.game_memory.saveOrUseMemory(1)
+  
+  UIWidget
+    id: dittoImgForm1
+    size: 36 36
+    image-source: /images/game/battle/dittoForm
+    anchors.top: portrait1.top
+    anchors.left: portrait1.left
+    @onClick: modules.game_memory.saveOrUseMemory(1)
+
+  Item
+    id: portrait2
+    image-color: alpha
+    anchors.top: portrait1.top
+    anchors.left: portrait1.left
+    margin-left: 45
+    virtual: true
+    @onClick: modules.game_memory.saveOrUseMemory(2)
+  
+  UIWidget
+    id: dittoImgForm2
+    size: 36 36
+    image-source: /images/game/battle/dittoForm
+    anchors.top: portrait2.top
+    anchors.left: portrait2.left
+    @onClick: modules.game_memory.saveOrUseMemory(2)
+
+  Item
+    id: portrait3
+    image-color: alpha
+    anchors.top: portrait2.top
+    anchors.left: portrait2.left
+    margin-left: 45
+    virtual: true
+    @onClick: modules.game_memory.saveOrUseMemory(3)
+  
+  UIWidget
+    id: dittoImgForm3
+    size: 36 36
+    image-source: /images/game/battle/dittoForm
+    anchors.top: portrait3.top
+    anchors.left: portrait3.left
+    @onClick: modules.game_memory.saveOrUseMemory(3)
+
+  UIButton
+    id: clearSlot1
+    @onClick: modules.game_memory.clearSlot(1)
+    anchors.top: dittoImgForm1.top
+    anchors.right: dittoImgForm1.right
+    margin-top: -3
+    margin-right: -2
+    size: 14 14
+    image-source: /images/ui/miniwindow_buttons
+    image-clip: 28 0 14 14
+
+    $hover:
+      image-clip: 28 14 14 14
+
+    $pressed:
+      image-clip: 28 28 14 14
+
+  UIButton
+    id: clearSlot2
+    @onClick: modules.game_memory.clearSlot(2)
+    anchors.top: dittoImgForm2.top
+    anchors.right: dittoImgForm2.right
+    margin-top: -3
+    margin-right: -2
+    size: 14 14
+    image-source: /images/ui/miniwindow_buttons
+    image-clip: 28 0 14 14
+
+    $hover:
+      image-clip: 28 14 14 14
+
+    $pressed:
+      image-clip: 28 28 14 14
+
+  UIButton
+    id: clearSlot3
+    @onClick: modules.game_memory.clearSlot(3)
+    anchors.top: dittoImgForm3.top
+    anchors.right: dittoImgForm3.right
+    margin-top: -3
+    margin-right: -2
+    size: 14 14
+    image-source: /images/ui/miniwindow_buttons
+    image-clip: 28 0 14 14
+
+    $hover:
+      image-clip: 28 14 14 14
+
+    $pressed:
+      image-clip: 28 28 14 14

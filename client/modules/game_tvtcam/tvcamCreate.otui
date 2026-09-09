@@ -1,0 +1,77 @@
+HeadlessWindow
+  id: tvCamWindow
+  size: 250 120
+  anchors.centerIn: parent
+  @onEnter: modules.game_duel.hide()
+  @onEscape: modules.game_duel.hide()
+
+  UIButton
+    id: closeButton
+    @onClick: modules.game_tvcam.hide(2)
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: -3
+    margin-right: -2
+    size: 14 14
+    image-source: /images/ui/miniwindow_buttons
+    image-clip: 28 0 14 14
+
+    $hover:
+      image-clip: 28 14 14 14
+
+    $pressed:
+      image-clip: 28 28 14 14
+  
+  Label
+    id: tvCamLabel
+    !text: tr('Criar um canal')
+    text-align: topleft
+    text-auto-resize: true
+    anchors.top: parent.top
+    anchors.left: parent.left
+    phantom: true
+    @onClick: modules.game_duel.hide()
+  
+  Label
+    id: channelNameLabel
+    !text: tr('Nome: ')
+    text-align: topleft
+    text-auto-resize: true
+    anchors.top: tvCamLabel.top
+    anchors.left: tvCamLabel.left
+    margin-top: 22
+    phantom: true
+    @onClick: modules.game_duel.hide()
+
+  TextEdit
+    id: channelNameText
+    size: 160 20
+    anchors.left: channelNameLabel.horizontalCenter
+    anchors.top: channelNameLabel.top
+    margin-left: 40
+
+  CheckBox
+    id: usePassword
+    !text: tr('Senha')
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-top: 10
+    @onCheckChange: self:getParent():getChildById('channelPasswordText'):setEnabled(self:isChecked())
+
+  TextEdit
+    id: channelPasswordText
+    size: 160 20
+    enabled: false
+    anchors.right: usePassword.right
+    anchors.top: usePassword.top
+    margin-right: 15
+
+  Button
+    id: create
+    !text: tr('Criar')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-left: 10
+    @onClick: modules.game_tvcam.doRquestTvCamCreate()

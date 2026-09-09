@@ -1,0 +1,5 @@
+Nome: Norikan
+PosX: 1053, PosY: 1045, PosZ: 7
+Data: 08/13/15 19:36:03
+
+Bug: o meelee dos pokemons são mais fortes do que os ataque deles. Nos pokemons lvl 5.

@@ -1,0 +1,5 @@
+Nome: Daniel
+PosX: 1025, PosY: 1061, PosZ: 13
+Data: 08/13/15 15:20:53
+
+Bug: quando vc coloca outro pokemon no slot, nao atualiza a vida, vc tem que solta-lo

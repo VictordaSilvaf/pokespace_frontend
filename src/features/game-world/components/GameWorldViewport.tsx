@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 
 import { loadActiveCharacterId } from '#/features/characters/active-character'
 import {
-  CREATURE_GEOMETRY,
   PLAYER_CREATURE_ID,
   WORLD_NPC_DEFS,
   creatureUrl,
   drawCreatureFrame,
   facingFromVector,
+  geometryForCreature,
   type FacingDir,
 } from '#/features/game-data'
 import type { Peke } from '#/features/game-hud/types'
@@ -73,7 +73,7 @@ function advanceWalkPhase(
   dt: number,
   frameRate = 8,
 ) {
-  const geometry = CREATURE_GEOMETRY[actor.creatureId]
+  const geometry = geometryForCreature(actor.creatureId)
   const phases = geometry?.phases ?? 1
   if (!moving || phases <= 1) {
     actor.phase = Math.floor(phases / 2)
@@ -284,7 +284,7 @@ export function GameWorldViewport({
     }
 
     const drawActor = (ctx: CanvasRenderingContext2D, actor: Actor) => {
-      const geometry = CREATURE_GEOMETRY[actor.creatureId]
+      const geometry = geometryForCreature(actor.creatureId)
       const img = ensureImage(actor.creatureId)
       if (!geometry || !img.complete || img.naturalWidth === 0) return
       drawCreatureFrame(

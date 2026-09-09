@@ -1,0 +1,86 @@
+HeadlessWindow
+  id: duelWindow
+  size: 248 100
+  anchors.centerIn: parent
+  @onEnter: modules.game_duel.hide()
+  @onEscape: modules.game_duel.hide()
+
+  Label
+    id: pokeballsLabel
+    !text: tr('Number of Pokeballs:')
+    text-align: topleft
+    text-auto-resize: true
+    anchors.top: parent.top
+    anchors.left: parent.left
+    phantom: true
+    @onClick: modules.game_duel.hide()
+
+  UIWidget
+    id: pokeball1
+    size: 32 32
+    image-source: /images/game/duel/pokeball_off
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-top: 9
+    @onClick: modules.game_duel.doClickPokeball(1)
+
+  UIWidget
+    id: pokeball2
+    size: 32 32
+    image-source: /images/game/duel/pokeball_off
+    anchors.top: prev.top
+    anchors.left: prev.right
+    margin-left: 9
+    @onClick: modules.game_duel.doClickPokeball(2)
+
+  UIWidget
+    id: pokeball3
+    size: 32 32
+    image-source: /images/game/duel/pokeball_off
+    anchors.top: prev.top
+    anchors.left: prev.right
+    margin-left: 9
+    @onClick: modules.game_duel.doClickPokeball(3)
+
+  UIWidget
+    id: pokeball4
+    size: 32 32
+    image-source: /images/game/duel/pokeball_off
+    anchors.top: prev.top
+    anchors.left: prev.right
+    margin-left: 9
+    @onClick: modules.game_duel.doClickPokeball(4)
+
+  UIWidget
+    id: pokeball5
+    size: 32 32
+    image-source: /images/game/duel/pokeball_off
+    anchors.top: prev.top
+    anchors.left: prev.right
+    margin-left: 9
+    @onClick: modules.game_duel.doClickPokeball(5)
+
+  UIWidget
+    id: pokeball6
+    size: 32 32
+    image-source: /images/game/duel/pokeball_off
+    anchors.top: prev.top
+    anchors.left: prev.right
+    margin-left: 9
+    @onClick: modules.game_duel.doClickPokeball(6)
+
+  Button
+    id: okButton
+    !text: tr('Ok')
+    width: 64
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    @onClick: modules.game_duel.doRequestDuel()
+
+  Button
+    id: cancelButton
+    !text: tr('Cancel')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick: modules.game_duel.hide()

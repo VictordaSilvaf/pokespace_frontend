@@ -1,0 +1,91 @@
+CharacterWidget < UIWidget
+  height: 14
+  background-color: alpha
+  &updateOnStates: |
+    function(self)
+      local children = self:getChildren()
+      for i=1,#children do
+        children[i]:setOn(self:isFocused())
+      end
+    end
+  @onFocusChange: self:updateOnStates()
+  @onSetup: self:updateOnStates()
+
+  $focus:
+    background-color: #ffffff22
+
+  UIWidget
+    id: iconPass
+    size: 16 18
+    image-source: /images/game/battle/password
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: -2
+    visible: false
+
+  Label
+    id: name
+    color: #aaaaaa
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 20
+    font: verdana-11px-monochrome
+    text-auto-resize: true
+    background-color: alpha
+    text-offset: 2 0
+
+    $on:
+      color: #ffffff
+
+MainWindow
+  id: channelsWindow
+  !text: tr('Canais Tv')
+  size: 350 250
+  visible: false
+  @onEnter: CharacterList.doLogin()
+  @onEscape: CharacterList.hide(true)
+  @onSetup: |
+    g_keyboard.bindKeyPress('Up', function() self:getChildById('characters'):focusPreviousChild(KeyboardFocusReason) end, self)
+    g_keyboard.bindKeyPress('Down', function() self:getChildById('characters'):focusNextChild(KeyboardFocusReason) end, self)
+
+  TextList
+    id: characters
+    image-source: /images/ui/panel_flat
+    image-border: 2
+    image-border-top: 3
+    image-border-bottom: 3
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: characterListScrollBar.left
+    anchors.bottom: buttonOk.top
+    margin-bottom: 5
+    padding: 1
+    focusable: false
+    vertical-scrollbar: characterListScrollBar
+    auto-focus: first
+
+  VerticalScrollBar
+    id: characterListScrollBar
+    anchors.top: parent.top
+    anchors.bottom: buttonOk.top
+    anchors.right: parent.right
+    margin-bottom: 5
+    step: 14
+    pixels-scroll: true
+
+  Button
+    id: buttonOk
+    !text: tr('Assistir')
+    width: 64
+    anchors.right: next.left
+    anchors.bottom: parent.bottom
+    margin-right: 10
+    @onClick: modules.game_tvcam.doWatch()
+
+  Button
+    id: buttonCancel
+    !text: tr('Fechar')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick: modules.game_tvcam.hide(3)

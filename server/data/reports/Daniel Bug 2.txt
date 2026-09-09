@@ -1,0 +1,5 @@
+Nome: Daniel
+PosX: 1079, PosY: 907, PosZ: 7
+Data: 08/13/15 13:47:30
+
+Bug: se voce andar enquanto pesca, fica preso a outfit do personagem com a vara, nao podendo pescar, até que relogue

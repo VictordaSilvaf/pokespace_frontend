@@ -4,7 +4,7 @@
  *
  * Usage:
  *   pnpm ot:map
- *   pnpm ot:map -- --otbm tools/server-data/world/global_dash.otbm
+ *   pnpm ot:map -- --otbm server/data/world/DarkXPoke.otbm
  *   pnpm ot:map -- --x 1160 --y 574 --w 96 --h 96 --z 7
  *   pnpm ot:map -- --scan
  *   pnpm ot:map -- --scan --x 1160 --y 574 --w 96 --h 96
@@ -123,7 +123,7 @@ if (scanOnly) {
 const metaPath = path.join(OUT_TILESETS, 'overworld.json')
 if (!fs.existsSync(metaPath)) {
   throw new Error(
-    `Missing ${metaPath}. Run pnpm ot:extract:local -- --only-used first (optionally after --scan).`,
+    `Missing ${metaPath}. Build atlas from client SPR (extract-to-public + atlas) then re-run ot:map.`,
   )
 }
 const meta = JSON.parse(fs.readFileSync(metaPath, 'utf8'))

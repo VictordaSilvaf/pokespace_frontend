@@ -1,0 +1,5 @@
+Nome: Pixel
+PosX: 1072, PosY: 1007, PosZ: 7
+Data: 08/13/15 13:32:26
+
+Bug: Client Bugado ao mudar de Outfit

@@ -7,14 +7,14 @@ the React app. Lua scripts are indexed by path only — never executed.
 
 | Path | Role |
 | --- | --- |
-| `tools/server-data/` | Full PokeTFS `data/` dump (not served by Vite) |
+| `server/data/` | Official TFS data (`./server`) |
 | `tools/catalog/build-catalog.mjs` | XML → JSON |
 
 ## Output
 
 Written to `src/features/game-data/generated/`:
 
-- `pokemon.json` — dex, types, lookType, portraitId, moves, evolutions
+- `pokemon.json` — dex (from monsters.xml order when no dexentry), types, lookType, portraitId, moves, evolutions
 - `moves.json` — spell registry from `spells.xml`
 - `npcs.json` — name, look, greet/decline
 - `meta.json` — generation timestamp and counts

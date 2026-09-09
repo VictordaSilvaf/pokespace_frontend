@@ -1,0 +1,5 @@
+Nome: Leuzaum Xv
+PosX: 1049, PosY: 1056, PosZ: 8
+Data: 08/13/15 19:01:15
+
+Bug: meu char nao ta querendo abrir os pokemons mortos

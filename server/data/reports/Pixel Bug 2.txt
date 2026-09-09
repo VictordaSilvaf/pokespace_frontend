@@ -1,0 +1,5 @@
+Nome: Pixel
+PosX: 1054, PosY: 1097, PosZ: 7
+Data: 08/13/15 13:59:06
+
+Bug: Bug do stone roof do lado da npc joana

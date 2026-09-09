@@ -19,16 +19,28 @@ export type PokemonVisual = {
   missiles: AssetReference[]
 }
 
-import { DEX_CREATURE_ID } from './creature-map'
+import catalogPokemon from './generated/pokemon.json' with { type: 'json' }
 
-/** Curated visual map: dexId → creature sheet id (padventures) for walk/portrait. */
+/** Build visual map from server catalog: walk=lookType, portrait=portraitId|lookType. */
 export function buildPokemonVisual(dexId: number): PokemonVisual {
-  const creatureId = DEX_CREATURE_ID[dexId] ?? null
+  const entry = catalogPokemon.find((p) => p.dexId === dexId)
+  const lookType = entry?.lookType ?? null
+  const portraitId =
+    entry?.portraitId != null && entry.portraitId > 0
+      ? entry.portraitId
+      : lookType
   const walk: AssetReference | null =
-    creatureId != null ? { category: 'creature', id: creatureId } : null
+    lookType != null ? { category: 'creature', id: lookType } : null
+  const portrait: AssetReference | null =
+    portraitId != null
+      ? {
+          category: entry?.portraitId != null && entry.portraitId > 0 ? 'item' : 'creature',
+          id: portraitId,
+        }
+      : null
   return {
     dexId,
-    portrait: walk,
+    portrait,
     walk,
     shinyWalk: null,
     effects: [],
@@ -37,13 +49,13 @@ export function buildPokemonVisual(dexId: number): PokemonVisual {
 }
 
 export function listCuratedPokemonVisuals(): PokemonVisual[] {
-  return Object.keys(DEX_CREATURE_ID)
-    .map(Number)
-    .sort((a, b) => a - b)
-    .map(buildPokemonVisual)
+  return catalogPokemon
+    .filter((p) => p.dexId != null)
+    .map((p) => buildPokemonVisual(p.dexId as number))
+    .sort((a, b) => a.dexId - b.dexId)
 }
 
 export function getPokemonVisual(dexId: number): PokemonVisual | null {
-  if (!(dexId in DEX_CREATURE_ID)) return null
+  if (!catalogPokemon.some((p) => p.dexId === dexId)) return null
   return buildPokemonVisual(dexId)
 }

@@ -14,23 +14,22 @@ import { DatReader } from '@v0rt4c/dat'
 import { read as readSpr } from '@v0rt4c/spr'
 
 import {
-  OT_SOURCE,
   OUT_MAPS,
   OUT_TILESETS,
   PIPELINE_CACHE,
+  SERVER_DATA,
   TILE_SIZE,
   ensureDirs,
   parseArgs,
-  requireFile,
+  resolveDatSpr,
 } from './paths.mjs'
 
 const args = parseArgs(process.argv.slice(2))
 const maxItems = args.max ? Number(args.max) : Infinity
 const onlyUsed = Boolean(args['only-used'])
 
-const datPath = requireFile(path.join(OT_SOURCE, 'Tibia.dat'), 'Tibia.dat')
-const sprPath = requireFile(path.join(OT_SOURCE, 'Tibia.spr'), 'Tibia.spr')
-const itemsXmlPath = path.join(OT_SOURCE, 'items.xml')
+const { datPath, sprPath } = resolveDatSpr(args)
+const itemsXmlPath = path.join(SERVER_DATA, 'items/items.xml')
 
 ensureDirs()
 
