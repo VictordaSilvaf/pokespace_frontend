@@ -8,6 +8,7 @@ import { getErrorMessage } from '#/lib/api/errors'
 import { authKeys } from '#/lib/auth/keys'
 import { updateProfileSchema, verifyPhoneSchema } from '#/lib/auth/schemas'
 import { fieldError } from '#/lib/form/field-error'
+import { maskPhoneBr } from '#/lib/form/masks'
 import { pillButton } from '#/lib/pill-button'
 import { m } from '#/paraglide/messages'
 
@@ -140,13 +141,10 @@ function AccountPage() {
             {(field) => (
               <TextField
                 name={field.name}
-                inputMode="numeric"
-                maxLength={6}
+                mask="otp"
                 label={m.phone_code()}
                 value={field.state.value}
-                onChange={(event) =>
-                  field.handleChange(event.target.value.replace(/\D/g, ''))
-                }
+                onChange={(event) => field.handleChange(event.target.value)}
                 error={fieldError(field.state.meta.errors)}
               />
             )}
@@ -186,7 +184,7 @@ function ContactForm({
 }) {
   const queryClient = useQueryClient()
   const form = useForm({
-    defaultValues: { email, phone },
+    defaultValues: { email, phone: maskPhoneBr(phone) },
     validators: { onSubmit: updateProfileSchema },
     onSubmit: async ({ value }) => {
       onError('')
@@ -231,8 +229,9 @@ function ContactForm({
         {(field) => (
           <TextField
             name={field.name}
-            type="tel"
+            mask="phone"
             label={m.register_phone()}
+            hint={m.register_phone_hint()}
             value={field.state.value}
             onBlur={field.handleBlur}
             onChange={(event) => field.handleChange(event.target.value)}

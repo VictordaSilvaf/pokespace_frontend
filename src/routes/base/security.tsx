@@ -173,13 +173,10 @@ function SecurityPage() {
             {(field) => (
               <TextField
                 name={field.name}
-                inputMode="numeric"
-                maxLength={6}
+                mask="otp"
                 label={m.two_factor_code()}
                 value={field.state.value}
-                onChange={(event) =>
-                  field.handleChange(event.target.value.replace(/\D/g, ''))
-                }
+                onChange={(event) => field.handleChange(event.target.value)}
                 error={fieldError(field.state.meta.errors)}
               />
             )}
@@ -230,14 +227,11 @@ function SecurityPage() {
                   {(field) => (
                     <TextField
                       name={field.name}
-                      inputMode="numeric"
-                      maxLength={6}
+                      mask="otp"
                       label={m.two_factor_code()}
                       value={field.state.value}
                       onChange={(event) =>
-                        field.handleChange(
-                          event.target.value.replace(/\D/g, ''),
-                        )
+                        field.handleChange(event.target.value)
                       }
                       error={fieldError(field.state.meta.errors)}
                     />

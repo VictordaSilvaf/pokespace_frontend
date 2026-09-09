@@ -81,15 +81,11 @@ function TwoFactorForm({ tempToken }: { tempToken: string }) {
           {(field) => (
             <TextField
               name={field.name}
-              inputMode="numeric"
-              autoComplete="one-time-code"
-              maxLength={6}
+              mask="otp"
               label={m.two_factor_code()}
               value={field.state.value}
               onBlur={field.handleBlur}
-              onChange={(event) =>
-                field.handleChange(event.target.value.replace(/\D/g, ''))
-              }
+              onChange={(event) => field.handleChange(event.target.value)}
               error={fieldError(field.state.meta.errors)}
             />
           )}
