@@ -1,7 +1,7 @@
 /** Public paths for game-world assets. PokeTibia/OT primary, Kenney last-resort. */
 
 export const GAME_BASE = '/assets/world'
-/** Playable default: OTBM crop from PokeTibia / global_dash. */
+/** Playable default: blank placeholder (96×96) until maps are drawn. OT crop kept in starter-otbm.tmx. */
 export const OT_MAP_URL = `${GAME_BASE}/maps/starter.tmx`
 export const OT_TILESET_IMAGE = `${GAME_BASE}/tilesets/overworld.png`
 export const OT_TILESET_META_URL = `${GAME_BASE}/tilesets/overworld.json`
