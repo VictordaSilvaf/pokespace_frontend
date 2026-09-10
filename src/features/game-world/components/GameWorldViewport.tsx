@@ -127,6 +127,11 @@ export function GameWorldViewport({
       if (img) return img
       img = new Image()
       img.decoding = 'async'
+      img.onerror = () => {
+        // CDN miss (NPC lookTypes, etc.) — silence repeat errors
+        img!.onerror = null
+        img!.src = ''
+      }
       img.src = creatureUrl(creatureId)
       imageCache.set(creatureId, img)
       return img

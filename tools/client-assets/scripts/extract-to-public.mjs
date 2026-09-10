@@ -28,6 +28,12 @@ const catalog = JSON.parse(
     'utf8',
   ),
 )
+const npcCatalog = JSON.parse(
+  fs.readFileSync(
+    path.join(ROOT, 'src/features/game-data/generated/npcs.json'),
+    'utf8',
+  ),
+)
 
 const creatureOut = path.join(ROOT, 'public/assets/sprites/creature')
 const itemOut = path.join(ROOT, 'public/assets/sprites/item')
@@ -101,10 +107,36 @@ async function main() {
   // Trainer outfits
   lookTypes.set(510, null)
   lookTypes.set(511, null)
+  // World NPCs (Ada 495, Agatha 1500, …) — OT when possible, else trainer fallback
+  for (const n of npcCatalog) {
+    if (n.lookType == null || n.lookType <= 0) continue
+    if (!lookTypes.has(n.lookType)) lookTypes.set(n.lookType, null)
+  }
 
   let fromApi = 0
   let fromOt = 0
+  let fromFallback = 0
   let miss = 0
+
+  /** Transparent 32×32 last-resort tile (avoids CDN HTML 404 / CORS noise). */
+  function writePlaceholder(filePath) {
+    const png = new PNG({ width: TILE_SIZE, height: TILE_SIZE, colorType: 6 })
+    fs.writeFileSync(filePath, PNG.sync.write(png))
+  }
+
+  const trainerFallback = ot?.map.get(510)
+    ? (() => {
+        const frame = composeOutfitFrame(ot.map.get(510), ot.sprites)
+        if (!frame) return null
+        const png = new PNG({
+          width: frame.width,
+          height: frame.height,
+          colorType: 6,
+        })
+        frame.pixels.copy(png.data)
+        return scaleToTile(PNG.sync.write(png))
+      })()
+    : null
 
   for (const [lookType, dexId] of lookTypes) {
     const outFile = path.join(creatureOut, `${lookType}.png`)
@@ -124,13 +156,12 @@ async function main() {
       }
     }
 
-    // OT compose fallback (trainers / API miss)
+    // OT compose fallback (trainers / NPCs / API miss)
     if (!wrote && ot) {
       const thing = ot.map.get(lookType)
       if (thing) {
         const frame = composeOutfitFrame(thing, ot.sprites)
         if (frame) {
-          // Downscale multi-tile sheets to a single tile for FE default geom
           const png = new PNG({
             width: frame.width,
             height: frame.height,
@@ -142,6 +173,19 @@ async function main() {
           fromOt += 1
           wrote = true
         }
+      }
+    }
+
+    // NPC/trainer lookTypes with empty/corrupt DAT: reuse trainer sheet or transparent tile
+    if (!wrote && dexId == null) {
+      if (trainerFallback) {
+        fs.writeFileSync(outFile, trainerFallback)
+        fromFallback += 1
+        wrote = true
+      } else {
+        writePlaceholder(outFile)
+        fromFallback += 1
+        wrote = true
       }
     }
 
@@ -168,7 +212,7 @@ async function main() {
   const creatureTotal = lookTypes.size
   const missRate = creatureTotal ? miss / creatureTotal : 1
   console.log(
-    `extract-to-public ok — creatures api=${fromApi} ot=${fromOt} miss=${miss}/${creatureTotal} items=${items} itemMiss=${itemMiss}`,
+    `extract-to-public ok — creatures api=${fromApi} ot=${fromOt} fallback=${fromFallback} miss=${miss}/${creatureTotal} items=${items} itemMiss=${itemMiss}`,
   )
   if (missRate > 0.05) {
     throw new Error(
