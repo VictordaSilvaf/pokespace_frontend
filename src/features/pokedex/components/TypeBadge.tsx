@@ -1,6 +1,7 @@
 import { cn } from '#/lib/utils'
 
-import { TYPE_COLORS, type PokeType } from '../types'
+import { TYPE_COLORS  } from '../types'
+import type {PokeType} from '../types';
 
 const TYPE_LABEL: Record<PokeType, string> = {
   normal: 'NOR',

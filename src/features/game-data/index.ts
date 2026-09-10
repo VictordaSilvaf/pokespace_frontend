@@ -50,6 +50,8 @@ export {
   EMPTY_SPRITE_URL,
   portraitUrl,
   SPRITES_CREATURE_BASE,
+  assetsBaseUrl,
+  resolveAssetPath,
 } from './urls'
 export {
   CREATURE_GEOMETRY,

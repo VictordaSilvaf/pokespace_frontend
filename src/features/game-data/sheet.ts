@@ -62,6 +62,17 @@ export function drawCreatureFrame(
   drawH: number,
 ) {
   if (!image.complete || image.naturalWidth === 0) return
+
+  // Single-tile extracts (32×32) or 1-frame geometry: draw the full image.
+  const isSingleTile =
+    (geometry.phases <= 1 && geometry.px <= 1) ||
+    (image.naturalWidth <= 64 && image.naturalHeight <= 64)
+
+  if (isSingleTile) {
+    ctx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight, dx, dy, drawW, drawH)
+    return
+  }
+
   const rect = frameRect(image, geometry, dir, phase)
   ctx.drawImage(
     image,

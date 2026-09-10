@@ -98,8 +98,32 @@ Edite `.env.local` conforme o cenário:
 | `VITE_WS_URL` | client | *(opcional)* | URL do Socket.IO do world; se vazio, deriva de `VITE_API_URL` / origem |
 | `VITE_SENTRY_DSN` | client/server | *(vazio)* | DSN do Sentry |
 | `VITE_APP_TITLE` | client | `Pokespace` | Título da app |
+| `VITE_ASSETS_BASE_URL` | client | *(vazio → `/assets`)* | CDN pública dos sprites (R2). Sem isso, usa `/assets` local |
 
-### Modo demo (só frontend)
+### Sprites na CDN (R2)
+
+PNGs de `creature` / `item` **não** ficam no git (só no bucket R2). Para desenvolver:
+
+1. No Cloudflare R2: habilite **Public Development URL** (r2.dev) ou domínio custom, **ou** use o proxy Nest `/cdn` após deploy.
+2. Defina a mesma base no FE e no backend:
+
+```env
+# frontend .env.local
+VITE_ASSETS_BASE_URL=https://pub-xxxx.r2.dev
+# interim local stand-in (backend):
+# VITE_ASSETS_BASE_URL=http://127.0.0.1:8787
+```
+
+```bash
+# regenerar extract local (opcional) e reenviar ao R2
+pnpm assets:extract:public
+pnpm --dir ../pokespace_backend assets:upload-r2
+
+# smoke CDN local (lê R2 com credenciais S3_*):
+pnpm --dir ../pokespace_backend assets:serve-r2
+```
+
+Backend: `S3_PUBLIC_BASE_URL` deve ser a **mesma** URL pública (nunca o endpoint `*.r2.cloudflarestorage.com`).
 
 ```env
 VITE_AUTH_MOCK=true

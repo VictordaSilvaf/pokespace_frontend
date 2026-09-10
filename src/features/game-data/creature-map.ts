@@ -1,4 +1,4 @@
-import { SPRITES_CREATURE_BASE } from './urls'
+import { resolveAssetPath } from './urls'
 import catalogPokemon from './generated/pokemon.json' with { type: 'json' }
 import catalogNpcs from './generated/npcs.json' with { type: 'json' }
 
@@ -13,15 +13,18 @@ export type SheetGeometry = {
   phases: number
 }
 
-/** Default walk sheet geometry until DAT geometry is loaded per id. */
+/** Default walk sheet geometry until DAT geometry is loaded per id.
+ * Current extract emits single 32×32 tiles — use 1×1 frame so portraits
+ * draw the full image. Multi-frame sheets override via CREATURE_GEOMETRY.
+ */
 export const DEFAULT_CREATURE_GEOMETRY: SheetGeometry = {
   w: 1,
   h: 1,
   layers: 1,
-  px: 4,
+  px: 1,
   py: 1,
   pz: 1,
-  phases: 3,
+  phases: 1,
 }
 
 /**
@@ -51,7 +54,7 @@ export const WORLD_NPC_DEFS = catalogNpcs
 export const CREATURE_GEOMETRY: Record<number, SheetGeometry> = {}
 
 export function creatureUrl(creatureId: number): string {
-  return `${SPRITES_CREATURE_BASE}/${creatureId}.png`
+  return resolveAssetPath(`sprites/creature/${creatureId}.png`)
 }
 
 export function creatureIdForDex(dexId: number): number | null {
