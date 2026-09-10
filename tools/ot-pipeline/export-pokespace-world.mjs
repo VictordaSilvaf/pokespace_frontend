@@ -3,9 +3,9 @@
  * Export OTBM crop → PokeSpace world folder (chunks + metadata + spawns).
  *
  *   node tools/ot-pipeline/export-pokespace-world.mjs \
- *     --otbm tools/server-data/world/global_dash.otbm \
- *     --out ../pokespace_backend/maps/saffron-house \
- *     --map-id saffron-house --x 1017 --y 973 --w 96 --h 96 --z 7 --chunk 32
+ *     --otbm server/data/world/DarkXPoke.otbm \
+ *     --out ../pokespace_backend/maps/darkxpoke-crop \
+ *     --map-id darkxpoke-crop --x 1234 --y 844 --w 96 --h 96 --z 7 --chunk 32
  */
 import fs from 'node:fs'
 import path from 'node:path'

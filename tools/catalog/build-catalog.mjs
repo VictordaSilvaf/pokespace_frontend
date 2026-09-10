@@ -1,5 +1,5 @@
 /**
- * Build slim game-data catalogs from tools/server-data XML (declarative only).
+ * Build slim game-data catalogs from ./server/data XML (declarative only).
  * Does not execute or translate Lua scripts.
  *
  * Usage: node ./tools/catalog/build-catalog.mjs
@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '../..')
-const SERVER_DATA = path.join(ROOT, 'tools/server-data')
+const SERVER_DATA = path.join(ROOT, 'server/data')
 const OUT_DIR = path.join(ROOT, 'src/features/game-data/generated')
 
 const SKIP_STEM_PREFIXES = ['shiny ', 'xmas ', 'mega ', 'dark ', 'crystal ']
@@ -22,10 +22,7 @@ function attr(tag, name) {
 }
 
 function flagValue(xml, key) {
-  const re = new RegExp(
-    `<flag\\s+${key}="([^"]*)"\\s*/>`,
-    'i',
-  )
+  const re = new RegExp(`<flag\\s+${key}="([^"]*)"\\s*/>`, 'i')
   const m = xml.match(re)
   return m ? m[1] : undefined
 }
@@ -46,42 +43,54 @@ function shouldSkipMonsterFile(stem) {
   return SKIP_STEM_PREFIXES.some((p) => lower.startsWith(p))
 }
 
-function parseMonsterXml(filePath, fileName) {
+function walkXmlFiles(dir, out = []) {
+  if (!fs.existsSync(dir)) return out
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name)
+    if (entry.isDirectory()) walkXmlFiles(full, out)
+    else if (entry.name.toLowerCase().endsWith('.xml')) out.push(full)
+  }
+  return out
+}
+
+function parseMonsterXml(filePath, fileName, forcedDexId = null) {
   const xml = fs.readFileSync(filePath, 'utf8')
   const monsterOpen = xml.match(/<monster\b[^>]*>/i)
   if (!monsterOpen) return null
-
   const name = attr(monsterOpen[0], 'name')
   if (!name) return null
 
-  const race = normalizeType(attr(monsterOpen[0], 'race'))
-  const race2 = normalizeType(attr(monsterOpen[0], 'race2'))
-  const types = [race, race2].filter(Boolean)
-
+  const lookTag = xml.match(/<look\b[^/]*\/>/i)?.[0] ?? ''
   const levelTag = xml.match(/<level\b[^/]*\/>/i)?.[0] ?? ''
   const healthTag = xml.match(/<health\b[^/]*\/>/i)?.[0] ?? ''
-  const lookTag = xml.match(/<look\b[^/]*\/>/i)?.[0] ?? ''
+
+  const types = []
+  const race = normalizeType(attr(monsterOpen[0], 'race'))
+  const race2 = normalizeType(attr(monsterOpen[0], 'race2'))
+  if (race) types.push(race)
+  if (race2 && race2 !== race) types.push(race2)
 
   const moves = []
-  const movesBlock = xml.match(/<moves>([\s\S]*?)<\/moves>/i)?.[1] ?? ''
-  for (const m of movesBlock.matchAll(/<move\b[^/]*\/>/gi)) {
+  for (const m of xml.matchAll(/<move\b[^/]*\/>/gi)) {
     const moveName = attr(m[0], 'name')
-    if (!moveName) continue
-    moves.push({
-      name: moveName,
-      interval: parseIntOrNull(attr(m[0], 'interval')),
-      isTarget: attr(m[0], 'isTarget') === '1',
-      range: parseIntOrNull(attr(m[0], 'range')),
-    })
+    if (moveName) moves.push({ name: moveName })
+  }
+  // DarkXPoke style: attacks named like moves
+  if (moves.length === 0) {
+    for (const m of xml.matchAll(/<attack\b[^>]*>/gi)) {
+      const moveName = attr(m[0], 'name')
+      if (moveName && moveName.toLowerCase() !== 'melee') {
+        moves.push({ name: moveName })
+      }
+    }
   }
 
   const evolutions = []
-  const evoBlock = xml.match(/<evolutions>([\s\S]*?)<\/evolutions>/i)?.[1] ?? ''
-  for (const m of evoBlock.matchAll(/<evolution\b[^/]*\/>/gi)) {
-    const evoName = attr(m[0], 'name')
-    if (!evoName) continue
+  for (const m of xml.matchAll(/<evolution\b[^/]*\/>/gi)) {
+    const to = attr(m[0], 'name')
+    if (!to) continue
     evolutions.push({
-      name: evoName,
+      name: to,
       level: parseIntOrNull(attr(m[0], 'level')),
       chance: parseIntOrNull(attr(m[0], 'chance')),
       itemName: attr(m[0], 'itemName') ?? null,
@@ -93,11 +102,13 @@ function parseMonsterXml(filePath, fileName) {
   const rideable = parseIntOrNull(flagValue(xml, 'rideable'))
   const surfable = parseIntOrNull(flagValue(xml, 'surfable'))
 
+  const dexFromFlag = parseIntOrNull(flagValue(xml, 'dexentry'))
+  const dexId = forcedDexId ?? dexFromFlag
+
   return {
-    id: name.toLowerCase().replace(/\s+/g, '-'),
     name,
-    file: `Pokes1/${fileName}`,
-    dexId: parseIntOrNull(flagValue(xml, 'dexentry')),
+    file: fileName,
+    dexId,
     types,
     lookType: parseIntOrNull(attr(lookTag, 'type')),
     portraitId: parseIntOrNull(flagValue(xml, 'portraitid')),
@@ -117,39 +128,74 @@ function parseMonsterXml(filePath, fileName) {
   }
 }
 
+/**
+ * Prefer monsters.xml order for national-dex numbering when dexentry is absent.
+ * Only includes files under pokes/geracao* (base forms).
+ */
 function buildPokemon() {
-  const dir = path.join(SERVER_DATA, 'monster/Pokes1')
-  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.xml'))
+  const monstersIndex = path.join(SERVER_DATA, 'monster/monsters.xml')
   const byDex = new Map()
   let skipped = 0
+  let filesSeen = 0
+  let nextDex = 1
 
-  for (const fileName of files) {
-    const stem = path.basename(fileName, '.xml')
-    if (shouldSkipMonsterFile(stem)) {
-      skipped += 1
-      continue
-    }
-    const entry = parseMonsterXml(path.join(dir, fileName), fileName)
-    if (!entry || entry.dexId == null) {
-      skipped += 1
-      continue
-    }
-    const existing = byDex.get(entry.dexId)
-    // Prefer exact filename match to base name (avoid duplicate dex collisions)
-    if (!existing) {
+  if (fs.existsSync(monstersIndex)) {
+    const indexXml = fs.readFileSync(monstersIndex, 'utf8')
+    for (const m of indexXml.matchAll(
+      /<monster\s+name="([^"]+)"\s+file="([^"]+)"\s*\/>/gi,
+    )) {
+      const fileRel = m[2].replace(/\\/g, '/')
+      if (!/pokes\/geracao\s*\d+/i.test(fileRel)) {
+        continue
+      }
+      const abs = path.join(SERVER_DATA, 'monster', fileRel)
+      if (!fs.existsSync(abs)) {
+        skipped += 1
+        continue
+      }
+      filesSeen += 1
+      const stem = path.basename(fileRel, '.xml')
+      if (shouldSkipMonsterFile(stem)) {
+        skipped += 1
+        continue
+      }
+      const entry = parseMonsterXml(abs, fileRel, nextDex)
+      nextDex += 1
+      if (!entry || entry.dexId == null) {
+        skipped += 1
+        continue
+      }
       byDex.set(entry.dexId, entry)
-      continue
     }
-    const prefer =
-      stem.toLowerCase() === entry.name.toLowerCase() ||
-      (existing.file.includes(' ') && !fileName.includes(' '))
-    if (prefer) byDex.set(entry.dexId, entry)
+  }
+
+  // Fallback: walk pokes/geracao* if index empty
+  if (byDex.size === 0) {
+    const roots = walkXmlFiles(path.join(SERVER_DATA, 'monster/pokes')).filter(
+      (f) => /geracao\s*\d+/i.test(f),
+    )
+    filesSeen = roots.length
+    let dex = 1
+    for (const abs of roots.sort()) {
+      const stem = path.basename(abs, '.xml')
+      if (shouldSkipMonsterFile(stem)) {
+        skipped += 1
+        continue
+      }
+      const rel = path.relative(path.join(SERVER_DATA, 'monster'), abs)
+      const entry = parseMonsterXml(abs, rel, dex++)
+      if (!entry || entry.dexId == null) {
+        skipped += 1
+        continue
+      }
+      byDex.set(entry.dexId, entry)
+    }
   }
 
   return {
     pokemon: [...byDex.values()].sort((a, b) => a.dexId - b.dexId),
     skipped,
-    filesSeen: files.length,
+    filesSeen,
   }
 }
 
@@ -157,7 +203,6 @@ function buildMoves() {
   const spellsPath = path.join(SERVER_DATA, 'spells/spells.xml')
   const xml = fs.readFileSync(spellsPath, 'utf8')
   const moves = []
-
   const seen = new Set()
 
   function pushMove(kind, attrsSrc) {
@@ -179,12 +224,9 @@ function buildMoves() {
     })
   }
 
-  // Self-closing tags (script paths contain `/`, so do not use [^/]*)
   for (const m of xml.matchAll(/<(instant|rune|conjure)\b([^>]*)\/>/gi)) {
     pushMove(m[1], `<x ${m[2]}>`)
   }
-
-  // Paired tags
   for (const m of xml.matchAll(
     /<(instant|rune|conjure)\b([^>]*)>([\s\S]*?)<\/\1>/gi,
   )) {
@@ -197,6 +239,7 @@ function buildMoves() {
 
 function buildNpcs() {
   const dir = path.join(SERVER_DATA, 'npc')
+  if (!fs.existsSync(dir)) return []
   const files = fs
     .readdirSync(dir)
     .filter((f) => f.endsWith('.xml') && fs.statSync(path.join(dir, f)).isFile())
@@ -252,7 +295,7 @@ function main() {
   writeJson('npcs.json', npcs)
   writeJson('meta.json', {
     generatedAt,
-    source: 'tools/server-data',
+    source: 'server/data',
     counts: {
       pokemon: pokemon.length,
       moves: moves.length,

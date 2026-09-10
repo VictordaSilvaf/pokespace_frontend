@@ -4,12 +4,13 @@ import { fileURLToPath } from 'node:url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 export const ROOT = path.resolve(__dirname, '../..')
-export const OT_SOURCE = path.join(ROOT, 'tools/ot-source')
-export const SERVER_DATA = path.join(ROOT, 'tools/server-data')
-export const DEFAULT_OTBM = path.join(SERVER_DATA, 'world/global_dash.otbm')
+export const CLIENT_THINGS = path.join(ROOT, 'client/data/things')
+export const SERVER_DATA = path.join(ROOT, 'server/data')
+export const DEFAULT_OTBM = path.join(SERVER_DATA, 'world/DarkXPoke.otbm')
 export const OUT_TILESETS = path.join(ROOT, 'public/assets/world/tilesets')
 export const OUT_MAPS = path.join(ROOT, 'public/assets/world/maps')
 export const PIPELINE_CACHE = path.join(ROOT, 'tools/ot-pipeline/.cache')
+export const PUBLIC_SPRITES = path.join(ROOT, 'public/assets/sprites')
 
 export const TILE_SIZE = 32
 
@@ -20,8 +21,28 @@ export function resolveOtbmPath(args) {
       : path.join(ROOT, args.otbm)
     return requireFile(candidate, 'OTBM map')
   }
-  if (fs.existsSync(DEFAULT_OTBM)) return DEFAULT_OTBM
-  return requireFile(path.join(OT_SOURCE, 'forgotten.otbm'), 'forgotten.otbm')
+  return requireFile(DEFAULT_OTBM, 'DarkXPoke.otbm')
+}
+
+export function resolveDatSpr(args = {}) {
+  const inputDir = args.input
+    ? path.isAbsolute(args.input)
+      ? args.input
+      : path.join(ROOT, args.input)
+    : CLIENT_THINGS
+  for (const [datName, sprName] of [
+    ['things.dat', 'things.spr'],
+    ['Tibia.dat', 'Tibia.spr'],
+  ]) {
+    const datPath = path.join(inputDir, datName)
+    const sprPath = path.join(inputDir, sprName)
+    if (fs.existsSync(datPath) && fs.existsSync(sprPath)) {
+      return { datPath, sprPath, inputDir }
+    }
+  }
+  throw new Error(
+    `Missing things.dat/things.spr in ${inputDir}\nSee client/data/things/`,
+  )
 }
 
 export function requireFile(filePath, label) {

@@ -1,0 +1,5 @@
+Nome: Leuzaum Xv
+PosX: 1032, PosY: 1048, PosZ: 7
+Data: 08/13/15 15:31:04
+
+Bug: comprei uma house mais nao abro a porta dela

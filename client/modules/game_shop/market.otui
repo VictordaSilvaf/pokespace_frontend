@@ -1,0 +1,144 @@
+MarketButton < ShopButton
+  text-offset: 50 -20
+MarketButtonSale < ShopButtonSale
+  text-offset: 50 -20
+MarketPrize < ShopPrize
+  margin-left: 50
+
+Panel
+  VerticalScrollBar
+    id: scrollBar
+    step: 50
+    pixels-scroll: true
+    anchors.top: parent.top
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+
+  ScrollablePanel
+    vertical-scrollbar: scrollBar
+    anchors.fill: parent
+    margin-right: 15
+
+    MarketButton
+      text: Vip 30 Days
+      icon: /images/game/shop/market/vip
+      anchors.top: parent.top
+      margin-top: 0
+      MarketPrize
+        text: 10
+
+    MarketButton
+      text: Vip 60 Days
+      icon: /images/game/shop/market/vip
+      MarketPrize
+        text: 18
+
+    MarketButton
+      text: Vip 90 Days
+      icon: /images/game/shop/market/vip
+      MarketPrize
+        text: 25
+
+    MarketButton
+      text: Ditto
+      icon: /images/game/shop/market/ditto
+      MarketPrize
+        text: 15
+
+    MarketButton
+      text: Bless
+      icon: /images/game/shop/market/bless
+      icon-offset: 9 0
+      MarketPrize
+        text: 2
+
+    MarketButton
+      text: Bless Plus
+      icon: /images/game/shop/market/blessplus
+      icon-offset: 9 0
+      MarketPrize
+        text: 5
+
+    MarketButton
+      text: Change Gender
+      icon: /images/game/shop/market/changegender
+      icon-offset: 6 0
+      MarketPrize
+        text: 5
+
+    MarketButton
+      text: Change Town - Saffron
+      icon: /images/game/shop/market/changehometown
+      icon-offset: 6 0
+      MarketPrize
+        text: 2
+
+    MarketButton
+      text: Change Town - Cerulean
+      icon: /images/game/shop/market/changehometown
+      icon-offset: 6 0
+      MarketPrize
+        text: 2
+
+    MarketButton
+      text: Change Town - Lavender
+      icon: /images/game/shop/market/changehometown
+      icon-offset: 6 0
+      MarketPrize
+        text: 2
+
+    MarketButton
+      text: Change Town - Fuchsia
+      icon: /images/game/shop/market/changehometown
+      icon-offset: 6 0
+      MarketPrize
+        text: 2
+
+    MarketButton
+      text: Change Town - Celadon
+      icon: /images/game/shop/market/changehometown
+      icon-offset: 6 0
+      MarketPrize
+        text: 2
+
+    MarketButton
+      text: Change Town - Viridian
+      icon: /images/game/shop/market/changehometown
+      icon-offset: 6 0
+      MarketPrize
+        text: 2
+
+    MarketButton
+      text: Change Town - Vermilion
+      icon: /images/game/shop/market/changehometown
+      icon-offset: 6 0
+      MarketPrize
+        text: 2
+
+    MarketButton
+      text: Change Town - Pewter
+      icon: /images/game/shop/market/changehometown
+      icon-offset: 6 0
+      MarketPrize
+        text: 2
+
+    MarketButton
+      text: Change Town - Pallet
+      icon: /images/game/shop/market/changehometown
+      icon-offset: 6 0
+      MarketPrize
+        text: 2
+
+    MarketButton
+      text: Change Town - Cinnabar
+      icon: /images/game/shop/market/changehometown
+      icon-offset: 6 0
+      MarketPrize
+        text: 2
+
+    MarketButton
+      text: Change Town - Snow
+      icon: /images/game/shop/market/changehometown
+      icon-offset: 6 0
+      MarketPrize
+        text: 2

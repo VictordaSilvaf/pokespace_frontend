@@ -1,0 +1,76 @@
+Panel
+  ProgressBar
+    id: pokemonStatsAttackPercent
+    width: 150
+    background-color: #009900
+    border-color: #333333
+    anchors.top: parent.top
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 20
+    margin-left: 35
+
+  Label
+    id: pokemonStatsAttack
+    text: Attack
+    text-auto-resize: true
+    color: white
+    anchors.top: prev.top
+    anchors.right: prev.left
+    margin-right: 5
+
+  ProgressBar
+    id: pokemonStatsDefensePercent
+    width: 150
+    background-color: #009900
+    border-color: #333333
+    anchors.top: prev.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 5
+    margin-left: 35
+
+  Label
+    id: pokemonStatsDefense
+    text: Defense
+    text-auto-resize: true
+    color: white
+    anchors.top: prev.top
+    anchors.right: prev.left
+    margin-right: 5
+
+  ProgressBar
+    id: pokemonStatsSpAttackPercent
+    width: 150
+    background-color: #009900
+    border-color: #333333
+    anchors.top: prev.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 5
+    margin-left: 35
+
+  Label
+    id: pokemonStatsSpecialAttack
+    text: Special Attack
+    text-auto-resize: true
+    color: white
+    anchors.top: prev.top
+    anchors.right: prev.left
+    margin-right: 5
+
+  ProgressBar
+    id: pokemonStatsVitalityPercent
+    width: 150
+    background-color: #009900
+    border-color: #333333
+    anchors.top: prev.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+    margin-top: 5
+    margin-left: 35
+
+  Label
+    id: pokemonStatsVitality
+    text: Vitality
+    text-auto-resize: true
+    color: white
+    anchors.top: prev.top
+    anchors.right: prev.left
+    margin-right: 5

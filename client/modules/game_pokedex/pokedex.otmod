@@ -1,0 +1,9 @@
+Module
+  name: game_pokedex
+  description: Use to see description, moves and effectives of pokemon.
+  author: Noninhouh
+  website: none
+  sandboxed: true
+  scripts: [ pokedex ]
+  @onLoad: init()
+  @onUnload: terminate()

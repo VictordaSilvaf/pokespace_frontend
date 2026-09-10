@@ -1,0 +1,5 @@
+Nome: Norikan
+PosX: 1061, PosY: 997, PosZ: 7
+Data: 08/13/15 19:03:04
+
+Bug: ao dar look nos pokemons mortos aparece o sexo deles ou sem sexo no caso: 19:01 You see a fainted oddish. (Vol: 10) It is genderless.

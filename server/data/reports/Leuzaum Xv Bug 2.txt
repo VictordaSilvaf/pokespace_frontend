@@ -1,0 +1,5 @@
+Nome: Leuzaum Xv
+PosX: 1051, PosY: 1049, PosZ: 7
+Data: 08/13/15 15:24:10
+
+Bug: os poke nao tem vida

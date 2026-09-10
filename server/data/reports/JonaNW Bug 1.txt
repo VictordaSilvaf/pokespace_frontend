@@ -1,0 +1,5 @@
+Nome: JonaNW
+PosX: 1061, PosY: 1092, PosZ: 7
+Data: 08/13/15 19:00:33
+
+Bug: "Loots de pokemon,não estão acessiveis

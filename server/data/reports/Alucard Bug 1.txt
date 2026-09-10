@@ -1,0 +1,5 @@
+Nome: Alucard
+PosX: 1188, PosY: 939, PosZ: 7
+Data: 08/13/15 16:18:34
+
+Bug: msm eu dando catch o total d catch n sobe

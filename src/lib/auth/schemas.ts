@@ -16,7 +16,7 @@ export const emailSchema = z
 export const phoneSchema = z
   .string()
   .transform((value) => value.replace(/\D/g, ''))
-  .refine((value) => value.length >= 10 && value.length <= 15, m.err_phone())
+  .refine((value) => value.length >= 10 && value.length <= 11, m.err_phone())
 
 export const passwordSchema = z.string().min(8, m.err_password())
 
@@ -107,7 +107,7 @@ export const updateProfileSchema = z
       }
     }
 
-    if (value.phone.trim() && (phone.length < 10 || phone.length > 15)) {
+    if (value.phone.trim() && (phone.length < 10 || phone.length > 11)) {
       ctx.addIssue({
         code: 'custom',
         message: m.err_phone(),

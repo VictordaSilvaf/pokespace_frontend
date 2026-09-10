@@ -1,0 +1,5 @@
+Nome: Pixel
+PosX: 1012, PosY: 1037, PosZ: 7
+Data: 08/13/15 14:17:26
+
+Bug: sistema de Pesca bugado tem que relogar para sair em modo de pesca

@@ -1,7 +1,38 @@
 import { Eye, EyeOff } from 'lucide-react'
 import { useState, type ComponentProps, type ReactNode } from 'react'
+import { applyMask, type FieldMask } from '#/lib/form/masks'
 import { cn } from '#/lib/utils'
 import { m } from '#/paraglide/messages'
+
+const MASK_DEFAULTS: Record<
+  FieldMask,
+  Partial<ComponentProps<'input'>>
+> = {
+  phone: {
+    type: 'tel',
+    inputMode: 'tel',
+    autoComplete: 'tel',
+    maxLength: 15,
+    placeholder: '(11) 99999-9999',
+  },
+  otp: {
+    inputMode: 'numeric',
+    autoComplete: 'one-time-code',
+    maxLength: 6,
+    placeholder: '000000',
+  },
+  username: {
+    autoComplete: 'username',
+    maxLength: 20,
+    spellCheck: false,
+    autoCapitalize: 'none',
+  },
+  displayName: {
+    maxLength: 16,
+    spellCheck: false,
+    autoCapitalize: 'none',
+  },
+}
 
 export function TextField({
   label,
@@ -9,16 +40,28 @@ export function TextField({
   error,
   className,
   type = 'text',
+  mask,
+  onChange,
   ...props
 }: ComponentProps<'input'> & {
   label: string
   hint?: string
   error?: string
+  mask?: FieldMask
 }) {
   const id = props.id ?? props.name
   const isPassword = type === 'password'
   const [visible, setVisible] = useState(false)
-  const inputType = isPassword ? (visible ? 'text' : 'password') : type
+  const maskDefaults = mask ? MASK_DEFAULTS[mask] : undefined
+  const {
+    type: maskType,
+    ...maskInputProps
+  } = maskDefaults ?? {}
+  const inputType = isPassword
+    ? visible
+      ? 'text'
+      : 'password'
+    : (maskType ?? type)
 
   return (
     <div className={cn('grid gap-1.5', className)}>
@@ -31,13 +74,20 @@ export function TextField({
       <div className="relative">
         <input
           id={id}
-          type={inputType}
           aria-invalid={Boolean(error)}
           className={cn(
             'w-full rounded-[10px] border border-line bg-[#0c0c13] px-3.5 py-3.5 font-sans text-ink outline-none focus:border-gold/55 focus:shadow-[0_0_0_3px_rgba(249,188,1,0.12)]',
             isPassword && 'pr-11',
           )}
+          {...maskInputProps}
           {...props}
+          type={inputType}
+          onChange={(event) => {
+            if (mask) {
+              event.target.value = applyMask(mask, event.target.value)
+            }
+            onChange?.(event)
+          }}
         />
         {isPassword ? (
           <button

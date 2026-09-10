@@ -1,0 +1,5 @@
+Nome: Daniel
+PosX: 1074, PosY: 1006, PosZ: 7
+Data: 08/13/15 15:27:54
+
+Bug: pokemon da box aparece que vc ja tem 6  e foi pro depot, quando na verdade vc n tem e doi pra sua bag

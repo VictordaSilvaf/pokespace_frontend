@@ -1,0 +1,9 @@
+Module
+  name: game_loot
+  description: ASASDAS
+  author: Ton
+  website: none
+  sandboxed: true
+  scripts: [ loot ]
+  @onLoad: init()
+  @onUnload: terminate()

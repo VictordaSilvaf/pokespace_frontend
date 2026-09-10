@@ -1,0 +1,61 @@
+HeadlessWindow
+  id: tvCamWindow
+  size: 180 70
+  anchors.centerIn: parent
+  focusable: false
+
+  UIButton
+    id: closeButton
+    @onClick: modules.game_tvcam.closeChanne()
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: -3
+    margin-right: -2
+    size: 14 14
+    image-source: /images/ui/miniwindow_buttons
+    image-clip: 28 0 14 14
+
+    $hover:
+      image-clip: 28 14 14 14
+
+    $pressed:
+      image-clip: 28 28 14 14
+  
+  Label
+    id: tvCamLabel
+    !text: tr('TvCam')
+    text-align: topleft
+    text-auto-resize: true
+    anchors.top: parent.top
+    anchors.left: parent.left
+    phantom: true
+    @onClick: modules.game_duel.hide()
+
+  Label
+    id: tvCamNameLabel
+    !text: tr('Assitindo')
+    text-align: topleft
+    text-auto-resize: true
+    anchors.top: tvCamLabel.top
+    anchors.left: tvCamLabel.left
+    margin-top: 15
+    phantom: true
+    @onClick: modules.game_duel.hide()
+
+  Button
+    id: anterior
+    !text: tr('Anterior')
+    width: 64
+    anchors.left: parent.left
+    anchors.bottom: parent.bottom
+    margin-left: 10
+    @onClick: modules.game_duel.doRequestDuel()
+
+  Button
+    id: proximo
+    !text: tr('Proximo')
+    width: 64
+    anchors.left: anterior.left
+    anchors.bottom: anterior.bottom
+    margin-left: 80
+    @onClick: modules.game_duel.doRequestDuel()

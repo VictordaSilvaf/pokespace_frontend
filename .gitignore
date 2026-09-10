@@ -13,10 +13,26 @@ dist-ssr
 __unconfig*
 todos.json
 .vercel
-tools/ot-source/*
-!tools/ot-source/.gitkeep
+
+# OT pipeline caches / generated extract (local)
 tools/ot-pipeline/.cache/
 tools/client-assets/input/*
 !tools/client-assets/input/.gitkeep
 tools/client-assets/output/
 
+# Creature/item sprites live on R2 CDN (see VITE_ASSETS_BASE_URL). Regenerate locally
+# via OT extract, then: pnpm --dir ../pokespace_backend assets:upload-r2
+public/assets/sprites/creature/**/*.png
+public/assets/sprites/item/**/*.png
+
+# Never reintroduce Windows runtime / logs under client or server
+client/**/*.log
+client/**/*.dll
+client/**/*.exe
+client/**/*.vrs
+server/**/*.log
+server/**/*.dll
+server/**/*.exe
+server/**/*.s3db
+server/data/logs/**
+!server/data/logs/.gitkeep

@@ -1,4 +1,5 @@
 import { m } from '#/paraglide/messages'
+import { maskDisplayName } from '#/lib/form/masks'
 import { DISPLAY_NAME_MAX, DISPLAY_NAME_MIN } from '../config'
 
 type WizardNameStepProps = {
@@ -27,8 +28,12 @@ export function WizardNameStep({
           name="displayName"
           value={value}
           maxLength={DISPLAY_NAME_MAX}
+          spellCheck={false}
+          autoCapitalize="none"
           placeholder={m.character_name_placeholder()}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) =>
+            onChange(maskDisplayName(e.target.value, DISPLAY_NAME_MAX))
+          }
           aria-invalid={Boolean(error)}
           autoComplete="off"
           className="w-full rounded-[10px] border border-line bg-[#0c0c13] px-3.5 py-3.5 font-sans text-ink outline-none focus:border-gold/55 focus:shadow-[0_0_0_3px_rgba(249,188,1,0.12)]"

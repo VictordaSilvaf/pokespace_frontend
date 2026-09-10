@@ -1,0 +1,173 @@
+CharacterWidget < UIWidget
+  size: 32 32
+  background-color: alpha
+  &updateOnStates: |
+    function(self)
+      local children = self:getChildren()
+      for i=1,#children do
+        children[i]:setOn(self:isFocused())
+      end
+    end
+  @onFocusChange: self:updateOnStates()
+  @onSetup: self:updateOnStates()
+
+  $focus:
+    background-color: #ffffff22
+
+  Item
+    id: portrait1
+    image-color: alpha
+    anchors.top: parent.top
+    anchors.left: label2.left
+    margin-left: 186
+    virtual: true
+
+  UILabel
+    id: label2
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 20
+    margin-top: 7
+    text-align: center
+    text-auto-resize: true
+    padding: 2
+    color: #ffffff
+
+  UILabel
+    id: label3
+    anchors.top: parent.top
+    anchors.left: portrait1.left
+    margin-left: 100
+    margin-top: 7
+    text-align: center
+    text-auto-resize: true
+    padding: 2
+    color: #ffffff
+
+MainWindow
+  id: channelsWindow
+  !text: tr('Lista de Items - Autoloot')
+  size: 500 500
+  visible: false
+  @onEnter: CharacterList.doLogin()
+  @onEscape: CharacterList.hide(true)
+  @onSetup: |
+    g_keyboard.bindKeyPress('Up', function() self:getChildById('characters'):focusPreviousChild(KeyboardFocusReason) end, self)
+    g_keyboard.bindKeyPress('Down', function() self:getChildById('characters'):focusNextChild(KeyboardFocusReason) end, self)
+
+  TextList
+    id: characters
+    image-source: /images/ui/panel_flat
+    image-border: 2
+    image-border-top: 3
+    image-border-bottom: 3
+    anchors.top: parent.top
+    anchors.left: parent.left
+    anchors.right: characterListScrollBar.left
+    anchors.bottom: buttonCancel.top
+    margin-bottom: 5
+    padding: 1
+    focusable: false
+    vertical-scrollbar: characterListScrollBar
+    auto-focus: first
+
+  VerticalScrollBar
+    id: characterListScrollBar
+    anchors.top: parent.top
+    anchors.bottom: buttonCancel.top
+    anchors.right: parent.right
+    margin-bottom: 5
+    step: 14
+    pixels-scroll: true
+
+  Button
+    id: buttonCancel
+    !text: tr('Adicionar')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-bottom: 250
+    @onClick: modules.game_loot.addToMyList()
+
+  CheckBox
+    id: pegarAll
+    !text: tr('Coletar tudo')
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.top: prev.bottom
+    margin-right: 100
+    @onClick: modules.game_loot.colectAll()
+  
+  Label
+    id: searchItem
+    !text: tr('Procurar')
+    text-align: topleft
+    text-auto-resize: true
+    anchors.top: characters.bottom
+    anchors.left: parent.left
+    margin-top: 5
+    phantom: true
+
+  TextEdit
+    id: searchItemText
+    size: 160 20
+    anchors.left: searchItem.horizontalCenter
+    anchors.top: searchItem.top
+    margin-left: 40
+    @onTextChange: modules.game_loot.searchItem()
+
+  TextList
+    id: characters2
+    image-source: /images/ui/panel_flat
+    image-border: 2
+    image-border-top: 3
+    image-border-bottom: 3
+    anchors.top: buttonCancel.bottom
+    anchors.left: parent.left
+    anchors.right: characterListScrollBar2.left
+    anchors.bottom: buttonCancel2.top
+    margin-top: 25
+    margin-bottom: 5
+    padding: 1
+    focusable: false
+    vertical-scrollbar: characterListScrollBar2
+    auto-focus: first
+
+  VerticalScrollBar
+    id: characterListScrollBar2
+    anchors.top: buttonCancel.bottom
+    anchors.bottom: buttonCancel2.top
+    anchors.right: parent.right
+    margin-top: 25
+    margin-bottom: 5
+    step: 14
+    pixels-scroll: true
+
+  Button
+    id: buttonCancel2
+    !text: tr('Salvar')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-bottom: 10
+    @onClick: modules.game_loot.salvar()
+
+  Button
+    id: removerItem
+    !text: tr('Remover')
+    width: 64
+    anchors.right: buttonCancel2.left
+    anchors.bottom: parent.bottom
+    margin-bottom: 10
+    margin-right: 5
+    @onClick: modules.game_loot.removeItem()
+
+  Button
+    id: limparLista
+    !text: tr('Remover Tudo')
+    width: 100
+    anchors.right: removerItem.left
+    anchors.bottom: parent.bottom
+    margin-bottom: 10
+    margin-right: 5
+    @onClick: modules.game_loot.removeAllItems()

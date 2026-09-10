@@ -1,4 +1,6 @@
-import { SPRITES_CREATURE_BASE } from './urls'
+import { resolveAssetPath } from './urls'
+import catalogPokemon from './generated/pokemon.json' with { type: 'json' }
+import catalogNpcs from './generated/npcs.json' with { type: 'json' }
 
 /** OT-style sheet geometry used by local creature PNGs. */
 export type SheetGeometry = {
@@ -11,49 +13,54 @@ export type SheetGeometry = {
   phases: number
 }
 
-/**
- * Curated national-dex → creature sprite id (padventures pack).
- * Server lookType/portraitId do not match this pack.
+/** Default walk sheet geometry until DAT geometry is loaded per id.
+ * Current extract emits single 32×32 tiles — use 1×1 frame so portraits
+ * draw the full image. Multi-frame sheets override via CREATURE_GEOMETRY.
  */
-export const DEX_CREATURE_ID: Record<number, number> = {
-  3: 40056, // Venusaur
-  7: 40036, // Squirtle
-  9: 40040, // Blastoise
-  52: 40037, // Meowth
-  107: 40368, // Hitmonchan
-  114: 40052, // Tangela
+export const DEFAULT_CREATURE_GEOMETRY: SheetGeometry = {
+  w: 1,
+  h: 1,
+  layers: 1,
+  px: 1,
+  py: 1,
+  pz: 1,
+  phases: 1,
 }
 
-/** Player trainer walk sheet. */
-export const PLAYER_CREATURE_ID = 42492
+/**
+ * dexId → creature lookType from ./server catalog.
+ * Never assume dexId === lookType.
+ */
+export const DEX_CREATURE_ID: Record<number, number> = Object.fromEntries(
+  catalogPokemon
+    .filter((p) => p.dexId != null && p.lookType != null)
+    .map((p) => [p.dexId as number, p.lookType as number]),
+)
 
-/** World NPCs (creature sheet ids + labels). */
-export const WORLD_NPC_DEFS = [
-  { id: 'npc-balloons', name: 'Vendedor', creatureId: 41779 },
-  { id: 'npc-festive', name: 'Ajudante', creatureId: 44909 },
-  { id: 'npc-cat', name: 'Miyagi', creatureId: 43209 },
-  { id: 'npc-hat', name: 'Viajante', creatureId: 43965 },
-] as const
+/** Player trainer lookType from server/data/XML/outfits.xml (male Trainer). */
+export const PLAYER_CREATURE_ID = 510
 
-/** Geometry for every creature id we render (avoids loading 8MB metadata.json). */
-export const CREATURE_GEOMETRY: Record<number, SheetGeometry> = {
-  40036: { w: 1, h: 1, layers: 1, px: 4, py: 1, pz: 1, phases: 3 },
-  40037: { w: 2, h: 2, layers: 1, px: 4, py: 1, pz: 1, phases: 3 },
-  40040: { w: 1, h: 1, layers: 1, px: 4, py: 1, pz: 1, phases: 3 },
-  40052: { w: 1, h: 1, layers: 1, px: 4, py: 1, pz: 1, phases: 3 },
-  40056: { w: 2, h: 2, layers: 1, px: 4, py: 1, pz: 1, phases: 3 },
-  40368: { w: 1, h: 2, layers: 1, px: 4, py: 1, pz: 1, phases: 3 },
-  41779: { w: 1, h: 2, layers: 1, px: 4, py: 1, pz: 1, phases: 4 },
-  42492: { w: 1, h: 2, layers: 1, px: 4, py: 1, pz: 1, phases: 4 },
-  43209: { w: 1, h: 2, layers: 1, px: 4, py: 1, pz: 1, phases: 3 },
-  43965: { w: 1, h: 2, layers: 1, px: 4, py: 1, pz: 1, phases: 3 },
-  44909: { w: 1, h: 2, layers: 1, px: 4, py: 1, pz: 1, phases: 3 },
-}
+/** World NPCs from server catalog (first few with looks). */
+export const WORLD_NPC_DEFS = catalogNpcs
+  .filter((n) => n.lookType != null && n.lookType > 0)
+  .slice(0, 4)
+  .map((n) => ({
+    id: n.id,
+    name: n.name,
+    creatureId: n.lookType as number,
+  }))
+
+/** Geometry cache: start empty; callers fall back to DEFAULT_CREATURE_GEOMETRY. */
+export const CREATURE_GEOMETRY: Record<number, SheetGeometry> = {}
 
 export function creatureUrl(creatureId: number): string {
-  return `${SPRITES_CREATURE_BASE}/${creatureId}.png`
+  return resolveAssetPath(`sprites/creature/${creatureId}.png`)
 }
 
 export function creatureIdForDex(dexId: number): number | null {
   return DEX_CREATURE_ID[dexId] ?? null
+}
+
+export function geometryForCreature(creatureId: number): SheetGeometry {
+  return CREATURE_GEOMETRY[creatureId] ?? DEFAULT_CREATURE_GEOMETRY
 }

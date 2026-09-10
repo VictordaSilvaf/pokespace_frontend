@@ -1,8 +1,9 @@
 import {
   getPokemonByDexId,
-  pokemonPortraitUrl,
-  type CatalogPokemon,
+  pokemonPortraitUrl
+  
 } from '#/features/game-data'
+import type {CatalogPokemon} from '#/features/game-data';
 
 export type PokeType =
   | 'normal'
@@ -30,9 +31,19 @@ export type PokedexMove = {
   type: PokeType
 }
 
+export type PokedexBaseStats = {
+  hp: number
+  attack: number
+  defense: number
+  specialAttack: number
+  specialDefense: number
+  speed: number
+}
+
 export type PokedexEntry = {
   dexId: number
   discovered: boolean
+  caught?: boolean
   name?: string
   types?: PokeType[]
   category?: string
@@ -44,9 +55,16 @@ export type PokedexEntry = {
   evolution?: string
   description?: string
   portraitId?: number | null
+  lookType?: number | null
+  /** Resolved public URL for normal portrait/walk. */
+  spriteUrl?: string | null
+  shinySpriteUrl?: string | null
+  hasShiny?: boolean
+  baseStats?: PokedexBaseStats
 }
 
-export const POKEDEX_TOTAL = 386
+/** Fallback total only for mock auth offline catalog (gen 1–3 preview). */
+export const MOCK_POKEDEX_TOTAL = 386
 
 export const ALL_TYPES: PokeType[] = [
   'normal',
@@ -97,12 +115,10 @@ function asPokeType(value: string): PokeType | null {
   return KNOWN_TYPES.has(t) ? (t as PokeType) : null
 }
 
-export function pokedexSpriteUrl(dexId: number, _shiny = false) {
-  return pokemonPortraitUrl(dexId)
-}
-
-export function pokedexWalkUrl(dexId: number) {
-  return pokemonPortraitUrl(dexId)
+export function pokedexSpriteUrl(entry: PokedexEntry, shiny = false): string {
+  if (shiny && entry.shinySpriteUrl) return entry.shinySpriteUrl
+  if (entry.spriteUrl) return entry.spriteUrl
+  return pokemonPortraitUrl(entry.dexId)
 }
 
 export function formatDexId(dexId: number) {
@@ -132,7 +148,9 @@ export function catalogToPokedexFields(entry: CatalogPokemon): Partial<PokedexEn
     moves,
     evolution,
     portraitId: entry.portraitId,
-    description: undefined,
+    lookType: entry.lookType,
+    spriteUrl: pokemonPortraitUrl(entry.dexId),
+    hasShiny: Boolean(entry.hasShiny),
   }
 }
 

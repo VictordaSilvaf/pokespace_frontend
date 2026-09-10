@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-08T23:20:40.501Z",
-  "source": "tools/server-data",
+  "generatedAt": "2026-09-09T19:27:28.294Z",
+  "source": "server/data",
   "counts": {
-    "pokemon": 539,
-    "moves": 446,
-    "npcs": 868,
-    "monsterFilesSeen": 1068,
-    "monsterFilesSkipped": 527
+    "pokemon": 331,
+    "moves": 315,
+    "npcs": 91,
+    "monsterFilesSeen": 331,
+    "monsterFilesSkipped": 0
   }
 }

@@ -1,0 +1,5 @@
+Nome: Zonako
+PosX: 1070, PosY: 1017, PosZ: 6
+Data: 08/13/15 18:04:46
+
+Bug: eu pege oddish e eu morre e oddish desaparecio

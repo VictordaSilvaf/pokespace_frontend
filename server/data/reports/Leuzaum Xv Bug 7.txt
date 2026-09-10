@@ -1,0 +1,5 @@
+Nome: Leuzaum Xv
+PosX: 1059, PosY: 911, PosZ: 7
+Data: 08/14/15 14:55:59
+
+Bug: personagens estao mt lentos

@@ -1,0 +1,114 @@
+PokedexListLabel < Label
+  font: verdana-11px-monochrome
+  background-color: alpha
+  icon: /images/topbuttons/miniwindowicon/pokemon
+  icon-rect: 1 1 13 13
+  icon-color: alpha
+  icon-align: left
+  text-offset: 15 0
+  focusable: true
+
+  $focus:
+    background-color: #ffffff22
+    color: #ffffff
+
+PokedexWindow < MainWindow
+  size: 646 459
+  image-source: /images/ui/window_pokedex
+  padding: 3
+
+PokedexWindow
+  id: pokedexWindow
+  @onEscape: modules.game_pokedex.hide()
+
+  PokedexTabBar
+    id: pokedexTabBar
+    size: 290 29
+    anchors.left: parent.left
+    anchors.verticalCenter: parent.verticalCenter
+    margin-top: 60
+    margin-left: 30
+
+  Panel
+    id: pokedexTabContent
+    size: 290 118
+    anchors.top: prev.bottom
+    anchors.left: prev.left
+    margin-top: 2
+    focusable: false
+
+  UIWidget
+    id: pokemonImage
+    size: 199 152
+    image-source: /images/game/pokedex/none
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 82
+    margin-left: 51
+    focusable: false
+
+    UIWidget
+      id: pokemonType1
+      size: 20 20
+      anchors.top: parent.top
+      anchors.right: parent.right
+      margin-top: 5
+      margin-right: 5
+
+    UIWidget
+      id: pokemonType2
+      size: 20 20
+      anchors.top: prev.bottom
+      anchors.right: prev.right
+      margin-top: 5
+
+  TextList
+    id: pokedexList
+    size: 180 292
+    background-color: alpha
+    border-color: alpha
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 57
+    margin-right: 35
+    vertical-scrollbar: pokedexListScrollBar
+    focusable: false
+
+  VerticalScrollBar
+    id: pokedexListScrollBar
+    anchors.top: pokedexList.top
+    anchors.left: pokedexList.right
+    anchors.bottom: pokedexList.bottom
+    margin-left: 5
+    step: 14
+    pixels-scroll: true
+
+  Label
+    id: searchLabel
+    !text: tr('Search')..':'
+    anchors.top: searchText.top
+    anchors.right: searchText.left
+    margin-top: 3
+    margin-right: 8
+    text-auto-resize: true
+
+  TextEdit
+    id: searchText
+    width: 135
+    image-color: alpha
+    anchors.bottom: parent.bottom
+    anchors.right: parent.right
+    margin-bottom: 76
+    margin-right: 18
+    @onTextChange: modules.game_pokedex.searchPokemon()
+
+  Button
+    id: closeButton
+    !text: tr('Close')
+    color: #bbbbbb
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: 17
+    margin-right: 10
+    width: 64
+    @onClick: modules.game_pokedex.hide()

@@ -1,0 +1,314 @@
+MainWindow
+  id: catchWindow
+  !text: tr('Catch Achievment')
+  size: 375 180
+  @onEnter: modules.game_catch.hide()
+  @onEscape: modules.game_catch.hide()
+
+  Item
+    id: portrait
+    image-color: alpha
+    anchors.top: parent.top
+    anchors.left: parent.left
+    virtual: true
+
+  Item
+    id: pokeball
+    image-color: alpha
+    anchors.top: prev.bottom
+    anchors.left: parent.left
+    margin-left: -15
+    virtual: true
+
+  Label
+    id: pokeballsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: pokeball.top
+    anchors.left: pokeball.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: greatball
+    image-color: alpha
+    anchors.top: pokeball.top
+    anchors.left: pokeball.left
+    margin-left: 70
+    virtual: true
+
+  Label
+    id: greatballsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: greatball.top
+    anchors.left: greatball.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: superball
+    image-color: alpha
+    anchors.top: pokeball.top
+    anchors.left: pokeball.left
+    margin-left: 140
+    virtual: true
+
+  Label
+    id: superballsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: superball.top
+    anchors.left: superball.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: ultraball
+    image-color: alpha
+    anchors.top: pokeball.top
+    anchors.left: pokeball.left
+    margin-left: 210
+    virtual: true
+
+  Label
+    id: utraballsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: ultraball.top
+    anchors.left: ultraball.right
+    margin-top: 10
+    phantom: true	
+
+  Item
+    id: saffariball
+    image-color: alpha
+    anchors.top: pokeball.top
+    anchors.left: pokeball.left
+    margin-left: 270
+    virtual: true
+
+  Label
+    id: saffariballsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: saffariball.top
+    anchors.left: saffariball.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: maguBall
+    image-color: alpha
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 60
+    margin-left: -15
+    virtual: true
+
+  Label
+    id: maguBallsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: maguBall.top
+    anchors.left: maguBall.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: soraBall
+    image-color: alpha
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 60
+    margin-left: 45
+    virtual: true
+
+  Label
+    id: soraBallsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: soraBall.top
+    anchors.left: soraBall.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: yumeBall
+    image-color: alpha
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 60
+    margin-left: 105
+    virtual: true
+
+  Label
+    id: yumeBallsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: yumeBall.top
+    anchors.left: yumeBall.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: duskBall
+    image-color: alpha
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 60
+    margin-left: 165
+    virtual: true
+
+  Label
+    id: duskBallsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: duskBall.top
+    anchors.left: duskBall.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: taleBall
+    image-color: alpha
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 60
+    margin-left: 225
+    virtual: true
+
+  Label
+    id: taleBallsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: taleBall.top
+    anchors.left: taleBall.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: moonBall
+    image-color: alpha
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 60
+    margin-left: 285
+    virtual: true
+
+  Label
+    id: moonBallsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: moonBall.top
+    anchors.left: moonBall.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: netBall
+    image-color: alpha
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 80
+    margin-left: -15
+    virtual: true
+
+  Label
+    id: netBallsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: netBall.top
+    anchors.left: netBall.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: premierBall
+    image-color: alpha
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 80
+    margin-left: 45
+    virtual: true
+
+  Label
+    id: premierBallsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: premierBall.top
+    anchors.left: premierBall.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: tinkerBall
+    image-color: alpha
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 80
+    margin-left: 105
+    virtual: true
+
+  Label
+    id: tinkerBallsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: tinkerBall.top
+    anchors.left: tinkerBall.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: fastBall
+    image-color: alpha
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 80
+    margin-left: 165
+    virtual: true
+
+  Label
+    id: fastBallsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: fastBall.top
+    anchors.left: fastBall.right
+    margin-top: 10
+    phantom: true
+
+  Item
+    id: heavyBall
+    image-color: alpha
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-top: 80
+    margin-left: 225
+    virtual: true
+
+  Label
+    id: heavyBallsLabel
+    !text: tr('1000')
+    text-align: center
+    anchors.top: heavyBall.top
+    anchors.left: heavyBall.right
+    margin-top: 10
+    phantom: true
+
+  Label
+    id: text
+    text-align: center
+    text-wrap: true
+    anchors.top: parent.top
+    text-auto-resize: true
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 60
+
+  Button
+    id: closeButtom
+    !text: tr('Ok')
+    anchors.left: parent.left
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    @onClick: modules.game_catch.hide()

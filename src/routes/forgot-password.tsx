@@ -63,9 +63,9 @@ function ForgotPasswordForm() {
           {(field) => (
             <TextField
               name={field.name}
+              mask="username"
               label={m.forgot_username()}
               value={field.state.value}
-              autoComplete="username"
               onBlur={field.handleBlur}
               onChange={(event) => field.handleChange(event.target.value)}
               error={fieldError(field.state.meta.errors)}

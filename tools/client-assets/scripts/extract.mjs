@@ -16,6 +16,7 @@ import {
   TILE_SIZE,
   WEB_OUT,
   parseArgs,
+  resolveDatSpr,
   resolveInputDir,
 } from './paths.mjs'
 
@@ -23,20 +24,21 @@ const args = parseArgs(process.argv.slice(2))
 const inputDir = resolveInputDir(args)
 const max = args.max ? Number(args.max) : Infinity
 
-const datPath = path.join(inputDir, 'Tibia.dat')
-const sprPath = path.join(inputDir, 'Tibia.spr')
+const { datPath, sprPath } = resolveDatSpr(inputDir)
 
 for (const [p, label] of [
-  [datPath, 'Tibia.dat'],
-  [sprPath, 'Tibia.spr'],
+  [datPath, 'DAT'],
+  [sprPath, 'SPR'],
 ]) {
   if (!fs.existsSync(p)) {
     throw new Error(
-      `Missing ${label}: ${p}\nSee tools/client-assets/README.md`,
+      `Missing ${label}: ${p}\nExpected client/data/things/things.dat + things.spr`,
     )
   }
 }
 
+console.log(`DAT: ${datPath}`)
+console.log(`SPR: ${sprPath}`)
 console.log('Parsing DAT…')
 const { signature, things: allThings } = parseDatFile(datPath)
 console.log('Parsing SPR…')

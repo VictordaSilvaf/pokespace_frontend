@@ -1,0 +1,39 @@
+TopButton < UIButton
+  height: 32
+  opacity: 0.5
+  image-color: #000000AA
+  image-clip: 0 0 30 30
+  image-border: 1
+  margin: 2
+
+  $hover:
+    opacity: 1.0
+
+TopToggleButton < UIButton
+  height: 32
+  opacity: 0.5
+  margin: 2
+
+  $on:
+    opacity: 1.0
+
+TopMenuButtonsPanel < Panel
+  layout:
+    type: horizontalBox
+    fit-children: true
+  padding: 4 0
+
+TopMenuPanel < Panel
+  height: 36
+  image-source: /images/ui/panel_top
+  image-repeated: true
+  focusable: false
+
+TopMenuFrameCounterLabel < Label
+  font: verdana-11px-rounded
+  color: white
+  margin-top: 4
+  margin-left: 5
+
+TopMenuPingLabel < Label
+  font: verdana-11px-rounded

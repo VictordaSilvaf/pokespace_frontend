@@ -1,0 +1,113 @@
+HeadlessWindow
+  id: memory
+  size: 210 230
+  anchors.centerIn: parent
+  @onEnter: modules.game_held.hide()
+  @onEscape: modules.game_held.hide()
+  focusable: false
+
+  UIButton
+    id: closeButton
+    @onClick: modules.game_held.hide()
+    anchors.top: parent.top
+    anchors.right: parent.right
+    margin-top: -3
+    margin-right: -2
+    size: 14 14
+    image-source: /images/ui/miniwindow_buttons
+    image-clip: 28 0 14 14
+
+    $hover:
+      image-clip: 28 14 14 14
+
+    $pressed:
+      image-clip: 28 28 14 14
+
+  UIWidget
+    id: iconDitto
+    size: 16 16
+    image-source: /images/game/skulls/skull_white
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 1
+
+  Label
+    id: windownName
+    !text: tr('Tokens Troca')
+    text-align: topleft
+    text-auto-resize: true
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 20
+    phantom: true
+    @onClick: modules.game_memory.hide()
+
+  Button
+    id: trade1
+    !text: tr('20 Devoted Token (Tier 1-2)')
+    width: 180
+    anchors.left: parent.left
+    anchors.top: parent.top
+    margin-top: 20
+    margin-left: 7
+    @onClick: modules.game_held.sendRequestShow(1)
+
+  Button
+    id: trade2
+    !text: tr('70 Mighty Token (Tier 1-3)')
+    width: 180
+    anchors.left: parent.left
+    anchors.top: trade1.top
+    margin-top: 28
+    margin-left: 7
+    @onClick: modules.game_held.sendRequestShow(2)
+
+  Button
+    id: trade3
+    !text: tr('150 Mighty Token (Tier 2-4)')
+    width: 180
+    anchors.left: parent.left
+    anchors.top: trade2.top
+    margin-top: 28
+    margin-left: 7
+    @onClick: modules.game_held.sendRequestShow(3)
+
+  Button
+    id: trade4
+    !text: tr('300 Mighty Token (Tier 2-6)')
+    width: 180
+    anchors.left: parent.left
+    anchors.top: trade3.top
+    margin-top: 28
+    margin-left: 7
+    @onClick: modules.game_held.sendRequestShow(4)
+
+  Button
+    id: trade5
+    !text: tr('30 Hornored Token (Tier 1-3)')
+    width: 180
+    anchors.left: parent.left
+    anchors.top: trade4.top
+    margin-top: 28
+    margin-left: 7
+    @onClick: modules.game_held.sendRequestShow(5)
+
+  Button
+    id: trade6
+    !text: tr('75 Hornored Token (Tier 2-4)')
+    width: 180
+    anchors.left: parent.left
+    anchors.top: trade5.top
+    margin-top: 28
+    margin-left: 7
+    @onClick: modules.game_held.sendRequestShow(6)
+
+  Button
+    id: trade7
+    !text: tr('150 Hornored Token (Tier 3-6)')
+    width: 180
+    anchors.left: parent.left
+    anchors.top: trade6.top
+    margin-top: 28
+    margin-left: 7
+    @onClick: modules.game_held.sendRequestShow(7)

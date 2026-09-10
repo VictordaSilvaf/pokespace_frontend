@@ -1,0 +1,48 @@
+HeadlessWindow
+  id: duelWindow
+  size: 400 139
+  anchors.centerIn: parent
+  image-source: /images/game/battle/dead
+  @onEnter: modules.game_dead.hide()
+  @onEscape: modules.game_dead.hide()
+
+  UILabel
+    id: label
+    anchors.top: parent.top
+    anchors.left: parent.left
+    margin-left: 70
+    text-align: center
+    text-auto-resize: true
+    width: 120
+    padding: 2
+    color: #ffffff
+
+  UILabel
+    id: label2
+    anchors.top: label.top
+    anchors.left: label.left
+    margin-top: 108
+    margin-left: 40
+    text-align: center
+    text-auto-resize: true
+    width: 120
+    padding: 2
+    color: #ffffff
+
+  Item
+    id: portrait1
+    image-color: alpha
+    anchors.top: label2.top
+    anchors.left: label2.left
+    margin-left: 70
+    margin-top: -60
+    virtual: true
+
+  Button
+    id: okButton
+    !text: tr('Ok')
+    width: 64
+    anchors.right: parent.right
+    anchors.bottom: parent.bottom
+    margin-right: 10
+    @onClick: modules.game_dead.hide()

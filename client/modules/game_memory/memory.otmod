@@ -1,0 +1,9 @@
+Module
+  name: game_memory
+  description: ASASDAS
+  author: Ton
+  website: none
+  sandboxed: true
+  scripts: [ memory ]
+  @onLoad: init()
+  @onUnload: terminate()

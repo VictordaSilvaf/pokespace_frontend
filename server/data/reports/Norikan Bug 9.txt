@@ -1,0 +1,5 @@
+Nome: Norikan
+PosX: 1060, PosY: 901, PosZ: 7
+Data: 08/13/15 19:56:25
+
+Bug: a Nurse só heala um pokemon por vez, e só o que estiver na sua mão.

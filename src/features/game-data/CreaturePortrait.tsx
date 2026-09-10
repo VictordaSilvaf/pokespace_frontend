@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
 import {
-  CREATURE_GEOMETRY,
+  geometryForCreature,
   creatureUrl,
   type SheetGeometry,
 } from './creature-map'
@@ -46,7 +46,7 @@ export function CreaturePortrait({
       return
     }
 
-    const geometry: SheetGeometry | undefined = CREATURE_GEOMETRY[creatureId]
+    const geometry: SheetGeometry = geometryForCreature(creatureId)
     const img = new Image()
     img.decoding = 'async'
     let cancelled = false
@@ -54,11 +54,7 @@ export function CreaturePortrait({
     img.onload = () => {
       if (cancelled || !ctx) return
       ctx.clearRect(0, 0, size, size)
-      if (geometry) {
-        drawCreatureFrame(ctx, img, geometry, 2, Math.floor(geometry.phases / 2), 0, 0, size, size)
-      } else {
-        ctx.drawImage(img, 0, 0, size, size)
-      }
+      drawCreatureFrame(ctx, img, geometry, 2, Math.floor(geometry.phases / 2), 0, 0, size, size)
     }
     img.src = creatureUrl(creatureId)
 

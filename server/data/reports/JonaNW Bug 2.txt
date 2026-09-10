@@ -1,0 +1,5 @@
+Nome: JonaNW
+PosX: 1056, PosY: 1045, PosZ: 7
+Data: 08/13/15 19:03:48
+
+Bug: "Pokemons,como magikarp,matam com 1 hit

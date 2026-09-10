@@ -79,10 +79,10 @@ function RegisterForm() {
           {(field) => (
             <TextField
               name={field.name}
+              mask="username"
               label={m.register_username()}
               hint={m.register_username_hint()}
               value={field.state.value}
-              autoComplete="username"
               onBlur={field.handleBlur}
               onChange={(event) => field.handleChange(event.target.value)}
               error={fieldError(field.state.meta.errors)}
@@ -107,10 +107,10 @@ function RegisterForm() {
           {(field) => (
             <TextField
               name={field.name}
-              type="tel"
+              mask="phone"
               label={m.register_phone()}
+              hint={m.register_phone_hint()}
               value={field.state.value}
-              autoComplete="tel"
               onBlur={field.handleBlur}
               onChange={(event) => field.handleChange(event.target.value)}
               error={fieldError(field.state.meta.errors)}

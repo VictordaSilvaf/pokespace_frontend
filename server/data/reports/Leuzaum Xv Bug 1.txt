@@ -1,0 +1,5 @@
+Nome: Leuzaum Xv
+PosX: 1051, PosY: 1045, PosZ: 7
+Data: 08/13/15 14:24:17
+
+Bug: encontrei um bug
