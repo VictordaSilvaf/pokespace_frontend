@@ -58,6 +58,7 @@ export {
   DEFAULT_CREATURE_GEOMETRY,
   DEX_CREATURE_ID,
   PLAYER_CREATURE_ID,
+  PLAYER_SPRITE_URL,
   WORLD_NPC_DEFS,
   creatureIdForDex,
   creatureUrl,

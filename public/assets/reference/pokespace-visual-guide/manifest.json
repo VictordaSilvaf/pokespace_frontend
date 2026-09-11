@@ -1,0 +1,31 @@
+{
+  "name": "PokeSpace visual reference pack",
+  "version": 1,
+  "tileSize": 32,
+  "rendering": "pixelated",
+  "sources": [
+    {
+      "file": "01-visual-guide-complete.png",
+      "role": "primary-art-direction"
+    },
+    {
+      "file": "02-sprite-library.png",
+      "role": "sprite-library"
+    },
+    {
+      "file": "03-visual-guide-technical.png",
+      "role": "technical-reference"
+    },
+    {
+      "file": "04-visual-style-guide.png",
+      "role": "composition-and-ui-reference"
+    }
+  ],
+  "approvedAssetRoots": [
+    "/assets/world/tilesets",
+    "/assets/sprites/player",
+    "/assets/sprites/creature",
+    "/assets/sprites/item",
+    "/assets/ui"
+  ]
+}

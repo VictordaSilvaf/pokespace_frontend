@@ -130,10 +130,14 @@ function parseCsvLayer(
   name: string,
   tilesets: TilesetDef[],
 ): MapLayer {
+  // Tiled CSV is comma-separated; rows may use newlines with or without a
+  // trailing comma. Treat commas and whitespace as separators so a missing
+  // comma between rows does not glue two GIDs into one cell.
   const tiles = csv
     .trim()
-    .split(',')
-    .map((cell) => decodeGid(Number(cell.trim()), tilesets))
+    .split(/[,\s]+/)
+    .filter((cell) => cell.length > 0)
+    .map((cell) => decodeGid(Number(cell), tilesets))
 
   if (tiles.length !== width * height) {
     throw new Error(
@@ -243,7 +247,7 @@ export function loadImage(src: string): Promise<HTMLImageElement> {
 
 export async function loadTmxMap(url: string): Promise<TileMap> {
   const absoluteUrl = new URL(url, window.location.origin).toString()
-  const response = await fetch(absoluteUrl)
+  const response = await fetch(absoluteUrl, { cache: 'no-cache' })
   if (!response.ok) {
     throw new Error(`Failed to load map ${url}: ${response.status}`)
   }

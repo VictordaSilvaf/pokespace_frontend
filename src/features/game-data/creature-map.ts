@@ -40,6 +40,12 @@ export const DEX_CREATURE_ID: Record<number, number> = Object.fromEntries(
 /** Player trainer lookType from server/data/XML/outfits.xml (male Trainer). */
 export const PLAYER_CREATURE_ID = 510
 
+/**
+ * Default on-world player sprite (shop outfit Deadpool).
+ * Served from public/ — source: client/data/images/game/shop/outfits/deadpool.png
+ */
+export const PLAYER_SPRITE_URL = '/assets/sprites/player/default.png'
+
 /** World NPCs from server catalog (first few with looks). */
 export const WORLD_NPC_DEFS = catalogNpcs
   .filter((n) => n.lookType != null && n.lookType > 0)
@@ -54,6 +60,7 @@ export const WORLD_NPC_DEFS = catalogNpcs
 export const CREATURE_GEOMETRY: Record<number, SheetGeometry> = {}
 
 export function creatureUrl(creatureId: number): string {
+  if (creatureId === PLAYER_CREATURE_ID) return PLAYER_SPRITE_URL
   return resolveAssetPath(`sprites/creature/${creatureId}.png`)
 }
 
