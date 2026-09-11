@@ -20,7 +20,7 @@ export const starterSkins = [
   {
     id: 'skin-red',
     name: 'Red',
-    imageUrl: 'https://api.dicebear.com/9.x/adventurer/svg?seed=Red&backgroundColor=b6e3f4',
+    imageUrl: '/assets/sprites/player/default.png',
   },
   {
     id: 'skin-leaf',

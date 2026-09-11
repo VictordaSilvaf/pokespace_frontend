@@ -21,6 +21,12 @@ const config = defineConfig({
         target: apiOrigin,
         changeOrigin: true,
       },
+      // Nest Socket.IO (namespaces like /world share this path)
+      '/socket.io': {
+        target: apiOrigin,
+        changeOrigin: true,
+        ws: true,
+      },
     },
   },
   plugins: [

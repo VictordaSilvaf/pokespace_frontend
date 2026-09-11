@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="128" viewBox="0 0 256 128" shape-rendering="crispEdges">
+<defs><pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M0 0h16v16H0z" fill="none" stroke="#dbe4df" stroke-width="1"/></pattern></defs>
+<!-- 0-7 architecture -->
+<g transform="translate(0)"><rect width="32" height="32" fill="#44515a"/><rect x="2" y="3" width="28" height="22" fill="#aeb8b6"/><path d="M2 9h28M2 19h28M8 3v6m16 0v10" stroke="#d9e2d9" stroke-width="2"/><path d="M0 27h32v5H0z" fill="#2c353c"/></g>
+<g transform="translate(32)"><rect width="32" height="32" fill="#d6ddd9"/><rect width="32" height="32" fill="url(#grid)"/><path d="M0 30h32" stroke="#a8b4af" stroke-width="2"/></g>
+<g transform="translate(64)"><rect width="32" height="32" fill="#edf1e9"/><path d="M0 0h32v32H0z" fill="url(#grid)"/><path d="M0 30h32" stroke="#c5d1cc" stroke-width="2"/></g>
+<g transform="translate(96)"><rect width="32" height="32" fill="#73544a"/><path d="M0 4h32M0 14h32M0 24h32" stroke="#a47861" stroke-width="2"/><path d="M7 0v4m15 0v10M4 14v10m18 0v8" stroke="#503a35" stroke-width="2"/></g>
+<g transform="translate(128)"><rect width="32" height="32" fill="#f2ead8"/><path d="M0 0h32v32H0z" fill="url(#grid)"/><path d="M0 30h32" stroke="#d5c6ae" stroke-width="2"/></g>
+<g transform="translate(160)"><rect width="32" height="32" fill="#3c4147"/><path d="M0 6h32M0 17h32M0 28h32" stroke="#575e62" stroke-width="2"/><path d="M9 0v6m12 0v11M5 17v11m18-11v11" stroke="#222a2d" stroke-width="2"/></g>
+<g transform="translate(192)"><rect width="32" height="32" fill="#d8525a"/><path d="M0 4h32M0 12h32M0 20h32M0 28h32" stroke="#f08d82" stroke-width="2"/><path d="M6 0v4m16 0v8M10 12v8m14 0v8" stroke="#b13945" stroke-width="2"/></g>
+<g transform="translate(224)"><rect width="32" height="32" fill="#4988bf"/><path d="M0 4h32M0 12h32M0 20h32M0 28h32" stroke="#89c4df" stroke-width="2"/><path d="M6 0v4m16 0v8M10 12v8m14 0v8" stroke="#2d6096" stroke-width="2"/></g>
+<!-- 8-15 furniture -->
+<g transform="translate(0 32)"><rect width="32" height="32" fill="#294a52"/><path d="M2 4h28v20H2z" fill="#b9e6e5"/><path d="M5 7h22v8H5z" fill="#f1fbf4"/><path d="M0 25h32v7H0z" fill="#7b4f3d"/></g>
+<g transform="translate(32 32)"><rect width="32" height="32" fill="#a5bbc0"/><ellipse cx="16" cy="12" rx="12" ry="10" fill="#e95f58"/><ellipse cx="16" cy="11" rx="8" ry="6" fill="#fff2df"/><path d="M7 20h18v11H7z" fill="#75a9bd"/><path d="M11 27h10" stroke="#e4f4ec" stroke-width="2"/></g>
+<g transform="translate(64 32)"><rect width="32" height="32" fill="#5d3e33"/><path d="M3 4h26v25H3z" fill="#a9784d"/><path d="M5 8h22M5 15h22M5 22h22" stroke="#5b3b31" stroke-width="2"/><path d="M8 5v22m8-22v22m8-22v22" stroke="#d9b071" stroke-width="2"/></g>
+<g transform="translate(96 32)"><rect width="32" height="32" fill="none"/><path d="M15 31V12" stroke="#3f6940" stroke-width="3"/><path d="M5 13c4-14 19-14 22 0-3 8-18 8-22 0z" fill="#65ad54"/><path d="M8 12c7-7 11-7 17 0" stroke="#9ad471" stroke-width="3"/></g>
+<g transform="translate(128 32)"><rect width="32" height="32" fill="#61717c"/><path d="M3 4h26v21H3z" fill="#92a3a8"/><rect x="6" y="7" width="20" height="12" fill="#d9f1ed"/><path d="M5 27h22v5H5z" fill="#3c4c53"/></g>
+<g transform="translate(160 32)"><rect width="32" height="32" fill="#aa8561"/><rect x="3" y="3" width="26" height="19" fill="#e9e6d5"/><path d="M4 22h24v8H4z" fill="#6d4c3a"/><path d="M10 7h12v9H10z" fill="#7cc0c9"/></g>
+<g transform="translate(192 32)"><path d="M5 25h22v5H5z" fill="#624634"/><path d="M8 9h16v16H8z" fill="#d3d1bd"/><path d="M10 11h12v8H10z" fill="#f3e9ce"/><path d="M15 9V2" stroke="#6b4b36" stroke-width="3"/></g>
+<g transform="translate(224 32)"><rect width="32" height="32" fill="#d4dce0"/><rect x="4" y="4" width="24" height="16" rx="2" fill="#315d72"/><path d="M7 7h18v10H7z" fill="#6dd7d0"/><path d="M10 25h12v5H10z" fill="#657981"/></g>
+<!-- 16-23 service objects -->
+<g transform="translate(0 64)"><path d="M6 27h20v3H6z" fill="#553d36"/><path d="M9 12h14v15H9z" fill="#cf7d6b"/><path d="M11 7h10v6H11z" fill="#efddd0"/></g>
+<g transform="translate(32 64)"><rect x="4" y="8" width="24" height="18" fill="#99b9ca"/><path d="M7 11h18v10H7z" fill="#c7f1ed"/><path d="M6 26h20v4H6z" fill="#5d7785"/></g>
+<g transform="translate(64 64)"><rect x="4" y="13" width="24" height="14" fill="#7298b3"/><path d="M6 9h20v11H6z" fill="#bfe7ec"/><path d="M8 11h16" stroke="#efffff" stroke-width="2"/></g>
+<g transform="translate(96 64)"><rect x="5" y="6" width="22" height="20" fill="#667b86"/><rect x="8" y="9" width="16" height="9" fill="#76d2cf"/><path d="M11 28h10" stroke="#394d55" stroke-width="3"/></g>
+<g transform="translate(128 64)"><rect width="32" height="32" fill="#f1ebe0"/><path d="M4 7h24v18H4z" fill="#9bbcca"/><path d="M7 10h18v12H7z" fill="#d7eff1"/><path d="M0 28h32" stroke="#a3a9a4" stroke-width="3"/></g>
+<g transform="translate(160 64)"><rect width="32" height="32" fill="#7b5e4d"/><path d="M2 6h28v20H2z" fill="#bd9162"/><path d="M4 10h24M4 17h24" stroke="#704b38" stroke-width="2"/><path d="M8 7v18m8-18v18m8-18v18" stroke="#dfbd7b" stroke-width="2"/></g>
+<g transform="translate(192 64)"><rect width="32" height="32" fill="#51606a"/><path d="M3 5h26v19H3z" fill="#a9c7cf"/><path d="M6 8h20v13H6z" fill="#e3f0e8"/><circle cx="16" cy="14" r="4" fill="#68b77d"/></g>
+<g transform="translate(224 64)"><rect width="32" height="32" fill="#ece9d9"/><path d="M4 4h24v17H4z" fill="#7599b0"/><path d="M7 7h18v11H7z" fill="#bddcec"/><path d="M13 24h6v6h-6z" fill="#815e4d"/></g>
+<!-- 24-31 details -->
+<g transform="translate(0 96)"><path d="M16 30V10" stroke="#5a4334" stroke-width="3"/><circle cx="16" cy="8" r="7" fill="#f3c760"/><path d="M12 8h8" stroke="#fff6bd" stroke-width="2"/></g>
+<g transform="translate(32 96)"><path d="M4 27h24v3H4z" fill="#6b4a38"/><rect x="7" y="9" width="18" height="17" fill="#a7bdc4"/><path d="M10 12h12v9H10z" fill="#83d3d0"/></g>
+</svg>

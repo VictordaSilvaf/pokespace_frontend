@@ -81,8 +81,9 @@ function resolveWorldWsUrl(): string {
       // fall through
     }
   }
+  // Same-origin: Vite proxies /socket.io → API_URL (see vite.config.ts).
   if (typeof window !== 'undefined') {
-    return `${window.location.protocol}//${window.location.hostname}:3000`
+    return window.location.origin
   }
   return 'http://localhost:3000'
 }

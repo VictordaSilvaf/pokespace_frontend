@@ -33,8 +33,10 @@ Removed: `tools/server-data`, `tools/ot-source`, padventures/Kenney as SoT.
 ## Game world
 
 - Default map: `public/assets/world/maps/starter.tmx` (crop of `DarkXPoke.otbm`)
-- Pokémon visuals: `dexId` → `lookType` (creature SPR) from catalog
-- Note: extended DAT is not fully parsed by `@v0rt4c/dat`; SPR extract uses lookType/itemId ↔ spriteId heuristic until a 10.x DAT reader lands
+- Temp blank: `VITE_BLANK_WORLD=true` → `blank.tmx` + white viewport clear (`starter.tmx` kept)
+- Pokémon visuals: catalog `dexId` + `lookType` → `sprites/creature/{lookType}.png` on CDN
+- Extract: OTC DAT reader + PokeAPI dex sprites by `dexId` (keys stay lookType); no lookType===SPR heuristic
+- CDN: `VITE_ASSETS_BASE_URL` / `S3_PUBLIC_BASE_URL` = `https://assets.pokenaut.victorsf.com`
 
 ## Commands
 

@@ -127,6 +127,11 @@ export function GameWorldViewport({
       if (img) return img
       img = new Image()
       img.decoding = 'async'
+      img.onerror = () => {
+        // CDN miss (NPC lookTypes, etc.) — silence repeat errors
+        img!.onerror = null
+        img!.src = ''
+      }
       img.src = creatureUrl(creatureId)
       imageCache.set(creatureId, img)
       return img
@@ -159,6 +164,7 @@ export function GameWorldViewport({
     let preferredScale = 3
     let playerSize = 16
     let playerSpeed = 72
+    let clearColor = '#0b1210'
     let scale = preferredScale
     let viewW = 0
     let viewH = 0
@@ -498,7 +504,7 @@ export function GameWorldViewport({
       camY = Math.max(0, Math.min(Math.max(0, mapPxH - viewWorldH), camY))
 
       mapCtx.clearRect(0, 0, viewW, viewH)
-      mapCtx.fillStyle = '#0b1210'
+      mapCtx.fillStyle = clearColor
       mapCtx.fillRect(0, 0, viewW, viewH)
 
       mapCtx.save()
@@ -556,6 +562,7 @@ export function GameWorldViewport({
         if (cancelled) return
 
         preferredScale = assets.preferredScale
+        clearColor = assets.clearColor
         playerSize = Math.max(16, assets.playerSize * 1.6)
         player.size = playerSize
         playerSpeed = assets.useOt ? 96 : 72
